@@ -1,0 +1,272 @@
+/* ================================
+   Healthcare Design System
+   ================================ */
+:root {
+    /* Base Colors */
+    --background: 0 0% 100%;
+    --foreground: 213 27% 84%;
+
+    /* Medical Blue Primary Palette */
+    --primary: 212 85% 15%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 212 85% 25%;
+    --primary-glow: 212 100% 50%;
+
+    /* Medical Green Accent Palette */
+    --secondary: 145 63% 42%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 145 63% 52%;
+    --secondary-glow: 145 100% 60%;
+
+    /* Professional Grays */
+    --muted: 213 27% 96%;
+    --muted-foreground: 213 27% 46%;
+    --border: 213 27% 90%;
+    --input: 213 27% 95%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(212 85% 15%) 0%, hsl(212 85% 25%) 50%, hsl(145 63% 42%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(212 85% 15% / 0.9) 0%, hsl(212 85% 25% / 0.8) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(145 63% 42%) 0%, hsl(145 63% 52%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.05) 100%);
+
+    /* Shadows & Effects */
+    --shadow-medical: 0 10px 30px -10px hsl(212 85% 15% / 0.3);
+    --shadow-accent: 0 10px 20px -5px hsl(145 63% 42% / 0.4);
+    --shadow-glow: 0 0 40px hsl(145 100% 60% / 0.3);
+
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ================================
+   Global Styles
+   ================================ */
+body {
+    font-family: 'Open Sans', sans-serif;
+    
+}
+* {
+    transition: all 0.3s ease;
+}
+[x-cloak] {
+    display: none !important;
+}
+
+/* ================================
+   Animations
+   ================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+@keyframes bounce-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-fade-up { animation: fadeInUp 0.8s ease-out; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-bounce-soft { animation: bounce-soft 2s ease-in-out infinite; }
+
+/* ================================
+   Hero Section
+   ================================ */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1000ms ease-in-out;
+}
+.hero-slide.active { opacity: 1; }
+.hero-overlay {
+    background: var(--gradient-hero);
+    position: absolute;
+    inset: 0;
+}
+.hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 800;
+}
+@media (min-width: 480px) { .hero-title { font-size: 2.5rem; } }
+@media (min-width: 640px) { .hero-title { font-size: 3rem; line-height: 1.1; } }
+@media (min-width: 768px) { .hero-title { font-size: 3.5rem; } }
+@media (min-width: 1024px) { .hero-title { font-size: 4rem; } }
+@media (min-width: 1280px) { .hero-title { font-size: 4.5rem; } }
+
+/* ================================
+   Buttons
+   ================================ */
+.btn-medical {
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-accent);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn-medical:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px) scale(1.02);
+}
+.btn-outline-medical {
+    border: 2px solid white;
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+}
+.btn-outline-medical:hover {
+    background: white;
+    color: hsl(var(--primary));
+}
+
+/* ================================
+   Cards
+   ================================ */
+.glass-card, .stat-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.2);
+    box-shadow: var(--shadow-medical);
+    border-radius: 1.5rem;
+    padding: 2rem;
+}
+.stat-card {
+    text-align: center;
+    color: white;
+    transform: translateY(0);
+    transition: all 0.5s ease;
+}
+.stat-card:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+/* ================================
+   Text Effects
+   ================================ */
+.text-dissolve {
+    transition: opacity 0.8s ease-in-out, filter 0.8s ease-in-out;
+}
+.text-dissolve.fade-out {
+    opacity: 0;
+    filter: blur(2px);
+}
+.text-dissolve.fade-in {
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* ================================
+   Navigation
+   ================================ */
+.nav-scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   Slider Indicators
+   ================================ */
+.slide-indicator {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+.slide-indicator.active {
+    background: hsl(var(--secondary-glow));
+    transform: scale(1.25);
+}
+
+/* ================================
+   Responsive Adjustments
+   ================================ */
+@media (max-width: 640px) {
+    .stat-card { padding: 1.25rem; }
+    .btn-medical, .btn-outline-medical {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .glass-card { padding: 1.5rem; }
+}
+@media (max-width: 480px) {
+    .hero-title { line-height: 1.3; }
+    .stat-card { padding: 1rem; }
+    .btn-medical, .btn-outline-medical {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.85rem;
+    }
+}
+
+
+/* preloader */
+
+@keyframes spin-slow { 
+  from { transform: rotate(0deg); } 
+  to { transform: rotate(360deg); } 
+}
+.animate-spin-slow { 
+  animation: spin-slow 3s linear infinite; 
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+.animate-pulse-scale {
+  animation: pulse-scale 1.2s ease-in-out infinite;
+}
+
+/* <!-- Nav Styles --> */
+
+    /* Base link style */
+    .nav-link {
+        transition: color 0.3s, border-color 0.3s;
+        padding-bottom: 4px;
+        border-bottom: 3px solid transparent;
+    }
+    /* White before scroll, dark blue after scroll */
+    [x-data] .nav-link {
+        color: white;
+    }
+    .nav-scrolled .nav-link {
+        color: #1e3a8a; /* dark blue */
+    }
+    /* Active link with green gradient bottom border */
+    .nav-link.active {
+        border-bottom: 3px solid transparent;
+        background-image: linear-gradient(to right, #c5d62e, #fff);
+        background-repeat: no-repeat;
+        background-size: 100% 3px;
+        background-position: 0 100%;
+        color: #c5d62e;
+    }
+
+
+    .hw-h2 {
+        @apply bg-clip-text text-transparent bg-hw-gradient;
+    }
