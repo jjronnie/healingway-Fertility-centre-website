@@ -19,26 +19,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'hw-blue': '#032C64',
-                        'hw-green': '#c5d62e',
-                        'hw-light-blue': '#0c2b6b'
-                    },
-
-                    backgroundImage: {
-                        'hw-gradient': 'linear-gradient(to right, #032C64, #c5d62e)',
-                    },
-                    fontFamily: {
-                        sans: ['Open Sans', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    
 
 </head>
 

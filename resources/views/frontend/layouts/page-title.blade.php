@@ -1,6 +1,6 @@
     <!-- Navigation -->
     <nav x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 10)"
-        :class="{ 'bg-gradient-to-r from-hw-blue to-hw-green ': scrolled, 'bg-transparent': !scrolled }"
+        :class="{ 'bg-gradient-to-r from-hw-blue to-hw-green ': scrolled, 'bg-gradient-to-r from-hw-blue to-hw-green': !scrolled }"
         class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
@@ -97,3 +97,20 @@
 
         </div>
     </nav>
+
+
+<section class="relative banner-image py-24 mt-[80px] overflow-hidden" 
+    style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+
+    <!-- Blur/Dark Overlay -->
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+                {{ Str::title(str_replace('-', ' ', Route::currentRouteName())) }}
+            </h1>
+        </div>
+    </div>
+</section>
+
