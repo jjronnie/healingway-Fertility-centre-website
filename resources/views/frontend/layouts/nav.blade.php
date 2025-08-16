@@ -14,7 +14,7 @@
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group" x-cloak>
                     <div class="w-12 h-12 flex items-center justify-center overflow-hidden transition-all duration-300">
-                        <img src="assets/img/logo.png" alt="HealingWay Logo" class="w-full h-full object-contain">
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="HealingWay Logo" class="w-full h-full object-contain">
                     </div>
 
                     <div>

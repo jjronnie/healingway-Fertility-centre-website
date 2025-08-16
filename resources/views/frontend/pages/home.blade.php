@@ -25,207 +25,23 @@
             <!-- Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-                <!-- IVF -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="baby" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">IVF Treatment</h3>
-                    <p class="text-gray-600 mb-4">Advanced in-vitro fertilization with the highest success rates.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
+                @foreach ($services as $service)
+                    <div
+                        class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
 
-                <!-- IUI -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="heart" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">IUI</h3>
-                    <p class="text-gray-600 mb-4">Intrauterine insemination for assisted conception.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
+                        <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
+                            <i data-lucide="{{ $service->icon ?? 'info' }}" class="w-7 h-7 text-hw-blue"></i>
+                        </div>
 
-                <!-- ICSI -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="activity" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">ICSI</h3>
-                    <p class="text-gray-600 mb-4">Intracytoplasmic sperm injection for male infertility cases.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
+                        <h3 class="text-lg font-bold text-healingway-blue mb-3">{{ $service->title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $service->description }}</p>
 
-                <!-- Ovulation Induction -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="sunrise" class="w-7 h-7 text-hw-blue"></i>
+                        <a href="{{ route('service.show', $service->slug) }}"
+                            class="text-green-500 font-semibold hover:text-green-600 transition-colors">
+                            Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+                        </a>
                     </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Ovulation Induction</h3>
-                    <p class="text-gray-600 mb-4">Stimulating ovulation to enhance conception chances.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Fertility Preservation -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="snowflake" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Fertility Preservation</h3>
-                    <p class="text-gray-600 mb-4">Egg & sperm freezing for future family planning.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Surrogacy -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="users" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Surrogacy Programmes</h3>
-                    <p class="text-gray-600 mb-4">Comprehensive legal and medical surrogacy support.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Donor Programs -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="gift" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Donor Programs</h3>
-                    <p class="text-gray-600 mb-4">Egg, sperm, and embryo donor options for various needs.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Hormonal Treatments -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="droplet" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Hormonal Treatments</h3>
-                    <p class="text-gray-600 mb-4">Balancing hormones to support fertility and pregnancy.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Laparoscopy -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="scissors" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Laparoscopy</h3>
-                    <p class="text-gray-600 mb-4">Minimally invasive surgery for fertility conditions.</p>
-                    <a href="services.html" class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Hysteroscopy -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="eye" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Hysteroscopy</h3>
-                    <p class="text-gray-600 mb-4">Diagnosis and treatment of uterine issues.</p>
-                    <a href="services.html"
-                        class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Male & Female Testing -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="search" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Fertility Testing</h3>
-                    <p class="text-gray-600 mb-4">Male & female testing for complete fertility analysis.</p>
-                    <a href="services.html"
-                        class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Pre-implantation Testing -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="dna" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Pre-implantation Genetic Testing</h3>
-                    <p class="text-gray-600 mb-4">Screening embryos for genetic conditions.</p>
-                    <a href="services.html"
-                        class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Sex Selection -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="venus" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Sex Selection</h3>
-                    <p class="text-gray-600 mb-4">Family balancing through advanced embryo screening.</p>
-                    <a href="services.html"
-                        class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Inherited Diseases -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="alert-octagon" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Inherited Diseases</h3>
-                    <p class="text-gray-600 mb-4">Preventing transmission of genetic disorders.</p>
-                    <a href="services.html"
-                        class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Aneuploidy -->
-                <div
-                    class="p-6 rounded-xl border border-green-400 bg-gradient-to-t from-white to-green-100 hover:border-hw-blue hover:-translate-y-2 hover:shadow-xl transition-all">
-                    <div class="w-14 h-14 bg-healingway-blue rounded-lg flex items-center justify-center mb-5">
-                        <i data-lucide="alert-triangle" class="w-7 h-7 text-hw-blue"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-healingway-blue mb-3">Aneuploidy Screening</h3>
-                    <p class="text-gray-600 mb-4">Detecting chromosomal abnormalities in embryos.</p>
-                    <a href="services.html"
-                        class="text-green-500 font-semibold hover:text-green-600 transition-colors">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
-                    </a>
-                </div>
-
+                @endforeach
             </div>
 
             <!-- View All Button -->
@@ -373,7 +189,7 @@
                 Our fertility specialists are here to guide you every step of the way.
                 Schedule your consultation today and take the first step towards parenthood.
             </p>
-            <a href="{{route ('book-appointment') }}"
+            <a href="{{ route('book-appointment') }}"
                 class="bg-hw-blue hover:bg-blue-800 text-white px-8 py-3 text-lg rounded-lg font-semibold transition-all hover-lift">
                 Book An Appointment
             </a>

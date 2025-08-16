@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use \App\Models\Service;
 
 use Illuminate\Http\Request;
 
@@ -8,7 +9,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.pages.home');
+         $services = Service::all();
+        return view('frontend.pages.home',compact('services'));
     }
 
         public function about()
@@ -23,7 +25,8 @@ class FrontendController extends Controller
 
         public function services()
     {
-       return view('frontend.pages.services');
+         $services = Service::all();
+       return view('frontend.pages.services', compact('services'));
     }
 
         public function team()
@@ -44,9 +47,9 @@ class FrontendController extends Controller
 
    
 
-        public function showService()
+        public function showService(Service $service)
     {
-        return view('welcome');
+        return view('frontend.pages.show-service', compact('service'));
     }
 
         public function showDoctor()
