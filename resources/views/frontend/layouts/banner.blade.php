@@ -29,23 +29,29 @@
               <!-- Buttons -->
               <div id="hero-buttons"
                   class="flex flex-col sm:flex-row items-center sm:items-start gap-4 opacity-0 transform translate-y-6 transition-all duration-700 ease-out w-full sm:w-auto">
-                  <button
-                      class="w-full sm:w-auto bg-gradient-to-r from-hw-blue to-hw-green  hover:from-green-500 hover:to-blue-600 text-white py-3 px-8 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300">
+
+                  <!-- Contact Us -->
+                  <a href="{{ route('contact-us') }}"
+                      class="w-full sm:w-auto bg-gradient-to-r from-hw-blue to-hw-green hover:from-green-500 hover:to-blue-600 text-white py-3 px-8 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300">
                       Talk to a Specialist
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                          </path>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                       </svg>
-                  </button>
-                  <button
+                  </a>
+
+                  <!-- Services -->
+                  <a href="{{ route('our-services') }}"
                       class="w-full sm:w-auto border-2 border-white/80 hover:bg-white/10 text-white py-3 px-8 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 transition-all duration-300">
                       Our Services
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M13 7l5 5-5 5M6 7l5 5-5 5"></path>
                       </svg>
-                  </button>
+                  </a>
+
               </div>
+
+
           </div>
       </div>
 

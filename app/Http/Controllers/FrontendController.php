@@ -8,7 +8,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('frontend.pages.home');
     }
 
         public function about()
@@ -28,8 +28,21 @@ class FrontendController extends Controller
 
         public function team()
     {
-        return view('welcome');
+        return view('frontend.pages.team');
     }
+
+            public function resources()
+    {
+        return view('frontend.pages.resources');
+    }
+
+
+            public function appointment()
+    {
+        return view('frontend.pages.appointment');
+    }
+
+   
 
         public function showService()
     {

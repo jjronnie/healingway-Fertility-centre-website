@@ -8,9 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+    Route::get('/', [FrontendController::class, 'index'])->name('home');
     Route::get('/about', [FrontendController::class, 'about'])->name('about-us');
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact-us');
     Route::get('/services', [FrontendController::class, 'services'])->name('our-services');
+    Route::get('/team', [FrontendController::class, 'team'])->name('our-team');
+    Route::get('/resources', [FrontendController::class, 'resources'])->name('resources');
+    Route::get('/book-appointment', [FrontendController::class, 'appointment'])->name('book-appointment');
 
 
 
