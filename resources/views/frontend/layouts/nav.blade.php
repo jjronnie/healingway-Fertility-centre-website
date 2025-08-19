@@ -14,7 +14,8 @@
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group" x-cloak>
                     <div class="w-12 h-12 flex items-center justify-center overflow-hidden transition-all duration-300">
-                        <img src="{{ asset('assets/img/logo.png') }}" alt="HealingWay Logo" class="w-full h-full object-contain">
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="HealingWay Logo"
+                            class="w-full h-full object-contain">
                     </div>
 
                     <div>
@@ -40,10 +41,36 @@
                         About
                     </a>
 
-                    <a href="{{ route('our-services') }}"
-                        class="nav-link {{ request()->routeIs('our-services') ? 'active' : '' }}">
-                        Services
-                    </a>
+                    @php
+                        $services = \App\Models\Service::orderBy('name')->get();
+                    @endphp
+
+                    <div class="relative group">
+                        <a href="{{ route('our-services') }}"
+                            class="nav-link {{ request()->routeIs('our-services') ? 'active' : '' }} inline-flex items-center">
+                            Services
+                            <svg class="ml-1 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20">
+                                <path d="M5.25 7.5L10 12.25 14.75 7.5z" />
+                            </svg>
+                        </a>
+
+                        {{-- Dropdown --}}
+                        <div
+                            class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
+                            <ul class="flex flex-col">
+                                @foreach ($services as $service)
+                                    <li>
+                                        <a href="{{ url('services/' . $service->slug) }}"
+                                            class="block text-sm px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                            {{ $service->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
 
                     <a href="{{ route('our-team') }}"
                         class="nav-link {{ request()->routeIs('our-team') ? 'active' : '' }}">

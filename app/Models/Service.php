@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-     protected $fillable = ['title', 'slug', 'icon', 'description', 'body'];
+      protected $fillable = [
+        'name', 'slug', 'photo', 'icon', 'desc', 'body'
+    ];
 
     protected static function booted()
     {
-       static::creating(function ($service) {
-            $service->slug = Str::slug($service->title, '-'); // lowercase, hyphens
-        });
+      static::saving(function ($service) {
+        if ($service->isDirty('name') || empty($service->slug)) {
+            $service->slug = Str::slug($service->name);
+        }
+    });
     }
 
     public function getRouteKeyName()

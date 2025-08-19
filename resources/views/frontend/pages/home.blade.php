@@ -33,8 +33,8 @@
                             <i data-lucide="{{ $service->icon ?? 'info' }}" class="w-7 h-7 text-hw-blue"></i>
                         </div>
 
-                        <h3 class="text-lg font-bold text-healingway-blue mb-3">{{ $service->title }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $service->description }}</p>
+                        <h3 class="text-lg font-bold text-healingway-blue mb-3">{{ $service->name }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $service->desc }}</p>
 
                         <a href="{{ route('service.show', $service->slug) }}"
                             class="text-green-500 font-semibold hover:text-green-600 transition-colors">

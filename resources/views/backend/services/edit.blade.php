@@ -1,78 +1,118 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="py-6">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-6">Edit Service</h2>
 
-        <div class="bg-white shadow sm:rounded-lg p-6">
-            <h2 class="text-2xl font-bold mb-6">Edit Service</h2>
+                {{-- Global error list --}}
+                @if ($errors->any())
+                    <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+                        <ul class="list-disc pl-5">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-            <!-- Show validation errors -->
-            @if ($errors->any())
-                <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-                    <ul class="list-disc pl-5">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                <form action="{{ route('services.update', $service->slug) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    @csrf
+                    @method('PUT')
 
-            <form action="{{ route('services.update', $service) }}" method="POST">
-                @csrf
-                @method('PUT')
+                    {{-- Name --}}
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" name="name" id="name"
+                               value="{{ old('name', $service->name) }}"
+                               class="w-full px-4 py-2 border @error('name') border-red-500 @else  @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        @error('name')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <!-- Service Name -->
-                <div class="mb-4">
-                    <label for="name" class="block text-gray-700 font-semibold mb-1">Name</label>
-                    <input type="text" name="name" id="name"
-                        value="{{ old('name', $service->name) }}"
-                        class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-hw-green focus:border-hw-green">
-                </div>
+                    {{-- Slug --}}
+                    <div>
+                        <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
+                        <input type="text" name="slug" id="slug"
+                               value="{{ old('slug', $service->slug) }}"
+                               class="w-full px-4 py-2 border @error('slug') border-red-500 @else  @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        <small class="text-gray-500">Unique URL-friendly identifier</small>
+                        @error('slug')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <!-- Description -->
-                <div class="mb-4">
-                    <label for="desc" class="block text-gray-700 font-semibold mb-1">Short Description</label>
-                    <textarea name="desc" id="desc" rows="3"
-                        class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('desc', $service->desc) }}</textarea>
-                </div>
+                    {{-- Icon --}}
+                    <div>
+                        <label for="icon" class="block text-sm font-medium text-gray-700 mb-1">Icon (optional)</label>
+                        <input type="text" name="icon" id="icon"
+                               value="{{ old('icon', $service->icon) }}"
+                               placeholder="e.g. fas fa-heart or lucide:activity"
+                               class="w-full px-4 py-2 border @error('icon') border-red-500 @else  @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        <small class="text-gray-500">Use a Lucide or FontAwesome class</small>
+                        @error('icon')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <!-- Icon -->
-                <div class="mb-4">
-                    <label for="icon" class="block text-gray-700 font-semibold mb-1">Icon (optional)</label>
-                    <input type="text" name="icon" id="icon"
-                        value="{{ old('icon', $service->icon) }}"
-                        class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-hw-green focus:border-hw-green">
-                </div>
+                    {{-- Short Description --}}
+                    <div>
+                        <label for="desc" class="block text-sm font-medium text-gray-700 mb-1">Short Description</label>
+                        <textarea name="desc" id="desc" rows="3"
+                                  class="w-full px-4 py-2 border @error('desc') border-red-500 @else  @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('desc', $service->desc) }}</textarea>
+                        @error('desc')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <!-- Body (CKEditor) -->
-                <div class="mb-4">
-                    <label for="body" class="block text-gray-700 font-semibold mb-1">Body</label>
-                    <textarea name="body" id="body" rows="6"
-                        class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('body', $service->body) }}</textarea>
-                </div>
+                    {{-- Body (CKEditor) --}}
+                    <div>
+                        <label for="body" class="block text-sm font-medium text-gray-700 mb-1">Body</label>
+                        <textarea name="body" id="body" rows="6"
+                                  class="w-full px-4 py-2 border @error('body') border-red-500 @else  @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('body', $service->body) }}</textarea>
+                        @error('body')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <!-- Submit -->
-                <div class="flex justify-end mt-6">
-                    <a href="{{ route('services.index') }}"
-                        class="mr-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
-                        Cancel
-                    </a>
-                    <button type="submit"
-                        class="px-4 py-2 bg-hw-blue text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        Update Service
-                    </button>
-                </div>
-            </form>
+                    {{-- Photo --}}
+                    <div>
+                        <label for="photo" class="block text-sm font-medium text-gray-700 mb-1">Service Image (optional)</label>
+                        @if ($service->photo)
+                            <div class="mb-3">
+                                <img src="{{ asset('storage/' . $service->photo) }}" alt="Current Service Image" class="h-32 rounded-md shadow">
+                            </div>
+                        @endif
+                        <input type="file" name="photo" id="photo"
+                               class="w-full px-4 py-2 border @error('photo') border-red-500 @else  @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        @error('photo')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    {{-- Submit --}}
+                    <div>
+                        <button type="submit"
+                                class="bg-hw-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-hw-green transition-colors w-full sm:w-auto">
+                            Update Service
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- CKEditor 5 -->
-    <script src="{{ asset('assets/vendor/ckeditor5/ckeditor.js') }}"></script>
+    {{-- CKEditor --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#body'), {
-                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo']
+                toolbar: [
+                    'heading','|','bold','italic','link',
+                    'bulletedList','numberedList','blockQuote',
+                    '|','undo','redo'
+                ],
             })
-            .catch(error => {
-                console.error(error);
-            });
+            .catch(error => console.error(error));
     </script>
 </x-app-layout>

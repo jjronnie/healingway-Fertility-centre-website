@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use \App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ServicesController extends Controller
 {
@@ -29,24 +30,32 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string|max:255',
-        'icon' => 'nullable|string|max:255',
-        'body' => 'nullable|string',
-    ]);
+      $request->validate([
+            'name'  => 'required|string|max:255',
+            'desc'  => 'nullable|string|max:500',
+            'icon'  => 'nullable|string|max:255',
+            'body'  => 'nullable|string',
+            'photo' => 'nullable|image|max:2048',
+        ]);
 
-    Service::create($request->all());
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('services', 'public');
+        }
+
+        Service::create($data);
+
     return redirect()->route('services.index')->with('success', 'Service created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+   public function show(Service $service)
     {
-        return view('backend.services.show');
-        
+        return view('backend.services.show', compact('service'));
     }
 
     /**
@@ -64,21 +73,36 @@ class ServicesController extends Controller
 
 // Update
 public function update(Request $request, Service $service) {
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string|max:255',
-        'icon' => 'nullable|string|max:255',
-        'body' => 'nullable|string',
-    ]);
+   $request->validate([
+            'name'  => 'required|string|max:255',
+            'desc'  => 'nullable|string|max:500',
+            'icon'  => 'nullable|string|max:255',
+            'body'  => 'nullable|string',
+            'photo' => 'nullable|image|max:2048',
+        ]);
 
-    $service->update($request->all());
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('services', 'public');
+        }
+
+        $service->update($data);
+
+
     return redirect()->route('services.index')->with('success', 'Service updated successfully.');
 }
     /**
      * Remove the specified resource from storage.
      */
- public function destroy(Service $service) {
-    $service->delete();
-    return redirect()->route('services.index')->with('success', 'Service deleted.');
-}
+   public function destroy(Service $service)
+    {
+        if ($service->photo && file_exists(storage_path('app/public/'.$service->photo))) {
+            unlink(storage_path('app/public/'.$service->photo));
+        }
+
+        $service->delete();
+        return redirect()->route('services.index')->with('success', 'Service deleted successfully');
+    }
 }

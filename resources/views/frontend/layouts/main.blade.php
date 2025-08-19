@@ -17,7 +17,7 @@
         rel="stylesheet">
 
 
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -63,7 +63,7 @@
 
 
 
-    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         lucide.createIcons();
     </script>

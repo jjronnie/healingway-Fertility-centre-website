@@ -14,9 +14,7 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Slug</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Service</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
@@ -24,13 +22,11 @@
                         @foreach($services as $service)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $service->id }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $service->title }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $service->slug }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $service->description }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $service->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap flex space-x-2">
-                                <a href="{{ route('services.show', $service->id) }}"
+                                <a href="{{ route('services.show', $service->slug) }}"
                                    class="text-blue-500 hover:underline">View</a>
-                                <a href="{{ route('services.edit', $service->id) }}"
+                                <a href="{{ route('services.edit', $service->slug) }}"
                                    class="text-yellow-500 hover:underline">Edit</a>
                                 <form action="{{ route('services.destroy', $service->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                                     @csrf

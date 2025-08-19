@@ -11,12 +11,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
+             $table->id();
+            $table->string('name');
             $table->string('slug')->unique();
-            $table->string('icon')->nullable();
-            $table->string('description')->nullable();
-            $table->longText('body')->nullable();
+            $table->string('photo')->nullable(); // store path to uploaded image
+            $table->string('icon')->nullable();  // store icon name/class
+            $table->string('desc')->nullable();  // short description
+            $table->longText('body')->nullable(); // CKEditor formatted HTML
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@
             <div class="bg-white shadow-sm rounded-lg p-6">
                 <h2 class="text-2xl font-bold mb-6">Create New Service</h2>
 
+                {{-- Global error list --}}
                 @if ($errors->any())
                     <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
                         <ul class="list-disc pl-5">
@@ -14,73 +15,99 @@
                     </div>
                 @endif
 
-                <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
 
-                    <!-- Title -->
-                    <div class="mb-4">
-                        <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                        <input type="text" name="title" id="title"
-                               value="{{ old('title') }}"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                    {{-- Name --}}
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" name="name" id="name"
+                               value="{{ old('name') }}"
+                               class="w-full px-4 py-2 border @error('name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        @error('name')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <!-- Slug -->
-                    <div class="mb-4">
+                    {{-- Slug --}}
+                    <div>
                         <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
                         <input type="text" name="slug" id="slug"
                                value="{{ old('slug') }}"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
-                        <small class="text-gray-500">Unique URL-friendly identifier</small>
+                               class="w-full px-4 py-2 border @error('slug') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        <small class="text-gray-500">Unique URL-friendly identifier (auto-generated if left empty)</small>
+                        @error('slug')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <!-- Icon -->
-                    <div class="mb-4">
+                    {{-- Icon --}}
+                    <div>
                         <label for="icon" class="block text-sm font-medium text-gray-700 mb-1">Icon (optional)</label>
                         <input type="text" name="icon" id="icon"
                                value="{{ old('icon') }}"
-                               placeholder="e.g. fas fa-heart or lucide icon class"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
-                        <small class="text-gray-500">Use a Lucide or FontAwesome class, leave empty for static image</small>
+                               placeholder="e.g. fas fa-heart or lucide:activity"
+                               class="w-full px-4 py-2 border @error('icon') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        <small class="text-gray-500">Use a Lucide or FontAwesome class</small>
+                        @error('icon')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <!-- Description -->
-                    <div class="mb-4">
-                        <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Short Description</label>
-                        <textarea name="description" id="description" rows="3"
-                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('description') }}</textarea>
+                    {{-- Short Description --}}
+                    <div>
+                        <label for="desc" class="block text-sm font-medium text-gray-700 mb-1">Short Description</label>
+                        <textarea name="desc" id="desc" rows="3"
+                                  class="w-full px-4 py-2 border @error('desc') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('desc') }}</textarea>
+                        @error('desc')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <!-- Body (CKEditor) -->
-                    <div class="mb-4">
+                    {{-- Body (CKEditor) --}}
+                    <div>
                         <label for="body" class="block text-sm font-medium text-gray-700 mb-1">Body</label>
                         <textarea name="body" id="body" rows="6"
-                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('body') }}</textarea>
+                                  class="w-full px-4 py-2 border @error('body') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('body') }}</textarea>
+                        @error('body')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <!-- Image Upload (Optional) -->
-                    <div class="mb-4">
-                        <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Service Image (optional)</label>
-                        <input type="file" name="image" id="image"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                    {{-- Photo --}}
+                    <div>
+                        <label for="photo" class="block text-sm font-medium text-gray-700 mb-1">Service Image (optional)</label>
+                        <input type="file" name="photo" id="photo"
+                               class="w-full px-4 py-2 border @error('photo') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        @error('photo')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <button type="submit"
-                            class="bg-hw-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
-                        Create Service
-                    </button>
+                    {{-- Submit --}}
+                    <div>
+                        <button type="submit"
+                                class="bg-hw-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-hw-green transition-colors w-full sm:w-auto">
+                            Create Service
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- CKEditor -->
+    {{-- CKEditor --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#body'), {
-                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'undo', 'redo'],
+                toolbar: [
+                    'heading','|','bold','italic','link',
+                    'bulletedList','numberedList','blockQuote',
+                    '|','undo','redo'
+                ],
             })
             .catch(error => console.error(error));
     </script>
 </x-app-layout>
+
