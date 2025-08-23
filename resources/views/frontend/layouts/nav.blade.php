@@ -49,26 +49,31 @@
                         <a href="{{ route('our-services') }}"
                             class="nav-link {{ request()->routeIs('our-services') ? 'active' : '' }} inline-flex items-center">
                             Services
-                            <svg class="ml-1 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20">
-                                <path d="M5.25 7.5L10 12.25 14.75 7.5z" />
+                             <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </a>
 
                         {{-- Dropdown --}}
+                        {{-- Services Dropdown --}}
                         <div
-                            class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
-                            <ul class="flex flex-col">
+                            class="absolute left-0 mt-2 w-56 bg-white border border-gray-200  shadow-lg opacity-0 invisible 
+           group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
+                            <ul class="flex flex-col text-left">
                                 @foreach ($services as $service)
-                                    <li>
+                                    <li class="border-b border-gray-200 last:border-0">
                                         <a href="{{ url('services/' . $service->slug) }}"
-                                            class="block text-sm px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors rounded-md">
                                             {{ $service->name }}
                                         </a>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
+
+
                     </div>
 
 
@@ -77,15 +82,63 @@
                         Team
                     </a>
 
-                    <a href="{{ route('resources') }}"
-                        class="nav-link {{ request()->routeIs('resources') ? 'active' : '' }}">
-                        Resources
-                    </a>
+               
 
                     <a href="{{ route('contact-us') }}"
                         class="nav-link {{ request()->routeIs('contact-us') ? 'active' : '' }}">
                         Contact
                     </a>
+                    {{-- More Dropdown --}}
+                    <div class="relative group">
+                        <a href="#"
+                            class="nav-link  flex items-center gap-1">
+                            More
+                            <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+
+                        {{-- Dropdown Menu --}}
+                        <div
+                            class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 shadow-lg opacity-0 invisible 
+               group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
+                            <ul class="flex flex-col text-left">
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/resources') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Resources
+                                    </a>
+                                </li>
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/events') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Events
+                                    </a>
+                                </li>
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/latest-news') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Latest News
+                                    </a>
+                                </li>
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/testimonials') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Testimonials
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/facility-tour') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Facility Tour
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
 
                     <a href="{{ route('book-appointment') }}"
                         class="bg-hw-blue text-sm font-bold text-white px-4 py-2 rounded-lg hover:bg-white hover:text-hw-blue transition-colors">
@@ -131,17 +184,65 @@
                         Team
                     </a>
 
-                    <a href="{{ route('resources') }}"
-                        class="px-4 py-2 rounded-lg transition-all duration-300 hover:bg-green-50 hover:text-green-700 
-           {{ request()->routeIs('resources') ? 'bg-green-600 text-white' : '' }}">
-                        Resources
-                    </a>
+                    
 
                     <a href="{{ route('contact-us') }}"
                         class="px-4 py-2 rounded-lg transition-all duration-300 hover:bg-green-50 hover:text-green-700 
            {{ request()->routeIs('contact-us') ? 'bg-green-600 text-white' : '' }}">
                         Contact
                     </a>
+
+
+                       {{-- More Dropdown --}}
+                    <div class="relative group">
+                        <a href="#"
+                            class="nav-link {{ request()->routeIs('contact-us') ? 'active' : '' }} flex items-center gap-1">
+                            More
+                            <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+
+                        {{-- Dropdown Menu --}}
+                        <div
+                            class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 shadow-lg opacity-0 invisible 
+               group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
+                            <ul class="flex flex-col text-left">
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/resources') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Resources
+                                    </a>
+                                </li>
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/events') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Events
+                                    </a>
+                                </li>
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/latest-news') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Latest News
+                                    </a>
+                                </li>
+                                <li class="border-b border-gray-200 last:border-0">
+                                    <a href="{{ url('/testimonials') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Testimonials
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/facility-tour') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                                        Facility Tour
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <div class="flex justify-center mt-4">
                         <a href="{{ route('book-appointment') }}"

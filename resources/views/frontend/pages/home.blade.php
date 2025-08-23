@@ -18,7 +18,8 @@
                     Our Specialized Services
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Comprehensive fertility treatments with cutting-edge technology and personalized care plans.
+                    We provide Comprehensive fertility treatments with cutting-edge technology and personalized care
+                    plans.
                 </p>
             </div>
 
@@ -126,47 +127,72 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Meet Our Expert Team</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Board-certified specialists dedicated to your
-                    success.</p>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Board-certified specialists dedicated to serving you
+                    better.</p>
             </div>
 
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-
+            <!-- Doctor Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Doctor Card  -->
                 <div
-                    class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
-                    <div class="w-full h-72 overflow-hidden">
-                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg"
-                            alt="Dr. Sarah Johnson" class="w-full h-full object-cover">
+                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
+                    <div class="relative w-full h-60 overflow-hidden ">
+                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
+                            class="object-cover w-full h-full">
                     </div>
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-1">DR. DALE MUGISHA</h3>
-                        <p class="text-green-600 font-medium">Head Fertility</p>
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
+                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
+                        </div>
                     </div>
                 </div>
 
+                 <!-- Doctor Card  -->
                 <div
-                    class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
-                    <div class="w-full h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Dr. Michael Chen" class="w-full h-full object-cover">
+                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
+                    <div class="relative w-full h-60 overflow-hidden ">
+                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
+                            class="object-cover w-full h-full">
                     </div>
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Michael Chen</h3>
-                        <p class="text-green-600 font-medium">Reproductive Endocrinologist</p>
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
+                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
+                        </div>
                     </div>
                 </div>
 
+                 <!-- Doctor Card  -->
                 <div
-                    class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
-                    <div class="w-full h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Dr. Emily Rodriguez" class="w-full h-full object-cover">
+                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
+                    <div class="relative w-full h-60 overflow-hidden ">
+                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
+                            class="object-cover w-full h-full">
                     </div>
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Emily Rodriguez</h3>
-                        <p class="text-green-600 font-medium">Genetic Counselor</p>
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
+                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
+                        </div>
                     </div>
                 </div>
+
+                 <!-- Doctor Card  -->
+                <div
+                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
+                    <div class="relative w-full h-60 overflow-hidden ">
+                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
+                            class="object-cover w-full h-full">
+                    </div>
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
+                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="text-center mt-12">

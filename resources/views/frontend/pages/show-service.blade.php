@@ -1,12 +1,12 @@
 <x-guest-layout>
-    <div class="max-w-6xl mx-auto p-6 py-24 mt-[80px]">
+    <div class="max-w-7xl mx-auto p-6 py-24 mt-[80px]">
         <div class="flex flex-col lg:flex-row items-start lg:items-center gap-8">
             {{-- Service Image --}}
             @if ($service->photo)
                 <div class="flex-shrink-0 w-full lg:w-1/3">
                     <img src="{{ asset('storage/' . $service->photo) }}" 
                          alt="{{ $service->name }}" 
-                         class="w-full rounded-lg shadow-lg object-cover">
+                         class="w-full object-cover">
                 </div>
             @endif
 
