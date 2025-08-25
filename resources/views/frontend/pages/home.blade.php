@@ -133,65 +133,28 @@
 
             <!-- Doctor Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                <!-- Doctor Card  -->
-                <div
-                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
-                    <div class="relative w-full h-60 overflow-hidden ">
-                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
-                            class="object-cover w-full h-full">
-                    </div>
-                    <div class="p-6 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
-                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
-                        </div>
-                    </div>
-                </div>
 
-                 <!-- Doctor Card  -->
-                <div
-                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
-                    <div class="relative w-full h-60 overflow-hidden ">
-                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
-                            class="object-cover w-full h-full">
-                    </div>
-                    <div class="p-6 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
-                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
-                        </div>
-                    </div>
-                </div>
+                @foreach ($doctors as $doctor)
 
-                 <!-- Doctor Card  -->
+                <!-- Doctor Card 1 -->
+                <a href="{{ route('doctors.show', $doctor->slug) }}">
                 <div
-                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
+                    class="flex flex-col bg-white shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
                     <div class="relative w-full h-60 overflow-hidden ">
-                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
+                        <img src="{{ asset($doctor->photo ?: 'https://placehold.co/600x400/CCCCCC/FFFFFF?text=No+Photo') }}"
+                                 alt="{{ $doctor->name }}" 
                             class="object-cover w-full h-full">
                     </div>
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
-                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
-                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
+                            <p class="text-md text-gray-800 text-center mb-4">{{ $doctor->position }}</p>
+                            <h3 class="text-xl font-bold text-center text-gray-800 mb-1">{{ $doctor->name }}</h3>
+                            
                         </div>
                     </div>
                 </div>
-
-                 <!-- Doctor Card  -->
-                <div
-                    class="flex flex-col bg-gradient-to-r from-hw-blue to-hw-green shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
-                    <div class="relative w-full h-60 overflow-hidden ">
-                        <img src="https://healingwayafrica.com/uploads/staff/1752778901_dale.jpg" alt="DR. DALE MUGISHA"
-                            class="object-cover w-full h-full">
-                    </div>
-                    <div class="p-6 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="text-xl font-bold text-center text-white mb-1">DR. DALE MUGISHA</h3>
-                            <p class="text-md text-white text-center mb-4">Head Fertility</p>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                 @endforeach
 
             </div>
 

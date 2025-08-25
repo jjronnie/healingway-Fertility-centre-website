@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,7 @@ Route::get('/', function () {
     Route::get('/services', [FrontendController::class, 'services'])->name('our-services');
     Route::get('/services/{service}', [FrontendController::class, 'showService'])->name('service.show');
     Route::get('/team', [FrontendController::class, 'team'])->name('our-team');
+Route::get('/doctors/{slug}', [FrontendController::class, 'showDoctor'])->name('doctors.show');
     Route::get('/resources', [FrontendController::class, 'resources'])->name('resources');
     Route::get('/book-appointment', [FrontendController::class, 'appointment'])->name('book-appointment');
 
@@ -37,6 +39,10 @@ Route::prefix('admin/services')->name('services.')->group(function () {
     Route::put('/{service}', [ServicesController::class, 'update'])->name('update');       // Handle update
     Route::delete('/{service}', [ServicesController::class, 'destroy'])->name('destroy'); // Delete a service
     Route::get('/{service}', [ServicesController::class, 'show'])->name('show');           // Optional: view single service
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('doctors', DoctorController::class);
 });
 
 

@@ -6,7 +6,6 @@
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Heading -->
-            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-10 md:mb-12">Patient Resources</h2>
             <p class="text-lg text-center text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto">
                 Access a wealth of information to support your health journey. Explore our videos, download helpful
                 documents, and read our latest blog posts for valuable insights and tips.

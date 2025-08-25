@@ -1,11 +1,11 @@
 <x-guest-layout>
 
 {{-- nav --}}
-@include('frontend.layouts.page-title')
+{{-- @include('frontend.layouts.page-title') --}}
 
 
 <!-- Services Highlights -->
-    <section id="services" class="py-20 ">
+    <section class="max-w-7xl mx-auto p-6 py-24 mt-[80px]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Heading -->

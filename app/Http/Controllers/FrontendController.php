@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use \App\Models\Service;
+use App\Models\Doctor;
+
 
 use Illuminate\Http\Request;
 
@@ -9,8 +11,9 @@ class FrontendController extends Controller
 {
     public function index()
     {
-         $services = Service::all();
-        return view('frontend.pages.home',compact('services'));
+     $services = Service::latest()->take(8)->get();
+     $doctors = Doctor::orderBy('display_position')->orderBy('name')->take(4)->get();
+        return view('frontend.pages.home',compact('services', 'doctors'));
     }
 
         public function about()
@@ -31,7 +34,8 @@ class FrontendController extends Controller
 
         public function team()
     {
-        return view('frontend.pages.team');
+         $doctors = Doctor::orderBy('display_position')->orderBy('name')->get();
+        return view('frontend.pages.team', compact('doctors'));
     }
 
             public function resources()
@@ -52,8 +56,11 @@ class FrontendController extends Controller
         return view('frontend.pages.show-service', compact('service'));
     }
 
-        public function showDoctor()
+ 
+
+      public function  showDoctor($slug)
     {
-        return view('welcome');
+        $doctor = Doctor::where('slug', $slug)->firstOrFail();
+        return view('frontend.pages.show-doctor', compact('doctor'));
     }
 }

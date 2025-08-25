@@ -38,12 +38,13 @@
                 <i data-lucide="users" class="w-5 h-5"></i>
                 <span>Patients</span>
             </a>
+            --}}
 
-            <a href="{{ route('doctors.index') }}"
-               class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors {{ request()->routeIs('doctors.*') ? 'bg-white text-hw-blue font-semibold' : 'hover:bg-hw-blue' }}">
+            <a href="{{ route('admin.doctors.index') }}"
+               class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors {{ request()->routeIs('admin.doctors.*') ? 'bg-white text-hw-blue font-semibold' : 'hover:bg-hw-blue' }}">
                 <i data-lucide="user-check" class="w-5 h-5"></i>
                 <span>Doctors</span>
-            </a> --}}
+            </a> 
 
             <a href="{{ route('services.index') }}"
                class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors {{ request()->routeIs('services.*') ? 'bg-white text-hw-blue font-semibold' : 'hover:bg-hw-blue' }}">

@@ -29,17 +29,6 @@
                         @enderror
                     </div>
 
-                    {{-- Slug --}}
-                    <div>
-                        <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
-                        <input type="text" name="slug" id="slug"
-                               value="{{ old('slug') }}"
-                               class="w-full px-4 py-2 border @error('slug') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
-                        <small class="text-gray-500">Unique URL-friendly identifier (auto-generated if left empty)</small>
-                        @error('slug')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
 
                     {{-- Icon --}}
                     <div>

@@ -36,10 +36,9 @@
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all"
                                 placeholder="Please describe your inquiry..."></textarea>
                         </div>
-                        <button type="submit"
-                            class="w-full bg-gradient-to-r from-accent-400 to-accent-500 text-primary-800 font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all transform hover:-translate-y-1">
-                            <span x-show="!loading">Send Message</span>
-                            <span x-show="loading">Sending...</span>
+                           <button type="submit"
+                            class="bg-hw-blue hover:bg-blue-800 text-white px-8 py-3 text-lg rounded-lg font-semibold transition-all hover-lift">
+                            Send Message
                         </button>
                     </form>
                 </div>
@@ -98,24 +97,22 @@
                     <!-- Social Media Card -->
                     <div class="bg-gray-50 border border-gray-200 p-6 rounded-2xl">
                         <h3 class="text-xl font-bold text-gray-800">Social Media</h3>
-                        <div class="flex justify-center space-x-6">
+                        <div class="flex  space-x-6">
 
-                            <a href="https://facebook.com" target="_blank"
-                                class="text-gray-600 hover:text-blue-600 transition-colors">
-                                <i data-lucide="facebook" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://x.com" target="_blank"
-                                class="text-gray-600 hover:text-black transition-colors">
-                                <i data-lucide="twitter" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://tiktok.com" target="_blank"
-                                class="text-gray-600 hover:text-pink-600 transition-colors">
-                                <i data-lucide="music" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://instagram.com" target="_blank"
-                                class="text-gray-600 hover:text-purple-600 transition-colors">
-                                <i data-lucide="instagram" class="w-6 h-6"></i>
-                            </a>
+                            <div class="flex space-x-4 text-white">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
 
                         </div>
                     </div>

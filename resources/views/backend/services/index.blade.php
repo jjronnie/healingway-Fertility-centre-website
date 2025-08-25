@@ -9,6 +9,12 @@
                 </a>
             </div>
 
+              @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        @endif
+
             <div class="bg-white shadow-sm rounded-lg overflow-hidden">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -28,7 +34,7 @@
                                    class="text-blue-500 hover:underline">View</a>
                                 <a href="{{ route('services.edit', $service->slug) }}"
                                    class="text-yellow-500 hover:underline">Edit</a>
-                                <form action="{{ route('services.destroy', $service->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                                <form action="{{ route('services.destroy', $service) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:underline">Delete</button>
