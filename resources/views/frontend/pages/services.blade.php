@@ -8,13 +8,14 @@
     <section class="max-w-7xl mx-auto p-6 py-24 mt-[80px]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Heading -->
+       <!-- Heading -->
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-hw-gradient mb-4">
                     Our Specialized Services
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Comprehensive fertility treatments with cutting-edge technology and personalized care plans.
+                   At HealingWay Fertility Centre, we provide comprehensive fertility treatments with cutting-edge technology and personalized care
+                    plans tailored to meet your needs.
                 </p>
             </div>
 

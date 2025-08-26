@@ -7,7 +7,7 @@
     <section class="max-w-7xl mx-auto p-6 py-24 mt-[80px]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Heading -->
-            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-10">Meet Our Dedicated Team of Doctors</h2>
+            <h2 class="text-4xl font-extrabold text-center bg-clip-text text-transparent bg-hw-gradient mb-10">Meet Our Expert Team</h2>
             <p class="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto">
                 Our experienced and compassionate medical professionals are committed to providing the highest quality
                 care. Get to know the experts who will be looking after you.

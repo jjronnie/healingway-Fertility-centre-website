@@ -1,12 +1,8 @@
 <x-guest-layout>
 
-
-
     <!-- Hero Banner Section -->
 
     @include('frontend.layouts.banner')
-
-
 
     <!-- Services Highlights -->
     <section id="services" class="py-20 ">
@@ -18,8 +14,8 @@
                     Our Specialized Services
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    We provide Comprehensive fertility treatments with cutting-edge technology and personalized care
-                    plans.
+                   At HealingWay Fertility Centre, we provide comprehensive fertility treatments with cutting-edge technology and personalized care
+                    plans tailored to meet your needs.
                 </p>
             </div>
 
@@ -49,7 +45,7 @@
             <div class="text-center mt-12">
                 <a href="{{ route('our-services') }}"
                     class="inline-block bg-hw-green text-hw-blue px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:bg-lime-400 transition-all duration-300">
-                    View All Services
+                    Explore More Services
                 </a>
             </div>
 
@@ -62,9 +58,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Way to Parenthood</h2>
+                    <h2 class="text-4xl md:text-4xl font-bold text-blue-900 mb-6">Way to Parenthood</h2>
                     <p class="text-lg text-gray-600 mb-6">
-                        For over 5 years, HealingWay Fertility Centre has been at the forefront of reproductive science,
+                        Over the years, HealingWay Fertility Centre has been at the forefront of reproductive science,
                         combining cutting-edge technology with compassionate, personalized care.
                     </p>
                     <div class="space-y-4 mb-8">
@@ -89,7 +85,7 @@
                     </div>
                     <a href="{{ route('about-us') }}"
                         class="bg-blue-900 text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors inline-flex items-center">
-                        Learn About Us <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        Learn More About Us <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
                     </a>
                 </div>
 
@@ -127,7 +123,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Meet Our Expert Team</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Board-certified specialists dedicated to serving you
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Meet our team of  specialists dedicated to serving you
                     better.</p>
             </div>
 
@@ -148,8 +144,7 @@
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
                             <p class="text-md text-gray-800 text-center mb-4">{{ $doctor->position }}</p>
-                            <h3 class="text-xl font-bold text-center text-gray-800 mb-1">{{ $doctor->name }}</h3>
-                            
+                            <h3 class="text-xl font-bold text-center text-gray-800 mb-1">{{ $doctor->name }}</h3>                            
                         </div>
                     </div>
                 </div>
@@ -160,7 +155,7 @@
 
             <div class="text-center mt-12">
                 <a href="{{ route('our-team') }}"
-                    class="bg-green-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors inline-flex items-center">
+                    class="bg-hw-green text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors inline-flex items-center">
                     View All Team
                 </a>
             </div>
@@ -180,7 +175,7 @@
             </p>
             <a href="{{ route('book-appointment') }}"
                 class="bg-hw-blue hover:bg-blue-800 text-white px-8 py-3 text-lg rounded-lg font-semibold transition-all hover-lift">
-                Book An Appointment
+                Schedule An Appointment
             </a>
         </div>
     </section>
@@ -235,7 +230,7 @@
                                 <i data-lucide="map-pin" class="w-6 h-6 text-blue-900"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-blue-900">Address</h4>
+                                <h4 class="font-bold text-blue-900">Find Us At</h4>
                                 <p class="text-gray-600">Plot 6A2-7B2 Luthuli 5th Close, <br>Bugolobi, Kampala Uganda.
                                 </p>
                             </div>
@@ -248,7 +243,7 @@
                                 <i data-lucide="phone" class="w-6 h-6 text-green-600"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-blue-900">Phone</h4>
+                                <h4 class="font-bold text-blue-900">Call/Whatsapp</h4>
                                 <p class="text-gray-600">+256 700 521155</p>
                             </div>
                         </div>
@@ -272,8 +267,8 @@
                                 <i data-lucide="clock" class="w-6 h-6 text-orange-600"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-blue-900">Hours</h4>
-                                <p class="text-gray-600">Always Open<br>24/7</p>
+                                <h4 class="font-bold text-blue-900">Working Hours</h4>
+                                <p class="text-gray-600">We are Always Open<br>24/7</p>
                             </div>
                         </div>
                     </div>

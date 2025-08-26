@@ -61,11 +61,11 @@
           <div
               class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center transform transition duration-500 hover:scale-105 hover:bg-white/20 shadow-md">
               <div class="text-4xl font-bold counter text-hw-green" data-target="5" data-suffix="+">0</div>
-              <div class="text-white/80 text-sm sm:text-base mt-2">Years Experience</div>
+              <div class="text-white/80 text-sm sm:text-base mt-2">Years of Service</div>
           </div>
           <div
               class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center transform transition duration-500 hover:scale-105 hover:bg-white/20 shadow-md">
-              <div class="text-4xl font-bold counter text-hw-green" data-target="100" data-suffix="+">0</div>
+              <div class="text-4xl font-bold counter text-hw-green" data-target="80" data-suffix="+">0</div>
               <div class="text-white/80 text-sm sm:text-base mt-2">Happy Families</div>
           </div>
           <div

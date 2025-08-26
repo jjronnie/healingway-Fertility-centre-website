@@ -12,7 +12,7 @@
             </p>
 
             <!-- Resources Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
                 <!-- Videos Section -->
                 <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 flex flex-col items-center text-center">
@@ -26,14 +26,8 @@
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Educational Videos</h3>
                     <p class="text-gray-600 mb-6 flex-grow">Watch our informative videos on various health topics,
                         procedures, and wellness tips from our experts.</p>
-                    <div class="w-full grid grid-cols-1 gap-6">
-                        <div class="relative pt-[56.25%] w-full rounded-lg overflow-hidden shadow-md">
-                            <!-- 16:9 Aspect Ratio -->
-                            <iframe class="absolute top-0 left-0 w-full h-full"
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen title="Understanding Your Diagnosis"></iframe>
-                        </div>
+                    <div class="w-full grid grid-cols-1 gap-4">
+                      
                         <div class="relative pt-[56.25%] w-full rounded-lg overflow-hidden shadow-md">
                             <!-- 16:9 Aspect Ratio -->
                             <iframe class="absolute top-0 left-0 w-full h-full"

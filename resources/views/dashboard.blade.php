@@ -13,8 +13,8 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm text-gray-600">Total Patients</p>
-                                <p class="text-3xl font-bold text-hw-blue">1,247</p>
-                                <p class="text-sm text-green-600">+12% this month</p>
+                                <p class="text-3xl font-bold text-hw-blue">0</p>
+                                <p class="text-sm text-green-600">+0% this month</p>
                             </div>
                             <div class="bg-hw-green p-3 rounded-full">
                                 <i data-lucide="users" class="w-8 h-8 text-hw-green"></i>
@@ -26,8 +26,8 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm text-gray-600">Today's Appointments</p>
-                                <p class="text-3xl font-bold text-hw-blue">28</p>
-                                <p class="text-sm text-blue-600">3 upcoming</p>
+                                <p class="text-3xl font-bold text-hw-blue">0</p>
+                                <p class="text-sm text-blue-600">0 upcoming</p>
                             </div>
                             <div class="bg-blue-100 p-3 rounded-full">
                                 <i data-lucide="calendar" class="w-8 h-8 text-blue-500"></i>
@@ -38,8 +38,8 @@
                     <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-400">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-gray-600">Success Rate</p>
-                                <p class="text-3xl font-bold text-hw-blue">87%</p>
+                                <p class="text-sm text-gray-600">new</p>
+                                <p class="text-3xl font-bold text-hw-blue">%</p>
                                 <p class="text-sm text-green-600">+2% vs last month</p>
                             </div>
                             <div class="bg-green-100 p-3 rounded-full">
@@ -51,8 +51,8 @@
                     <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-400">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-gray-600">Revenue</p>
-                                <p class="text-3xl font-bold text-hw-blue">$124K</p>
+                                <p class="text-sm text-gray-600">tt</p>
+                                <p class="text-3xl font-bold text-hw-blue">K</p>
                                 <p class="text-sm text-purple-600">This month</p>
                             </div>
                             <div class="bg-purple-100 p-3 rounded-full">
@@ -100,16 +100,7 @@
                             <div class="text-sm text-gray-500">15 min ago</div>
                         </div>
                         
-                        <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 rounded-lg">
-                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
-                                <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-600"></i>
-                            </div>
-                            <div class="flex-1">
-                                <p class="font-semibold text-gray-900">Lab results pending</p>
-                                <p class="text-sm text-gray-600">3 lab results require doctor review</p>
-                            </div>
-                            <div class="text-sm text-gray-500">1 hour ago</div>
-                        </div>
+  
                     </div>
                 </div>
             </div>

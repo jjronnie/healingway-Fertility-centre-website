@@ -51,6 +51,13 @@
                 <i data-lucide="heart" class="w-5 h-5"></i>
                 <span>Services</span>
             </a>
+          <!-- Logout Link (Trigger Modal) -->
+<button onclick="document.getElementById('logoutModal').classList.remove('hidden')" 
+        class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors hover:bg-hw-blue">
+    <i data-lucide="log-out" class="w-5 h-5"></i>
+    <span>Logout</span>
+</button>
+
 {{-- 
             <a href="{{ route('messages.index') }}"
                class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors {{ request()->routeIs('messages.*') ? 'bg-white text-hw-blue font-semibold' : 'hover:bg-hw-blue' }}">
@@ -67,11 +74,29 @@
         </div>
     </nav>
 
-    <div class="absolute bottom-4 left-4 right-4">
-        <a href="login.html"
-           class="flex items-center space-x-3 px-3 py-2 text-hw-blue hover:text-white hover:bg-hw-blue rounded-lg transition-colors">
-            <i data-lucide="log-out" class="w-5 h-5"></i>
-            <span>Logout</span>
-        </a>
+
+
+
+ 
+</div>
+
+    <!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-96">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">Confirm Logout</h2>
+        <p class="text-gray-600 mb-6">Are you sure you want to log out?</p>
+        <div class="flex justify-end space-x-3">
+            <button onclick="document.getElementById('logoutModal').classList.add('hidden')" 
+                    class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100">
+                Cancel
+            </button>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" 
+                        class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">
+                    Logout
+                </button>
+            </form>
+        </div>
     </div>
 </div>
