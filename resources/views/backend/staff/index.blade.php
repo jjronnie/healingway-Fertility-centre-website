@@ -1,10 +1,10 @@
 <x-app-layout>
   <div class="max-w-full mx-auto  p-8">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold text-gray-800">Manage Doctors</h1>
-            <a href="{{ route('admin.doctors.create') }}"
+            <h1 class="text-3xl font-bold text-gray-800">Manage staff</h1>
+            <a href="{{ route('admin.staff.create') }}"
                class="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200">
-                Add New Doctor
+                Add New staff
             </a>
         </div>
 
@@ -26,28 +26,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($doctors as $doctor)
+                    @forelse ($staff as $staff)
                         <tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
                             <td class="px-6 py-4 text-sm text-gray-900">
-                                @if ($doctor->photo)
-                                    <img src="{{ asset($doctor->photo) }}" alt="{{ $doctor->name }}" class="w-12 h-12 object-cover rounded-full">
+                                @if ($staff->photo)
+                                    <img src="{{ asset($staff->photo) }}" alt="{{ $staff->name }}" class="w-12 h-12 object-cover rounded-full">
                                 @else
                                     <img src="https://placehold.co/48x48/CCCCCC/FFFFFF?text=No+Photo" alt="No Photo" class="w-12 h-12 object-cover rounded-full">
                                 @endif
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-900">{{ $doctor->name }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-900">{{ $doctor->position }}</td>
-                             <td class="px-6 py-4 text-sm text-gray-900">{{ $doctor->display_position }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">{{ $staff->name }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">{{ $staff->position }}</td>
+                             <td class="px-6 py-4 text-sm text-gray-900">{{ $staff->display_position }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900 flex items-center justify-center space-x-2">
-                                <a href="{{ route('admin.doctors.show', $doctor) }}"
+                                <a href="{{ route('admin.staff.show', $staff) }}"
                                    class="text-blue-600 hover:text-blue-900 text-lg">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 </a>
-                                <a href="{{ route('admin.doctors.edit', $doctor) }}"
+                                <a href="{{ route('admin.staff.edit', $staff) }}"
                                    class="text-yellow-600 hover:text-yellow-900 text-lg">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                 </a>
-                                <form action="{{ route('admin.doctors.destroy', $doctor) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this doctor?');">
+                                <form action="{{ route('admin.staff.destroy', $staff) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this staff?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-900 text-lg">
@@ -58,14 +58,14 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-4 text-sm text-gray-500 text-center">No doctors found.</td>
+                            <td colspan="5" class="px-6 py-4 text-sm text-gray-500 text-center">No staff found.</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
         <div class="mt-6">
-            {{ $doctors->links() }}
+            {{ $staff->links() }}
         </div>
     </div>
 </x-app-layout>

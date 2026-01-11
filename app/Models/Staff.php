@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Doctor extends Model
+class Staff extends Model
 {
 
      use HasFactory;
@@ -30,13 +30,13 @@ class Doctor extends Model
     {
         parent::boot();
 
-        static::creating(function ($doctor) {
-            $doctor->slug = $doctor->generateUniqueSlug($doctor->name);
+        static::creating(function ($staff) {
+            $staff->slug = $staff->generateUniqueSlug($staff->name);
         });
 
-        static::updating(function ($doctor) {
-            if ($doctor->isDirty('name')) { // Only regenerate slug if name changes
-                $doctor->slug = $doctor->generateUniqueSlug($doctor->name);
+        static::updating(function ($staff) {
+            if ($staff->isDirty('name')) { // Only regenerate slug if name changes
+                $staff->slug = $staff->generateUniqueSlug($staff->name);
             }
         });
     }

@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctor;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str; 
 
-class DoctorController extends Controller
+class StaffController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         $doctors = Doctor::orderBy('display_position')->orderBy('name')->paginate(10);
-        return view('backend.doctors.index', compact('doctors'));
+         $staff = Staff::orderBy('display_position')->orderBy('name')->paginate(10);
+        return view('backend.staff.index', compact('staff'));
     }
 
     /**
@@ -24,7 +24,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('backend.doctors.create');
+        return view('backend.staff.create');
     }
 
     /**
@@ -45,36 +45,36 @@ class DoctorController extends Controller
         // Handle photo upload
         if ($request->hasFile('photo')) {
             $imageName = time() . '_' . Str::slug($request->name) . '.' . $request->photo->extension();
-            $request->photo->move(public_path('uploads/doctors'), $imageName);
-            $data['photo'] = 'uploads/doctors/' . $imageName;
+            $request->photo->move(public_path('uploads/staff'), $imageName);
+            $data['photo'] = 'uploads/staff/' . $imageName;
         }
 
         // The setNameAttribute in the model handles slug generation
-        Doctor::create($data);
+        Staff::create($data);
 
-        return redirect()->route('admin.doctors.index')->with('success', 'Doctor added successfully!');
+        return redirect()->route('admin.staff.index')->with('success', 'Staff added successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-     public function show(Doctor $doctor)
+     public function show(Staff $staff)
     {
-        return view('backend.doctors.show', compact('doctor'));
+        return view('backend.staff.show', compact('staff'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Doctor $doctor)
+    public function edit(Staff $staff)
     {
-        return view('backend.doctors.edit', compact('doctor'));
+        return view('backend.staff.edit', compact('staff'));
     }
 
     /**
      * Update the specified resource in storage.
      */
- public function update(Request $request, Doctor $doctor)
+ public function update(Request $request, Staff $staff)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -89,31 +89,31 @@ class DoctorController extends Controller
         // Handle photo update
         if ($request->hasFile('photo')) {
             // Delete old photo if exists
-            if ($doctor->photo && file_exists(public_path($doctor->photo))) {
-                unlink(public_path($doctor->photo));
+            if ($staff->photo && file_exists(public_path($staff->photo))) {
+                unlink(public_path($staff->photo));
             }
             $imageName = time() . '_' . Str::slug($request->name) . '.' . $request->photo->extension();
-            $request->photo->move(public_path('uploads/doctors'), $imageName);
-            $data['photo'] = 'uploads/doctors/' . $imageName;
+            $request->photo->move(public_path('uploads/staff'), $imageName);
+            $data['photo'] = 'uploads/staff/' . $imageName;
         }
 
         // The setNameAttribute in the model handles slug regeneration if name changes
-        $doctor->update($data);
+        $staff->update($data);
 
-        return redirect()->route('admin.doctors.index')->with('success', 'Doctor updated successfully!');
+        return redirect()->route('admin.staff.index')->with('success', 'staff updated successfully!');
     }
     /**
      * Remove the specified resource from storage.
      */
-     public function destroy(Doctor $doctor)
+     public function destroy(Staff $staff)
     {
         // Delete photo if exists
-        if ($doctor->photo && file_exists(public_path($doctor->photo))) {
-            unlink(public_path($doctor->photo));
+        if ($staff->photo && file_exists(public_path($staff->photo))) {
+            unlink(public_path($staff->photo));
         }
 
-        $doctor->delete();
+        $staff->delete();
 
-        return redirect()->route('admin.doctors.index')->with('success', 'Doctor deleted successfully!');
+        return redirect()->route('admin.staff.index')->with('success', 'Staff deleted successfully!');
     }
 }

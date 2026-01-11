@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+             $table->string('google_id')->nullable();
+             $table->string('signup_method')->default('email'); 
+            $table->string('status')->default('active'); 
             $table->rememberToken();
             $table->timestamps();
         });

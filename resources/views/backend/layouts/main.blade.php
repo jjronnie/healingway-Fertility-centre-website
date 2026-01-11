@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - HealingWay Hospital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
- <!-- Favicon -->
-	<link rel="icon" href="{{ asset('favicon.png') }}">
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('favicon.png') }}">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
@@ -18,19 +19,19 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    
+
 </head>
+
 <body class="bg-gray-50" x-data="adminDashboard()">
 
     @yield('content')
 
 
 
+<x-alerts/>
 
 
-    
     <script>
-      
         // Admin dashboard Alpine.js component
         function adminDashboard() {
             return {
@@ -96,4 +97,5 @@
         });
     </script>
 </body>
+
 </html>

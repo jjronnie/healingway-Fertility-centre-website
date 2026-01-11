@@ -51,13 +51,13 @@
                             </label>
                         </div>
 
-                        {{-- @if (Route::has('password.request'))
+                        @if (Route::has('password.request'))
                             <div class="text-sm">
                                 <a href="{{ route('password.request') }}" class="text-hw-blue hover:underline">
                                     Forgot your password?
                                 </a>
                             </div>
-                        @endif --}}
+                        @endif
                     </div>
 
                     <!-- Submit Button -->
@@ -66,6 +66,8 @@
                         <i data-lucide="log-in" class="h-5 w-5 inline mr-2"></i>
                         Sign In
                     </button>
+
+                    @include('auth.google-button')
 
                     <!-- Register Link -->
                     @if (Route::has('register'))

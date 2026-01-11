@@ -1,3 +1,7 @@
+@import "./sidebar.css";
+@import "./nav.css";
+@import "./custom.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

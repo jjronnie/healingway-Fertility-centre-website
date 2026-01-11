@@ -13,24 +13,24 @@
                 care. Get to know the experts who will be looking after you.
             </p>
 
-            <!-- Doctor Cards Grid -->
+            <!-- staff Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-                @foreach ($doctors as $doctor)
+                @foreach ($staff as $staff)
 
-                <!-- Doctor Card 1 -->
-                <a href="{{ route('doctors.show', $doctor->slug) }}">
+                <!-- staff Card 1 -->
+                <a href="{{ route('staff.show', $staff->slug) }}">
                 <div
                     class="flex flex-col bg-white shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
                     <div class="relative w-full h-60 overflow-hidden ">
-                        <img src="{{ asset($doctor->photo ?: 'https://placehold.co/600x400/CCCCCC/FFFFFF?text=No+Photo') }}"
-                                 alt="{{ $doctor->name }}" 
+                        <img src="{{ asset($staff->photo ?: 'https://placehold.co/600x400/CCCCCC/FFFFFF?text=No+Photo') }}"
+                                 alt="{{ $staff->name }}" 
                             class="object-cover w-full h-full">
                     </div>
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
-                            <p class="text-md text-gray-600 text-center mb-4">{{ $doctor->position }}</p>
-                            <h3 class="text-xl font-bold text-center text-gray-800 mb-1">{{ $doctor->name }}</h3>
+                            <p class="text-md text-gray-600 text-center mb-4">{{ $staff->position }}</p>
+                            <h3 class="text-xl font-bold text-center text-gray-800 mb-1">{{ $staff->name }}</h3>
                             
                         </div>
                     </div>

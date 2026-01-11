@@ -127,24 +127,24 @@
                     better.</p>
             </div>
 
-            <!-- Doctor Cards Grid -->
+            <!-- staff Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-                @foreach ($doctors as $doctor)
+                @foreach ($staff as $staff)
 
-                <!-- Doctor Card 1 -->
-                <a href="{{ route('doctors.show', $doctor->slug) }}">
+                <!-- staff Card 1 -->
+                <a href="{{ route('staff.show', $staff->slug) }}">
                 <div
                     class="flex flex-col bg-white shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out h-full">
                     <div class="relative w-full h-60 overflow-hidden ">
-                        <img src="{{ asset($doctor->photo ?: 'https://placehold.co/600x400/CCCCCC/FFFFFF?text=No+Photo') }}"
-                                 alt="{{ $doctor->name }}" 
+                        <img src="{{ asset($staff->photo ?: 'https://placehold.co/600x400/CCCCCC/FFFFFF?text=No+Photo') }}"
+                                 alt="{{ $staff->name }}" 
                             class="object-cover w-full h-full">
                     </div>
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
-                            <p class="text-md text-gray-800 text-center mb-4">{{ $doctor->position }}</p>
-                            <h3 class="text-xl font-bold text-center text-gray-800 mb-1">{{ $doctor->name }}</h3>                            
+                            <p class="text-md text-gray-800 text-center mb-4">{{ $staff->position }}</p>
+                            <h3 class="text-xl font-bold text-center text-gray-800 mb-1">{{ $staff->name }}</h3>                            
                         </div>
                     </div>
                 </div>
@@ -180,101 +180,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4">Get in Touch</h2>
-                <p class="text-xl text-gray-600">Contact us today.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Contact Form -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <h3 class="text-2xl font-bold text-blue-900 mb-6">Send us a Message</h3>
-                    <form class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
-                                <input type="text"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
-                                <input type="text"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                            <input type="email"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
-                            <textarea rows="4"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400"></textarea>
-                        </div>
-                        <button type="submit"
-                            class="bg-hw-blue hover:bg-blue-800 text-white px-8 py-3 text-lg rounded-lg font-semibold transition-all hover-lift">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Contact Information -->
-                <div class="space-y-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-blue-900"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-blue-900">Find Us At</h4>
-                                <p class="text-gray-600">Plot 6A2-7B2 Luthuli 5th Close, <br>Bugolobi, Kampala Uganda.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                                <i data-lucide="phone" class="w-6 h-6 text-green-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-blue-900">Call/Whatsapp</h4>
-                                <p class="text-gray-600">+256 700 521155</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                                <i data-lucide="mail" class="w-6 h-6 text-purple-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-blue-900">Email</h4>
-                                <p class="text-gray-600">info@healingwayfertilitycentre.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-                                <i data-lucide="clock" class="w-6 h-6 text-orange-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-blue-900">Working Hours</h4>
-                                <p class="text-gray-600">We are Always Open<br>24/7</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  
 
 </x-guest-layout>
