@@ -2,7 +2,7 @@
 
 
 <section class="relative banner-image py-24 mt-[80px] overflow-hidden" 
-    style="background-image: url('assets/img/home_banner.png');">
+    style="background-image: url('assets/img/2.webp');">
 
     <!-- Blur/Dark Overlay -->
     <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
