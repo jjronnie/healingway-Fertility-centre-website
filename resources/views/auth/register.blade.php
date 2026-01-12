@@ -67,6 +67,9 @@
                         Register
                     </button>
 
+                    @include('auth.google-button')
+
+
                     <!-- Login link -->
                     <div class="text-center">
                         <p class="text-sm text-gray-600">

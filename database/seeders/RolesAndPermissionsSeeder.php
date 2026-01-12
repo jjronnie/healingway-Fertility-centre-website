@@ -22,6 +22,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'add-staff',
             'edit-staff',
             'delete-staff',
+            'delete-users',
         ];
 
         foreach ($permissions as $permission) {

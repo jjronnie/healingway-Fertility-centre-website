@@ -85,12 +85,12 @@
           const slides = [{
                   title: "<span class='text-lg'> Welcome to: </span><br><span class='text-hw-green'> Healing<span class='text-white'>Way</span> Fertility Centre</span>",
                   desc: "Premier IVF & Fertility Centre in East Africa, offering reproductive technology to help you build your family.",
-                  image: "assets/img/home_banner.png"
+                  image: "assets/img/3.webp"
               },
               {
                   title: "<small >Your Journey to Parenthood <span class='text-hw-green'>Starts Here </small></span>",
                   desc: "Helping families grow with proven success rates and compassionate care.",
-                  image: "assets/img/main-banner-5.png"
+                  image: "assets/img/1.webp"
               }
           ];
 

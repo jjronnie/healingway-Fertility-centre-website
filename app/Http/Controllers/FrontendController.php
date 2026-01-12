@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use \App\Models\Service;
 use App\Models\Staff;
-
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +18,9 @@ class FrontendController extends Controller
 
         public function about()
     {
-        return view('frontend.pages.about');
+        
+
+        return view('frontend.pages.about', compact('seoData'));
     }
 
         public function contact()
@@ -51,8 +53,10 @@ class FrontendController extends Controller
 
    
 
-        public function showService(Service $service)
+        public function showService($slug)
     {
+        $service = Service::where('slug', $slug)->firstOrFail();
+        
         return view('frontend.pages.show-service', compact('service'));
     }
 

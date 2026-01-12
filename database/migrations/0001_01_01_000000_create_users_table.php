@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('status')->default('active'); 
             $table->rememberToken();
             $table->timestamps();
+            $table->index('signup_method');
+
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

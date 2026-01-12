@@ -21,9 +21,8 @@
                     {{-- Name --}}
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                        <input type="text" name="name" id="name"
-                               value="{{ old('name') }}"
-                               class="w-full px-4 py-2 border @error('name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        <input type="text" name="name" id="name" value="{{ old('name') }}"
+                            class="w-full px-4 py-2 border @error('name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
                         @error('name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
@@ -32,11 +31,11 @@
 
                     {{-- Icon --}}
                     <div>
-                        <label for="icon" class="block text-sm font-medium text-gray-700 mb-1">Icon (optional)</label>
-                        <input type="text" name="icon" id="icon"
-                               value="{{ old('icon') }}"
-                               placeholder="e.g. fas fa-heart or lucide:activity"
-                               class="w-full px-4 py-2 border @error('icon') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
+                        <label for="icon" class="block text-sm font-medium text-gray-700 mb-1">Icon
+                            (optional)</label>
+                        <input type="text" name="icon" id="icon" value="{{ old('icon') }}"
+                            placeholder="e.g. fas fa-heart or lucide:activity"
+                            class="w-full px-4 py-2 border @error('icon') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
                         <small class="text-gray-500">Use a Lucide or FontAwesome class</small>
                         @error('icon')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -45,9 +44,10 @@
 
                     {{-- Short Description --}}
                     <div>
-                        <label for="desc" class="block text-sm font-medium text-gray-700 mb-1">Short Description</label>
+                        <label for="desc" class="block text-sm font-medium text-gray-700 mb-1">Short
+                            Description</label>
                         <textarea name="desc" id="desc" rows="3"
-                                  class="w-full px-4 py-2 border @error('desc') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('desc') }}</textarea>
+                            class="w-full px-4 py-2 border @error('desc') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('desc') }}</textarea>
                         @error('desc')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
@@ -57,26 +57,20 @@
                     <div>
                         <label for="body" class="block text-sm font-medium text-gray-700 mb-1">Body</label>
                         <textarea name="body" id="body" rows="6"
-                                  class="w-full px-4 py-2 border @error('body') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('body') }}</textarea>
+                            class="w-full px-4 py-2 border @error('body') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('body') }}</textarea>
                         @error('body')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    {{-- Photo --}}
-                    <div>
-                        <label for="photo" class="block text-sm font-medium text-gray-700 mb-1">Service Image (optional)</label>
-                        <input type="file" name="photo" id="photo"
-                               class="w-full px-4 py-2 border @error('photo') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
-                        @error('photo')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
+
+                    <x-image-upload name="photo" label="Featured Image" />
+
 
                     {{-- Submit --}}
                     <div>
                         <button type="submit"
-                                class="bg-hw-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-hw-green transition-colors w-full sm:w-auto">
+                            class="btn">
                             Create Service
                         </button>
                     </div>
@@ -91,12 +85,11 @@
         ClassicEditor
             .create(document.querySelector('#body'), {
                 toolbar: [
-                    'heading','|','bold','italic','link',
-                    'bulletedList','numberedList','blockQuote',
-                    '|','undo','redo'
+                    'heading', '|', 'bold', 'italic', 'link',
+                    'bulletedList', 'numberedList', 'blockQuote',
+                    '|', 'undo', 'redo'
                 ],
             })
             .catch(error => console.error(error));
     </script>
 </x-app-layout>
-

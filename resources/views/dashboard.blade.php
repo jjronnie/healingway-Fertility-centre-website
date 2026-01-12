@@ -1,150 +1,61 @@
 <x-app-layout>
 
-    <!-- Dashboard Overview -->
-    <div x-show="activeSection === 'dashboard'" class="space-y-6">
-        <div class="flex items-center justify-between">
-            <h1 class="text-3xl font-bold text-hw-blue">Dashboard Overview</h1>
-            <div class="text-sm text-gray-600">Last updated: <span x-text="new Date().toLocaleDateString()"></span></div>
-        </div>
+    @php
+        $hour = now()->hour;
+        if ($hour < 12) {
+            $greeting = 'Good morning';
+        } elseif ($hour < 17) {
+            $greeting = 'Good afternoon';
+        } else {
+            $greeting = 'Good evening';
+        }
+    @endphp
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-            <!-- card -->
-            <x-stat-card title="Total Users" value="10" icon="user" />
-            
-
-        </div>
-
-        <!-- Stats Cards -->
-       
-
-        <!-- Charts -->
-        {{-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h2 class="text-xl font-bold text-hw-blue mb-4">Appointments This Week</h2>
-                        <canvas id="appointmentsChart" class="w-full h-64"></canvas>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h2 class="text-xl font-bold text-hw-blue mb-4">Treatment Distribution</h2>
-                        <canvas id="treatmentChart" class="w-full h-64"></canvas>
-                    </div>
-                </div> --}}
-
-        <!-- Recent Activity -->
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-            <h2 class="text-xl font-bold text-hw-blue mb-4">Recent Activity</h2>
-            <div class="space-y-4">
-                <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 rounded-lg">
-                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                        <i data-lucide="user-plus" class="w-5 h-5 text-green-600"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-semibold text-gray-900">New patient registration</p>
-                        <p class="text-sm text-gray-600">Sarah Johnson registered for IVF consultation</p>
-                    </div>
-                    <div class="text-sm text-gray-500">2 min ago</div>
-                </div>
-
-                <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 rounded-lg">
-                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i data-lucide="calendar-check" class="w-5 h-5 text-blue-600"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-semibold text-gray-900">Appointment completed</p>
-                        <p class="text-sm text-gray-600">Dr. Smith completed consultation with Maria Garcia</p>
-                    </div>
-                    <div class="text-sm text-gray-500">15 min ago</div>
-                </div>
+    <x-page-title title="{{ $greeting }}, {{ auth()->user()->name }}" />
 
 
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+        <!-- card -->
+        <x-stat-card title="Total Admins" value="{{ $adminTotal }}" icon="shield" />
+        <x-stat-card title="Total Clients" value="{{ $userTotal }}" icon="users" />
+        <x-stat-card title="Total Services" value="{{ $totalServices }}" icon="heart" />
+        <x-stat-card title="Total Appointments" value="25" icon="calendar" />
+
+    </div>
+    <div class="p-6">
+    <x-page-title title="Recent Activity" />
+
+
+<x-empty-state message="No Data." />
+
+
+
+{{-- <x-table :headers="['#' ]" showActions="false">
+    <x-table.row>
+        <x-table.cell></x-table.cell>
+    </x-table.row>
+</x-table> --}}
+
+</div>
+    <!-- Charts Section -->
+
+    <x-page-title title="Charts and Analytics" />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-5 mb-8 text-center">
+
+        <div class="bg-white rounded-lg  p-6">
+            <h3 class="text-lg font-semibold mb-4">User by Signup Method</h3>
+            <div class="h-64">
+                {!! $signupMethodChart->container() !!}
             </div>
         </div>
     </div>
 
-    <!-- Appointments Section -->
-    <div x-show="activeSection === 'appointments'" class="space-y-6">
-        <div class="flex items-center justify-between">
-            <h1 class="text-3xl font-bold text-hw-blue">Appointments</h1>
-            <button
-                class="bg-hw-green text-hw-blue px-4 py-2 rounded-lg font-semibold hover:bg-hw-green transition-colors">
-                <i data-lucide="plus" class="w-4 h-4 inline mr-2"></i>New Appointment
-            </button>
-        </div>
 
-        <!-- Appointments Table -->
-        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-            <div class="p-6 border-b border-gray-200">
-                <div class="flex items-center justify-between">
-                    <h2 class="text-xl font-bold text-hw-blue">Today's Appointments</h2>
-                    <div class="flex space-x-2">
-                        <button
-                            class="px-3 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">All</button>
-                        <button class="px-3 py-2 text-sm bg-hw-green text-hw-blue rounded-lg">Scheduled</button>
-                        <button
-                            class="px-3 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">Completed</button>
-                    </div>
-                </div>
-            </div>
+    {!! $signupMethodChart->script() !!}
 
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Time</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Patient</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Doctor</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Service</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">09:00 AM</td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="w-8 h-8 bg-hw-green rounded-full flex items-center justify-center mr-3">
-                                        <span class="text-xs font-semibold text-hw-blue">SJ</span>
-                                    </div>
-                                    <div>
-                                        <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
-                                        <div class="text-sm text-gray-500">sarah.j@email.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Dr. Smith</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">IVF Consultation</td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    Completed
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <button class="text-hw-blue hover:text-hw-blue mr-3">View</button>
-                                <button class="text-gray-600 hover:text-gray-900">Edit</button>
-                            </td>
-                        </tr>
-                        <!-- More rows would go here -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 
-    <!-- Other sections would follow similar patterns -->
-    <div x-show="activeSection !== 'dashboard' && activeSection !== 'appointments'" class="text-center py-12">
-        <i data-lucide="construction" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
-        <h2 class="text-2xl font-bold text-gray-600 mb-2">Section Under Construction</h2>
-        <p class="text-gray-500"
-            x-text="`${activeSection.charAt(0).toUpperCase() + activeSection.slice(1)} section is being developed`">
-        </p>
-    </div>
 
 
 </x-app-layout>

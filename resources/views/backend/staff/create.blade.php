@@ -31,14 +31,16 @@
                             placeholder="e.g., Head Fertility, Senior Physician">
                     </div>
 
-                     <div class="mb-4">
-                <label for="display_position" class="block text-gray-700 text-sm font-bold mb-2">Display Order:</label>
-                <input type="number" name="display_position" id="display_position" value="{{ old('display_position', 0) }}"
-                       class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition duration-200"
-                       placeholder="Enter a number to order staff (e.g., 0 for first)">
-                <p class="mt-1 text-sm text-gray-500">Lower numbers will appear first.</p>
-            </div>
-            
+                    <div class="mb-4">
+                        <label for="display_position" class="block text-gray-700 text-sm font-bold mb-2">Display
+                            Order:</label>
+                        <input type="number" name="display_position" id="display_position"
+                            value="{{ old('display_position', 0) }}"
+                            class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition duration-200"
+                            placeholder="Enter a number to order staff (e.g., 0 for first)">
+                        <p class="mt-1 text-sm text-gray-500">Lower numbers will appear first.</p>
+                    </div>
+
                     <div class="mb-4">
                         <label for="body" class="block text-gray-700 text-sm font-bold mb-2">Body
                             (Information):</label>
