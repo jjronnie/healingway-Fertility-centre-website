@@ -83,7 +83,7 @@ return [
          * so you'll need to add the suffix manually if you want that. If set to null, we'll determine the title
          * just like the other pages.
          */
-        'homepage_title' => 'IVF & Fertility Centre in Kampala, Uganda',
+        'homepage_title' => 'HealingWay Fertility Centre - IVF & Fertility Centre in Kampala, Uganda',
     ],
 
     'description' => [

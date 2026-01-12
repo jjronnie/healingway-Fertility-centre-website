@@ -20,7 +20,7 @@ class FrontendController extends Controller
     {
         
 
-        return view('frontend.pages.about', compact('seoData'));
+        return view('frontend.pages.about');
     }
 
         public function contact()
