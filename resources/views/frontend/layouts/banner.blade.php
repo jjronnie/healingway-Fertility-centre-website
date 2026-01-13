@@ -1,3 +1,5 @@
+  
+  <x-preloader/>
   <section id="home"
       class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-gray-900 to-blue-950 text-white">
 
