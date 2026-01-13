@@ -1,4 +1,6 @@
-      <div class="relative ">
+      
+   <x-back-to-top/>   
+      <div class="relative mt-32">
          
 
            <footer class="bg-hw-blue text-white pt-72 relative z-10">

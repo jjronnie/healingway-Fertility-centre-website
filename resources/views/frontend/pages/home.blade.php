@@ -240,7 +240,6 @@
                     <a href="{{ route('staff.show', $staff->slug) }}">
 
 
-                        <!-- Card 1 -->
                         <div
                             class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div class="aspect-[4/5] overflow-hidden bg-gray-200">

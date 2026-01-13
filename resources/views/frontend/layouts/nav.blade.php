@@ -2,9 +2,9 @@
 <nav x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = window.scrollY > 10"
     :class="scrolled
         ?
-        'bg-gradient-to-r from-hw-blue to-hw-green shadow-lg' :
+        'bg-hw-blue shadow-lg' :
         'bg-transparent'"
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    class="absolute top-0 left-0 right-0 z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
 
@@ -99,10 +99,10 @@
 
         <!-- Mobile Menu -->
         <div x-show="open" x-transition class="lg:hidden pb-4">
-            <div
-                class="flex flex-col space-y-2 p-4 text-white font-medium bg-gradient-to-r from-hw-blue to-hw-green rounded-lg">
+            <div class="flex flex-col space-y-2 p-4 text-white font-medium bg-hw-blue rounded-lg">
                 <a href="{{ route('home') }}" class="mobile-link">Home</a>
                 <a href="{{ route('about-us') }}" class="mobile-link">About</a>
+                <a href="{{ route('our-services') }}" class="mobile-link">Services</a>
                 <a href="{{ route('our-team') }}" class="mobile-link">Team</a>
                 <a href="{{ route('contact-us') }}" class="mobile-link">Contact</a>
 

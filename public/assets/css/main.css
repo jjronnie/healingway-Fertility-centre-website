@@ -46,11 +46,7 @@
 /* ================================
    Global Styles
    ================================ */
-body {
-    font-family: 'Open Sans', sans-serif;
-    
-    
-}
+
 * {
     transition: all 0.3s ease;
 }
