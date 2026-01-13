@@ -23,7 +23,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.png') }}">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+   
+
+         <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
         rel="stylesheet">
 
 
@@ -35,7 +41,7 @@
 
 </head>
 
-<body class="font-sans text-gray-900 bg-blue-50">
+<body class="font-sans text-gray-900 bg-gray-50">
 
 
     <!-- Preloader -->

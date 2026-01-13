@@ -1,123 +1,156 @@
 <x-guest-layout>
 
-    {{-- nav --}}
-    @include('frontend.layouts.page-title')
+    <x-page-header image="assets/img/3.webp" title="Contact Us"
+        description="Have questions,  inquiries, or want to get in touch? We're here to help. Contact us by email, phone, or using the form below." />
+
 
 
     <!-- Contact Section -->
-    <section class="py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="-mt-32 pb-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 rounded-2xl shadow-lg">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Contact Form -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <div class="">
                     <h2 class="text-3xl font-bold text-primary-800 mb-6">Send us a Message</h2>
                     <form x-data="contactForm()" @submit.prevent="submitForm" class="space-y-6">
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name <x-required-mark/></label>
+                            <input type="text" x-model="form.name" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all">
+                        </div>
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                                <input type="text" x-model="form.name" required
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address<x-required-mark/></label>
+                                <input type="email" x-model="form.email" required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all">
                             </div>
+
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number<x-required-mark/></label>
                                 <input type="tel" x-model="form.phone" required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all">
                             </div>
                         </div>
+
+
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                            <input type="email" x-model="form.email" required
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Subject<x-required-mark/></label>
+                            <input type="text" x-model="form.subject" required
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all">
                         </div>
 
+
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Message<x-required-mark/></label>
                             <textarea x-model="form.message" required rows="4"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all"
                                 placeholder="Please describe your inquiry..."></textarea>
                         </div>
-                           <button type="submit"
-                            class="bg-hw-blue hover:bg-blue-800 text-white px-8 py-3 text-lg rounded-lg font-semibold transition-all hover-lift">
+                        <button type="submit" class="btn">
                             Send Message
                         </button>
                     </form>
                 </div>
 
-                <!-- Contact Information -->
-                <div class="space-y-8">
-                    <!-- Contact Details -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold text-primary-800 mb-6">Contact Information</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-accent-400 p-3 rounded-lg">
-                                    <i data-lucide="map-pin" class="w-6 h-6 text-primary-800"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900">Address</h4>
-                                    <p class="text-gray-600">Plot 6A2-7B2 Luthuli 5th Close, <br>Bugolobi, Kampala
-                                        Uganda.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-accent-400 p-3 rounded-lg">
-                                    <i data-lucide="phone" class="w-6 h-6 text-primary-800"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900">Phone</h4>
-                                    <p class="text-gray-600">+256 700 521 155</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-accent-400 p-3 rounded-lg">
-                                    <i data-lucide="mail" class="w-6 h-6 text-primary-800"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900">Email</h4>
-                                    <p class="text-gray-600">info.ivf@healingwayafrica.com</p>
-                                </div>
-                            </div>
+                <!-- Contact Card -->
+                <div class="bg-hw-blue rounded-3xl shadow-xl overflow-hidden text-white">
 
+                    <!-- Email -->
+                    <div class="p-8 flex items-start gap-4">
+                        <div class="mt-1">
+                            <i data-lucide="mail" class="w-7 h-7 text-hw-green"></i>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Send us an e-mail</h3>
+                            <p class="text-white/80 mb-4">
+                                We'd love to hear from you. Please feel free to reach out to us via mail.
+                            </p>
+
+                            <a href="mailto:info.ivf@healingwayafrica.com"
+                                class="inline-block bg-white text-hw-blue font-semibold px-5 py-2 rounded-full hover:bg-gray-100 transition">
+                                info.ivf@healingwayafrica.com
+                            </a>
                         </div>
                     </div>
 
+                    <div class="border-t border-white/15 mx-8"></div>
 
-
-                    <!-- Emergency Contact -->
-                    <div class="bg-white border border-gray-200 p-6 rounded-2xl">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <i data-lucide="message-square" class="w-6 h-6 text-green-600"></i>
-                            <h3 class="text-xl font-bold text-green-800">Whatsapp</h3>
+                    <!-- Phone -->
+                    <div class="p-8 flex items-start gap-4">
+                        <div class="mt-1">
+                            <i data-lucide="phone" class="w-7 h-7 text-hw-green"></i>
                         </div>
-                        <p class="text-gray-700 mb-2">Contact Our Support Team</p>
-                        <p class="text-2xl font-bold text-gray-800">+256 700 521 155</p>
 
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Give us a call</h3>
+                            <p class="text-white/80 mb-4">
+                                Prefer to talk on phone. Do not hesitate to reach out to us.
+                            </p>
+
+                            <a href="tel:+256700521155"
+                                class="inline-block bg-white text-hw-blue font-semibold px-5 py-2 rounded-full hover:bg-gray-100 transition">
+                                +256 700 521 155
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Social Media Card -->
-                    <div class="bg-gray-50 border border-gray-200 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-gray-800">Social Media</h3>
-                        <div class="flex  space-x-6">
+                    <div class="border-t border-white/15 mx-8"></div>
 
-                            <div class="flex space-x-4 text-white">
-                        <a href="#"
-                            class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                            <i data-lucide="facebook" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                        </a>
+                    <!-- Location -->
+                    <div class="p-8 flex items-start gap-4">
+                        <div class="mt-1">
+                            <i data-lucide="map-pin" class="w-7 h-7 text-hw-green"></i>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Locate us</h3>
+                            <p class="text-white/80 mb-4 leading-relaxed">
+                                Plot 6A2-7B2 Luthuli 5th Close,<br>
+                                Bugolobi, Kampala, Uganda.
+                            </p>
+
+                            <a href="https://maps.google.com" target="_blank"
+                                class="inline-block bg-white text-hw-blue font-semibold px-5 py-2 rounded-full hover:bg-gray-100 transition">
+                                Get Directions
+                            </a>
+                        </div>
                     </div>
 
+                    <div class="border-t border-white/15 mx-8"></div>
+
+                    <!-- Social -->
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <i data-lucide="share-2" class="w-7 h-7 text-hw-green"></i>
+                            <h3 class="text-2xl font-bold">We are social</h3>
+                        </div>
+
+                        <p class="text-white/80 mb-6">
+                            Let's connect on social media
+                        </p>
+
+                        <div class="flex gap-4">
+                            <a href="#"
+                                class="w-11 h-11 bg-white text-hw-blue rounded-full flex items-center justify-center hover:scale-105 transition">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-11 h-11 bg-white text-hw-blue rounded-full flex items-center justify-center hover:scale-105 transition">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-11 h-11 bg-white text-hw-blue rounded-full flex items-center justify-center hover:scale-105 transition">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
                         </div>
                     </div>
 
                 </div>
+
             </div>
         </div>
     </section>

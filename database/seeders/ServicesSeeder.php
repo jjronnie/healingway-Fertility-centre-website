@@ -16,7 +16,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'stethoscope',
                 'desc' => 'A complete medical evaluation to identify fertility challenges and guide the best treatment options.',
                 'body' => '
-                    <h2>Comprehensive Fertility Assessment</h2>
                     <p>
                         Our fertility assessment is the first and most critical step in understanding your reproductive health.
                         It provides a clear picture of potential challenges and helps us recommend the most effective treatment plan.
@@ -42,7 +41,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'test-tube',
                 'desc' => 'Advanced assisted reproduction where eggs and sperm are fertilized in a laboratory setting.',
                 'body' => '
-                    <h2>In Vitro Fertilization (IVF)</h2>
                     <p>
                         IVF is one of the most effective fertility treatments available today.
                         It involves fertilizing an egg with sperm outside the body and transferring the embryo into the uterus.
@@ -68,7 +66,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'microscope',
                 'desc' => 'A specialized IVF technique where a single sperm is injected directly into an egg.',
                 'body' => '
-                    <h2>Intracytoplasmic Sperm Injection (ICSI)</h2>
                     <p>
                         ICSI is an advanced form of IVF designed for severe male infertility cases.
                         It significantly increases fertilization success when sperm quality is low.
@@ -92,7 +89,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'snowflake',
                 'desc' => 'Preserve your fertility by freezing healthy eggs for future use.',
                 'body' => '
-                    <h2>Egg Freezing</h2>
                     <p>
                         Egg freezing allows women to preserve their fertility for medical, personal, or career reasons.
                         Eggs are retrieved, frozen, and stored safely for future use.
@@ -115,7 +111,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'archive',
                 'desc' => 'Safely store embryos for future pregnancy attempts.',
                 'body' => '
-                    <h2>Embryo Freezing</h2>
                     <p>
                         Embryo cryopreservation allows extra embryos from IVF cycles to be preserved for future use.
                         This improves cumulative pregnancy success rates.
@@ -138,7 +133,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'database',
                 'desc' => 'Preserve sperm safely for future fertility treatments.',
                 'body' => '
-                    <h2>Sperm Freezing and Storage</h2>
                     <p>
                         Sperm cryopreservation is a reliable option for fertility preservation in men.
                         Samples are frozen and securely stored for future reproductive use.
@@ -161,7 +155,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'dna',
                 'desc' => 'Identify inherited conditions and reduce genetic risks before pregnancy.',
                 'body' => '
-                    <h2>Genetic Screening and Counseling</h2>
                     <p>
                         Genetic screening helps detect inherited disorders that may affect pregnancy or child health.
                         Counseling provides clarity and informed decision making.
@@ -184,7 +177,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'heart-pulse',
                 'desc' => 'A minimally invasive fertility treatment that places sperm directly into the uterus.',
                 'body' => '
-                    <h2>Intrauterine Insemination (IUI)</h2>
                     <p>
                         IUI is a simple fertility procedure where prepared sperm is placed directly into the uterus
                         around the time of ovulation.
@@ -207,7 +199,6 @@ class ServicesSeeder extends Seeder
                 'icon' => 'activity',
                 'desc' => 'Minimally invasive procedures to diagnose and treat reproductive conditions.',
                 'body' => '
-                    <h2>Laparoscopy and Hysteroscopy</h2>
                     <p>
                         These minimally invasive surgical procedures help diagnose and correct
                         underlying fertility issues within the uterus and pelvis.

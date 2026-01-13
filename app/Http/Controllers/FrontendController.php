@@ -11,7 +11,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-     $services = Service::latest()->take(8)->get();
+     $services = Service::latest()->take(6)->get();
      $staff = Staff::orderBy('display_position')->orderBy('name')->take(4)->get();
         return view('frontend.pages.home',compact('services', 'staff'));
     }
