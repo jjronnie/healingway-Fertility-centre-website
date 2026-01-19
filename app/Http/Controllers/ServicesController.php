@@ -36,10 +36,10 @@ class ServicesController extends Controller
             'icon'  => 'nullable|string|max:255',
             'body'  => 'nullable|string',
             'photo' => 'nullable|image|max:2048',
+            'is_featured' => ['boolean'],
         ]);
 
         $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
 
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('services', 'public');
@@ -81,10 +81,10 @@ class ServicesController extends Controller
             'icon'  => 'nullable|string|max:255',
             'body'  => 'nullable|string',
             'photo' => 'nullable|image|max:2048',
+            'is_featured' => ['boolean'],
         ]);
 
         $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
 
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('services', 'public');

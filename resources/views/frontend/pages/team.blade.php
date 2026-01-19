@@ -4,6 +4,17 @@
         description=" Our experienced and compassionate medical professionals are committed to providing the highest quality
                 care. Get to know the experts who will be looking after you." />
 
+    <section class="-mt-32 pb-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+
+             <div class="relative overflow-hidden  h-[500px] lg:h-[600px]">
+            <img src="{{ asset('assets/img/team.jpg') }}" alt="Fertility Care Team"
+                class="w-full h-full rounded-3xl object-cover">
+        </div>
+
+        </div>
+    </section>
+
 
 
     <section class="-mt-32 pb-20 relative z-10">

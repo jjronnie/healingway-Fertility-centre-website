@@ -3,8 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-gray-900">Services</h2>
-                <a href="{{ route('services.create') }}"
-                    class="btn-success">
+                <a href="{{ route('services.create') }}" class="btn-success">
                     Add New Service
                 </a>
             </div>
@@ -16,7 +15,7 @@
                 </div>
             @endif
 
-            <x-table :headers="['#', 'Service', 'Created']" showActions="true">
+            <x-table :headers="['#', 'Service', 'Featured', 'Created']" showActions="true">
 
                 @forelse ($services as $service)
                     <x-table.row>
@@ -28,7 +27,17 @@
                             {{ $service->name }}
                         </x-table.cell>
 
-                <x-table.cell>{{ $service->created_at->format('M d, Y') }}</x-table.cell>
+
+                        <x-table.cell>
+                            <span
+                                class="px-2 py-1 rounded-md text-xs font-semibold
+        {{ $service->is_featured ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600' }}">
+                                {{ $service->is_featured ? 'YES' : 'NO' }}
+                            </span>
+                        </x-table.cell>
+
+
+                        <x-table.cell>{{ $service->created_at->format('M d, Y') }}</x-table.cell>
 
 
                         <x-table.cell>

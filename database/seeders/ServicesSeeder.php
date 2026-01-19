@@ -88,6 +88,8 @@ class ServicesSeeder extends Seeder
                 'name' => 'Egg Freezing (Oocyte Cryopreservation)',
                 'icon' => 'snowflake',
                 'desc' => 'Preserve your fertility by freezing healthy eggs for future use.',
+                'is_featured' => true,
+
                 'body' => '
                     <p>
                         Egg freezing allows women to preserve their fertility for medical, personal, or career reasons.
@@ -110,6 +112,8 @@ class ServicesSeeder extends Seeder
                 'name' => 'Embryo Freezing (Cryopreservation)',
                 'icon' => 'archive',
                 'desc' => 'Safely store embryos for future pregnancy attempts.',
+                'is_featured' => true,
+
                 'body' => '
                     <p>
                         Embryo cryopreservation allows extra embryos from IVF cycles to be preserved for future use.
@@ -154,6 +158,8 @@ class ServicesSeeder extends Seeder
                 'name' => 'Genetic Screening and Counseling',
                 'icon' => 'dna',
                 'desc' => 'Identify inherited conditions and reduce genetic risks before pregnancy.',
+                'is_featured' => true,
+
                 'body' => '
                     <p>
                         Genetic screening helps detect inherited disorders that may affect pregnancy or child health.
@@ -176,6 +182,7 @@ class ServicesSeeder extends Seeder
                 'name' => 'Intrauterine Insemination (IUI)',
                 'icon' => 'heart-pulse',
                 'desc' => 'A minimally invasive fertility treatment that places sperm directly into the uterus.',
+                'is_featured' => true,
                 'body' => '
                     <p>
                         IUI is a simple fertility procedure where prepared sperm is placed directly into the uterus
@@ -229,6 +236,7 @@ class ServicesSeeder extends Seeder
                 'body' => $service['body'],
                 'created_at' => now(),
                 'updated_at' => now(),
+                'is_featured' => $service['is_featured'] ?? false,
             ]);
         }
     }

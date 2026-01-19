@@ -6,7 +6,7 @@ use App\Models\Staff;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
 
 class StaffController extends Controller
 {
@@ -15,7 +15,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-         $staff = Staff::orderBy('display_position')->orderBy('name')->paginate(10);
+        $staff = Staff::orderBy('display_position')->orderBy('name')->paginate(10);
         return view('backend.staff.index', compact('staff'));
     }
 
@@ -30,13 +30,13 @@ class StaffController extends Controller
     /**
      * Store a newly created resource in storage.
      */
- public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'position' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048', 
+            'photo' => 'nullable|image|max:2048',
             'display_position' => 'nullable|integer|min:0',
         ]);
 
@@ -58,7 +58,7 @@ class StaffController extends Controller
     /**
      * Display the specified resource.
      */
-     public function show(Staff $staff)
+    public function show(Staff $staff)
     {
         return view('backend.staff.show', compact('staff'));
     }
@@ -74,7 +74,7 @@ class StaffController extends Controller
     /**
      * Update the specified resource in storage.
      */
- public function update(Request $request, Staff $staff)
+    public function update(Request $request, Staff $staff)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -105,7 +105,7 @@ class StaffController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-     public function destroy(Staff $staff)
+    public function destroy(Staff $staff)
     {
         // Delete photo if exists
         if ($staff->photo && file_exists(public_path($staff->photo))) {

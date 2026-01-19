@@ -135,7 +135,7 @@
            <section
         class="absolute -top-24 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
-            class="bg-gradient-to-r from-hw-green to-green-400 shadow-lg rounded-2xl py-16 px-6 text-center">
+            class="bg-hw-green shadow-lg rounded-2xl py-16 px-6 text-center">
             <h2 class="text-2xl md:text-2xl font-bold text-hw-blue mb-6">
                 Ready to Start Your Family Journey?
             </h2>

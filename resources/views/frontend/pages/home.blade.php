@@ -6,6 +6,11 @@
 
 
 
+    @if ($upcomingEvents->count() > 0)
+        @include('frontend.layouts.events')
+    @endif
+
+
 
 
 
@@ -29,64 +34,65 @@
 
 
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6">
-
-
-
+            <div class="space-y-10">
                 @foreach ($services as $service)
-                    <a href="{{ route('service.show', $service->slug) }}">
+                    @php
+                        // image on right for odd items, left for even
+                        $imageRight = $loop->iteration % 2 === 1;
+                    @endphp
 
-                        <div
-                            class="bg-white border border-hw-green hover:bg-gradient-to-t from-white to-green-100 hover:border-hw-blue  hover:-translate-y-2 hover:shadow-xl transition-all rounded-3xl shadow-lg overflow-hidden ">
+                    <div
+                        class="bg-white border border-hw-green rounded-2xl hover:shadow-xl transition-all overflow-hidden">
 
-                            <!-- Top content -->
-                            <div class="p-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center p-6 lg:p-10">
 
+                            {{-- Text Section --}}
+                            <div class="{{ $imageRight ? 'order-1' : 'order-1 lg:order-2' }}">
                                 <!-- Icon -->
-                                <div
-                                    class="w-12 h-12 bg-hw-blue  rounded-lg bg-primary-100 flex items-center justify-center mb-4">
-
-                                    <i data-lucide="{{ $service->icon ?? 'info' }}" class="w-7 h-7 text-white "></i>
+                                <div class="w-12 h-12 bg-hw-blue rounded-lg flex items-center justify-center mb-4">
+                                    <i data-lucide="{{ $service->icon ?? 'info' }}" class="w-7 h-7 text-white"></i>
                                 </div>
 
                                 <!-- Heading -->
-                                <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">
                                     {{ $service->name }}
                                 </h3>
 
                                 <!-- Description -->
-                                <p class="text-gray-600 leading-relaxed">
+                                <p class="text-gray-600 leading-relaxed mb-6">
                                     {{ $service->desc }}
                                 </p>
+
+                                <!-- Button -->
+                                <a href="{{ route('service.show', $service->slug) }}"
+                                    class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-hw-blue text-white font-semibold hover:bg-hw-green transition">
+                                    View details
+                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
                             </div>
 
-                            <!-- Image -->
-                            <div class="px-6 pb-6">
+                            {{-- Image Section --}}
+                            <div class="{{ $imageRight ? 'order-2' : 'order-2 lg:order-1' }}">
                                 @if ($service->photo)
                                     <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->name }}"
-                                        class="w-full h-56 object-cover rounded-2xl" loading="lazy">
+                                        class="w-full h-72 object-cover rounded-2xl" loading="lazy">
                                 @else
                                     <img src="{{ asset('assets/img/1.webp') }}" alt="{{ $service->name }}"
-                                        class="w-full h-56 object-cover rounded-2xl" loading="lazy">
+                                        class="w-full h-72 object-cover rounded-2xl" loading="lazy">
                                 @endif
-
-
                             </div>
 
                         </div>
-                    </a>
+                    </div>
                 @endforeach
-
-
-
-
             </div>
+
 
 
             <!-- View All Button -->
             <div class="text-center mt-12">
                 <a href="{{ route('our-services') }}"
-                    class="inline-block bg-hw-green text-hw-blue px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:bg-lime-400 transition-all duration-300">
+                    class="inline-block bg-hw-green text-hw-blue px-8 py-3 rounded-lg font-semibold  hover:shadow-xl hover:bg-lime-400 transition-all duration-300">
                     Explore More Services
                 </a>
             </div>

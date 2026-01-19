@@ -4,15 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @if (isset($seoData))
-        {!! seo($seoData) !!}
-    @elseif(isset($service))
-        {!! seo()->for($service) !!}
-    @elseif(isset($staff))
-        {!! seo()->for($staff) !!}
-    @else
-        {!! seo() !!}
-    @endif
+
+    {!! seo() !!}
+
 
     <meta name="geo.region" content="UG-C">
     <meta name="geo.placename" content="Kampala">
@@ -23,15 +17,16 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.png') }}">
 
     <!-- Google Fonts -->
-   
 
-         <link
+
+    <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
         rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
 
 
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
@@ -45,7 +40,7 @@
 <body class=" text-gray-900 bg-gray-50">
 
 
-  
+
 
 
 

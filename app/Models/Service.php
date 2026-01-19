@@ -6,11 +6,9 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
-use RalphJSmit\Laravel\SEO\Support\SEOData;
-use RalphJSmit\Laravel\SEO\SchemaCollection;
+
 use App\Services\SitemapService;
-use RalphJSmit\Laravel\SEO\SchemaTypes\MedicalProcedure;
-use RalphJSmit\Laravel\SEO\SchemaTypes\MedicalClinic;
+
 
 class Service extends Model
 {
@@ -22,29 +20,76 @@ class Service extends Model
         'photo',
         'icon',
         'desc',
-        'body'
+        'body',
+        'is_featured'
     ];
+
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
+
 
     protected static function booted()
     {
         static::saving(function ($service) {
             if ($service->isDirty('name') || empty($service->slug)) {
-                $service->slug = Str::slug($service->name);
+                $service->slug = static::generateUniqueSlug($service->name, $service->id);
             }
         });
 
-        static::created(function () {
+        static::created(function ($service) {
+            $service->syncSeo();
             SitemapService::update();
         });
 
-        static::updated(function () {
+        static::updated(function ($service) {
+            $service->syncSeo();
             SitemapService::update();
         });
 
-        static::deleted(function () {
-            SitemapService::update();
-        });
+        static::deleted(fn() => SitemapService::update());
     }
+
+
+    protected function syncSeo(): void
+    {
+        $this->seo()->updateOrCreate(
+            [],
+            [
+                'title' => $this->name,
+                'description' => $this->desc,
+                'image' => $this->photo
+                    ? asset('storage/' . $this->photo)
+                    : asset('assets/img/1.webp'),
+                'author' => 'HealingWay Fertility Centre',
+                'canonical_url' => route('service.show', $this->slug),
+                 'robots' => 'index, follow',
+            ]
+        );
+    }
+
+
+
+
+
+    protected static function generateUniqueSlug(string $name, ?int $ignoreId = null): string
+    {
+        $slug = Str::slug($name);
+        $original = $slug;
+        $count = 1;
+
+        while (
+            static::where('slug', $slug)
+            ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+            ->exists()
+        ) {
+            $slug = $original . '-' . $count;
+            $count++;
+        }
+
+        return $slug;
+    }
+
 
     public function getRouteKeyName()
     {
@@ -52,32 +97,5 @@ class Service extends Model
     }
 
 
-
-
-    /**
-     * Get the SEO data for this service
-     */
-     public function getDynamicSEOData(): SEOData
-    {
-        $description = $this->desc;
-
-        
-        // Get the absolute URL for the service
-        $url = route('service.show', $this->slug);
-        
-        // Get the photo URL if available
-        $imageUrl = $this->photo ? asset('storage/' . $this->photo) : asset('assets/img/1.webp');
-
-        return new SEOData(
-            title: $this->name . ' - HealingWay Fertility Centre',
-            description: $description,
-            author: 'HealingWay Fertility Centre',
-            image: $imageUrl,
-            url: $url,
-            enableTitleSuffix: true,
-            site_name: 'HealingWay Fertility Centre',
-            locale: 'en_UG',
-            canonical_url: $url,
-        );
-    }
+    
 }

@@ -60,8 +60,8 @@
                     </div>
                 </div>
 
-                <a href="{{ route('our-team') }}"
-                    class="nav-link {{ request()->routeIs('our-team') ? 'active' : '' }}">Team</a>
+                <a href="{{ route('events.list') }}"
+                    class="nav-link {{ request()->routeIs('events.list') ? 'active' : '' }}">Events</a>
                 <a href="{{ route('contact-us') }}"
                     class="nav-link {{ request()->routeIs('contact-us') ? 'active' : '' }}">Contact</a>
 

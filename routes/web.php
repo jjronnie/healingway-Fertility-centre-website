@@ -6,6 +6,8 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,8 +17,15 @@ Route::get('/', function () {
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about-us');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact-us');
+
+
 Route::get('/services', [FrontendController::class, 'services'])->name('our-services');
 Route::get('/services/{service}', [FrontendController::class, 'showService'])->name('service.show');
+
+Route::get('/events', [FrontendController::class, 'events'])->name('events.list');
+Route::get('/events/{event}', [FrontendController::class, 'showEvent'])->name('events.show');
+
+
 Route::get('/staff', [FrontendController::class, 'team'])->name('our-team');
 Route::get('/staff/{slug}', [FrontendController::class, 'showStaff'])->name('staff.show');
 
@@ -46,6 +55,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('staff', StaffController::class);
         Route::resource('users', UserController::class);
+        Route::resource('events', EventController::class);
 
     });
 

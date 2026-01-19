@@ -62,6 +62,14 @@
                 </a>
 
 
+                 <a href="{{ route('admin.events.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.events.*') ? 'sidebar-link-active' : '' }}">
+
+                    <i data-lucide="calendar" class="w-4 h-4 "></i>
+                    <span>Events</span>
+                </a>
+
+
                 <a href="{{ route('admin.users.index') }}"
                     class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'sidebar-link-active' : '' }}">
 
