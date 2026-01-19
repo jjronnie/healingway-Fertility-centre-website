@@ -72,7 +72,7 @@
                             </div>
 
                             {{-- Image Section --}}
-                            <div class="{{ $imageRight ? 'order-2' : 'order-2 lg:order-1' }}">
+                            <div class="{{ $imageRight ? 'order-2' : 'order-2 lg:order-1'  }} hidden lg:block">
                                 @if ($service->photo)
                                     <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->name }}"
                                         class="w-full h-72 object-cover rounded-2xl" loading="lazy">
