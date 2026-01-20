@@ -4,13 +4,20 @@
     activeSlide: 0,
     slides: [{
             img: '{{ asset('assets/img/3.webp') }}',
-            title: 'Building Families,<br> <span class=\'text-hw-green\'>Creating Miracles</span>',
+            title: 'Building Families,<br> <span class=\'text-hw-green\'>Creating Hope</span>',
             desc: 'East Africa\'s premier IVF & Fertility Centre. We combine advanced reproductive technology with compassionate care.'
         },
+
+        {
+            img: '{{ asset('assets/img/3.webp') }}',
+            title: 'HealingWay<br> <span class=\'text-hw-green\'>Fertility Centre</span>',
+            desc: 'East Africa\'s premier IVF & Fertility Centre. We combine advanced reproductive technology with compassionate care.'
+        },
+
         {
             img: '{{ asset('assets/img/1.webp') }}',
             title: 'Your Journey to <br> <span class=\'text-hw-green\'>Parenthood Starts Here</span>',
-            desc: 'With industry-leading success rates and a team of expert specialists, we are dedicated to walking every step of this journey with you.'
+            desc: 'With industry-leading success rates and a team of expert specialists, we are dedicated to walking every step  with you.'
         }
     ],
     timer: null,

@@ -111,13 +111,13 @@
                 @endforeach
 
                 <a href="{{ route('book-appointment') }}"
-                    class="bg-hw-blue  text-sm font-bold text-white px-5 py-2.5 rounded-lg hover:bg-white hover:text-hw-blue transition-all duration-300 shadow-md transform hover:-translate-y-0.5">
+                    class="bg-hw-blue border border-white text-sm font-bold text-white px-5 py-2.5 rounded-lg hover:bg-white hover:text-hw-blue transition-all duration-300 shadow-md transform hover:-translate-y-0.5">
                     Book Appointment
                 </a>
             </div>
 
-            <button @click="mobileOpen = true" class="lg:hidden text-white focus:outline-none z-50">
-                <i data-lucide="menu" class="w-8 h-8"></i>
+            <button @click="mobileOpen = true" class="lg:hidden bg-blue-50 text-hw-blue  rounded-lg p-2 focus:outline-none z-50">
+                <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
     </div>
@@ -195,7 +195,7 @@
                     Book Appointment
                 </a>
                 <div class="mt-4 text-center">
-                    <p class="text-xs text-gray-400">© {{ date('Y') }} HealingWay Fertility</p>
+                    <p class="text-xs text-gray-400">Copyright &copy; {{ date('Y') }} HealingWay Fertility</p>
                 </div>
             </div>
         </div>

@@ -27,20 +27,7 @@
                           <p class=" mb-6">Leading the way in reproductive medicine with compassionate care and
                               cutting-edge
                               technology.</p>
-                          <div class="flex space-x-4">
-                              <a href="#"
-                                  class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                                  <i data-lucide="facebook" class="w-5 h-5"></i>
-                              </a>
-                              <a href="#"
-                                  class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                                  <i data-lucide="twitter" class="w-5 h-5"></i>
-                              </a>
-                              <a href="#"
-                                  class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                                  <i data-lucide="instagram" class="w-5 h-5"></i>
-                              </a>
-                          </div>
+                         
                       </div>
 
                       <!-- Quick Links -->
