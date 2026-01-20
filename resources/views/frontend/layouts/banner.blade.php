@@ -1,191 +1,213 @@
-  
-  <x-preloader/>
-  <section id="home"
-      class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-gray-900 to-blue-950 text-white">
+<x-preloader />
 
-      <!-- Background Slideshow -->
-      <div class="absolute inset-0 z-0">
-          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out slideshow-image">
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-black/50"></div>
-      </div>
+<section id="home" x-data="{
+    activeSlide: 0,
+    slides: [{
+            img: '{{ asset('assets/img/3.webp') }}',
+            title: 'Building Families,<br> <span class=\'text-hw-green\'>Creating Miracles</span>',
+            desc: 'East Africa\'s premier IVF & Fertility Centre. We combine advanced reproductive technology with compassionate care.'
+        },
+        {
+            img: '{{ asset('assets/img/1.webp') }}',
+            title: 'Your Journey to <br> <span class=\'text-hw-green\'>Parenthood Starts Here</span>',
+            desc: 'With industry-leading success rates and a team of expert specialists, we are dedicated to walking every step of this journey with you.'
+        }
+    ],
+    timer: null,
+    init() {
+        this.startTimer();
+    },
+    startTimer() {
+        this.timer = setInterval(() => {
+            this.next();
+        }, 6000);
+    },
+    resetTimer() {
+        clearInterval(this.timer);
+        this.startTimer();
+    },
+    next() {
+        this.activeSlide = (this.activeSlide === this.slides.length - 1) ? 0 : this.activeSlide + 1;
+    }
+}"
+    class="relative w-full min-h-screen flex items-center bg-slate-900 overflow-hidden">
 
-      <!-- Hero Content -->
-      <div
-          class="relative z-10 flex flex-col justify-center items-center w-full px-4 sm:px-6 lg:px-8 min-h-screen lg:min-h-[80vh]">
-          <div
-              class="flex flex-col justify-center items-center lg:items-start text-center lg:text-left max-w-6xl space-y-6 lg:space-y-8">
+    <template x-for="(slide, index) in slides" :key="index">
+        <div x-show="activeSlide === index" x-transition:enter="transition-opacity ease-in-out duration-1000"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+            x-transition:leave="transition-opacity ease-in-out duration-1000" x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0" class="absolute inset-0 z-0">
+            <img :src="slide.img" alt="Hero Background"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+                :fetchpriority="index === 0 ? 'high' : 'auto'">
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-900/20 sm:to-transparent">
+            </div>
+            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-900/90 to-transparent lg:hidden">
+            </div>
+        </div>
+    </template>
 
-              <!-- Animated Headings -->
-              <h1 id="hero-title"
-                  class="text-5xl  md:text-6xl lg:text-5xl font-extrabold opacity-0 transform -translate-y-12 transition-all duration-700 ease-out w-full lg:w-4/5 ">
-                  <small class="text-2xl sm:text-3xl text-white/80">Welcome to</small><br>
-                  <span class="text-green-400 bg-clip-text bg-gradient-to-r from-green-400 to-blue-300">HealingWay
-                      Fertility Centre</span>
-              </h1>
+    <div
+        class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center py-20">
 
-              <p id="hero-desc" class="font-bold text-1xl"></p>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
 
+            <!-- Left Content -->
+            <div class="space-y-6 sm:space-y-8 text-center lg:text-left pt-16 lg:pt-0">
 
+                <template x-for="(slide, index) in slides" :key="index">
+                    <div x-show="activeSlide === index" class="space-y-6">
+                        <h1 x-show="activeSlide === index"
+                            x-transition:enter="transition ease-out duration-700 delay-300"
+                            x-transition:enter-start="opacity-0 translate-y-8"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight drop-shadow-sm"
+                            x-html="slide.title">
+                        </h1>
 
-              <!-- Buttons -->
-              <div id="hero-buttons"
-                  class="flex flex-col sm:flex-row items-center sm:items-start gap-4 opacity-0 transform translate-y-6 transition-all duration-700 ease-out w-full sm:w-auto">
+                        <p x-show="activeSlide === index"
+                            x-transition:enter="transition ease-out duration-700 delay-500"
+                            x-transition:enter-start="opacity-0 translate-y-8"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            class="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light"
+                            x-text="slide.desc">
+                        </p>
+                    </div>
+                </template>
 
-                  <!-- Contact Us -->
-                  <a href="{{ route('contact-us') }}"
-                      class="w-full sm:w-auto bg-gradient-to-r from-hw-blue to-hw-green hover:from-green-500 hover:to-blue-600 text-white py-3 px-8 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300">
-                      Talk to a Specialist
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                      </svg>
-                  </a>
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up"
+                    style="animation-delay: 0.8s; animation-fill-mode: both;">
 
-                  <!-- Services -->
-                  <a href="{{ route('our-services') }}"
-                      class="w-full sm:w-auto border-2 border-white/80 hover:bg-white/10 text-white py-3 px-8 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 transition-all duration-300">
-                      Our Services
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M13 7l5 5-5 5M6 7l5 5-5 5"></path>
-                      </svg>
-                  </a>
+                    <a href="{{ route('contact-us') }}"
+                        class="w-full sm:w-auto px-8 py-4 bg-hw-green text-hw-blue font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(74,222,128,0.4)] flex items-center justify-center gap-2 group">
+                        Talk to a Specialist
+                        <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                    </a>
 
-              </div>
+                    <a href="{{ route('our-services') }}"
+                        class="w-full sm:w-auto px-8 py-4 border border-white/30 bg-white/5 text-white font-medium rounded-full backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:border-white">
+                        Our Services
+                    </a>
+                </div>
+            </div>
 
+            <!-- Right Side Spacer -->
+            <div class="hidden lg:block"></div>
 
-          </div>
-      </div>
+        </div>
+        <!-- Unified Glass Stats -->
+        <div class="mt-10 animate-fade-in-up" style="animation-delay: 1s; animation-fill-mode: both;">
 
-      <!-- Stats Cards -->
-      <div
-          class="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mb-8">
-          <div
-              class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center transform transition duration-500 hover:scale-105 hover:bg-white/20 shadow-md">
-              <div class="text-4xl font-bold counter text-hw-green" data-target="5" data-suffix="+">0</div>
-              <div class="text-white/80 text-sm sm:text-base mt-2">Years of Service</div>
-          </div>
-          <div
-              class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center transform transition duration-500 hover:scale-105 hover:bg-white/20 shadow-md">
-              <div class="text-4xl font-bold counter text-hw-green" data-target="80" data-suffix="+">0</div>
-              <div class="text-white/80 text-sm sm:text-base mt-2">Happy Families</div>
-          </div>
-          <div
-              class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center transform transition duration-500 hover:scale-105 hover:bg-white/20 shadow-md">
-              <div class="text-4xl font-bold counter text-hw-green" data-target="85" data-suffix="%">0</div>
-              <div class="text-white/80 text-sm sm:text-base mt-2">Success Rate</div>
-          </div>
-          <div
-              class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center transform transition duration-500 hover:scale-105 hover:bg-white/20 shadow-md">
-              <div class="text-4xl font-bold counter text-hw-green" data-target="20" data-suffix="+">0</div>
-              <div class="text-white/80 text-sm sm:text-base mt-2">Expert Doctors</div>
-          </div>
-      </div>
+            <div
+                class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.15)]">
 
-      <script>
-          // Banner slides
-          const slides = [{
-                  title: "<span class='text-lg'> Welcome to: </span><br><span class='text-hw-green'> Healing<span class='text-white'>Way</span> Fertility Centre</span>",
-                  desc: "Premier IVF & Fertility Centre in East Africa, offering reproductive technology to help you build your family.",
-                  image: "assets/img/3.webp"
-              },
-              {
-                  title: "<small >Your Journey to Parenthood <span class='text-hw-green'>Starts Here </small></span>",
-                  desc: "Helping families grow with proven success rates and compassionate care.",
-                  image: "assets/img/1.webp"
-              }
-          ];
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
 
+                    <div>
+                        <div class="text-4xl font-extrabold text-hw-green">
+                            <span class="counter" data-target="5">0</span>+
+                        </div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest mt-1">
+                            Years Experience
+                        </div>
+                    </div>
 
-          let currentSlide = 0;
-          const titleEl = document.getElementById('hero-title');
-          const descEl = document.getElementById('hero-desc');
-          const buttonsEl = document.getElementById('hero-buttons');
-          const bgEl = document.querySelector('.slideshow-image');
+                    <div>
+                        <div class="text-4xl font-extrabold text-hw-green">
+                            <span class="counter" data-target="80">0</span>+
+                        </div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest mt-1">
+                            Happy Families
+                        </div>
+                    </div>
 
-          // Show slide
-          function showSlide(index, instant = false) {
-              titleEl.innerHTML = slides[index].title;
-              descEl.textContent = slides[index].desc;
-              bgEl.style.backgroundImage = `url('${slides[index].image}')`;
+                    <div>
+                        <div class="text-4xl font-extrabold text-hw-green">
+                            <span class="counter" data-target="85">0</span>%
+                        </div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest mt-1">
+                            Success Rate
+                        </div>
+                    </div>
 
-              if (instant) {
-                  bgEl.style.opacity = 1;
-                  titleEl.style.opacity = 1;
-                  titleEl.style.transform = 'translateY(0)';
-                  descEl.style.opacity = 1;
-                  descEl.style.transform = 'translateY(0)';
-                  buttonsEl.style.opacity = 1;
-                  buttonsEl.style.transform = 'translateY(0)';
-              } else {
-                  setTimeout(() => {
-                      bgEl.style.opacity = 1;
-                      titleEl.style.opacity = 1;
-                      titleEl.style.transform = 'translateY(0)';
-                      descEl.style.opacity = 1;
-                      descEl.style.transform = 'translateY(0)';
-                      buttonsEl.style.opacity = 1;
-                      buttonsEl.style.transform = 'translateY(0)';
-                  }, 50);
-              }
-          }
+                    <div>
+                        <div class="text-4xl font-extrabold text-hw-green">
+                            <span class="counter" data-target="20">0</span>+
+                        </div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest mt-1">
+                            Specialists
+                        </div>
+                    </div>
 
-          // Slide transition
-          function changeSlide() {
-              titleEl.style.opacity = 0;
-              titleEl.style.transform = 'translateY(-12px)';
-              descEl.style.opacity = 0;
-              descEl.style.transform = 'translateY(-6px)';
-              buttonsEl.style.opacity = 0;
-              buttonsEl.style.transform = 'translateY(6px)';
-              bgEl.style.opacity = 0;
-
-              setTimeout(() => {
-                  currentSlide = (currentSlide + 1) % slides.length;
-                  showSlide(currentSlide);
-              }, 700);
-          }
-
-          // Initialize
-          showSlide(currentSlide, true);
-          setInterval(changeSlide, 10000);
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-          const counters = document.querySelectorAll('.counter');
+</section>
 
-          const animateCounter = (counter) => {
-              const target = +counter.getAttribute('data-target');
-              const prefix = counter.getAttribute('data-prefix') || '';
-              const suffix = counter.getAttribute('data-suffix') || '';
-              const speed = 100;
-              const increment = Math.ceil(target / speed);
+<div class="hidden lg:block h-32 bg-gray-50"></div>
 
-              const updateCount = () => {
-                  let current = +counter.innerText.replace(/[^0-9]/g, '');
-                  if (current < target) {
-                      current = Math.min(current + increment, target);
-                      counter.innerText = `${prefix}${current}${suffix}`;
-                      setTimeout(updateCount, 20);
-                  } else {
-                      counter.innerText = `${prefix}${target}${suffix}`;
-                  }
-              };
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Only run animation if element is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // 2 seconds animation
+                    const start = 0;
+                    const startTime = performance.now();
 
-              updateCount();
-          };
+                    const updateCount = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
 
-          const observer = new IntersectionObserver((entries, observer) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                      const counter = entry.target;
-                      animateCounter(counter);
-                      observer.unobserve(counter); // Run once per counter
-                  }
-              });
-          }, {
-              threshold: 0.6 // Adjust how much of the counter needs to be visible
-          });
+                        // Ease out quart function for smooth slowing down
+                        const ease = 1 - Math.pow(1 - progress, 4);
 
-          counters.forEach(counter => observer.observe(counter));
-      </script>
-  </section>
+                        counter.innerText = Math.floor(ease * target);
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = target; // Ensure exact final number
+                        }
+                    };
+
+                    requestAnimationFrame(updateCount);
+                    observer.unobserve(counter);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        document.querySelectorAll('.counter').forEach(c => observer.observe(c));
+    });
+</script>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 30px, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .animate-fade-in-up {
+        opacity: 0;
+        animation-name: fadeInUp;
+        animation-duration: 0.8s;
+        animation-fill-mode: both;
+    }
+</style>

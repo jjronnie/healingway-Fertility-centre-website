@@ -72,7 +72,7 @@
                             </div>
 
                             {{-- Image Section --}}
-                            <div class="{{ $imageRight ? 'order-2' : 'order-2 lg:order-1'  }} hidden lg:block">
+                            <div class="{{ $imageRight ? 'order-2' : 'order-2 lg:order-1' }} hidden lg:block">
                                 @if ($service->photo)
                                     <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->name }}"
                                         class="w-full h-72 object-cover rounded-2xl" loading="lazy">
@@ -102,7 +102,7 @@
 
     <!-- About Section - Styled Like Reference -->
     <section id="about" class="py-8 md:py-12 lg:py-0 bg-gray-100 lg:h-screen lg:max-h-screen overflow-hidden">
-        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div class="max-w-full mx-auto px-2 sm:px-6 lg:px-8 ">
             <div class="grid p-6 gap-6  h-full lg:grid-cols-[45%_55%]">
 
                 <!-- Left Card - Content (1/3) -->
@@ -117,19 +117,15 @@
                         <!-- Logo/Title Area -->
                         <div class="mb-8 md:mb-12">
                             <div class="flex items-center space-x-3 mb-6">
-                                <div
-                                    class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
+                                <div class="w-12 h-12 overflow-hidden">
+                                    <img src="{{ asset('assets/img/logo.png') }}" alt="HealingWay Logo"
+                                        class="w-full h-full object-contain">
                                 </div>
                                 <span class="text-white font-semibold text-lg">HEALINGWAY</span>
                             </div>
 
                             <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                                Your Way to<br />Parenthood
+                                Your Way to<br /> <span class="text-hw-green">Parenthood</span>
                             </h2>
 
                             <p class="text-blue-100 text-lg md:text-xl leading-relaxed">
@@ -152,7 +148,7 @@
                 <!-- Right Card - Image with Stats (2/3) -->
 
                 <div
-                    class="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 rounded-3xl overflow-hidden relative h-full">
+                    class="bg-gradient-to-br hidden lg:block from-gray-800 via-gray-700 to-gray-800 rounded-3xl overflow-hidden relative h-full">
                     <!-- Background Image -->
                     <img src="{{ asset('assets/img/1.webp') }}" alt="Fertility Care Team"
                         class="absolute inset-0 w-full h-full object-cover opacity-60">
@@ -219,7 +215,7 @@
     </section>
 
 
-    <section id="services" class="py-20 px-20">
+    <section id="img" class="py-20 px-20 hidden lg:block">
         <div class="relative overflow-hidden  h-[500px] lg:h-[600px]">
             <img src="{{ asset('assets/img/3.webp') }}" alt="Fertility Care Team"
                 class="w-full h-full rounded-3xl object-cover">
