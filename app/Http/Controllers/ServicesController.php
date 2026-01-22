@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use \App\Models\Service;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class ServicesController extends Controller
 {
@@ -31,19 +34,31 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string|max:255',
-            'desc'  => 'nullable|string|max:500',
-            'icon'  => 'nullable|string|max:255',
-            'body'  => 'nullable|string',
+            'name' => 'required|string|max:255',
+            'desc' => 'nullable|string|max:500',
+            'icon' => 'nullable|string|max:255',
+            'body' => 'nullable|string',
             'photo' => 'nullable|image|max:2048',
             'is_featured' => ['boolean'],
         ]);
 
         $data = $request->all();
 
+
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('services', 'public');
+            $file = $request->file('photo');
+
+            $safeName = Str::slug($request->name); // sanitize input
+            $timestamp = now()->format('YmdHis');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = "{$safeName}-{$timestamp}.{$extension}";
+
+            $data['photo'] = Storage::disk('public')
+                ->putFileAs('services', $file, $filename);
         }
+
+
 
         Service::create($data);
 
@@ -67,28 +82,39 @@ class ServicesController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // Edit form
 
-    // Update
     public function update(Request $request, Service $service)
     {
         $request->validate([
-            'name'  => 'required|string|max:255',
-            'desc'  => 'nullable|string|max:500',
-            'icon'  => 'nullable|string|max:255',
-            'body'  => 'nullable|string',
+            'name' => 'required|string|max:255',
+            'desc' => 'nullable|string|max:500',
+            'icon' => 'nullable|string|max:255',
+            'body' => 'nullable|string',
             'photo' => 'nullable|image|max:2048',
             'is_featured' => ['boolean'],
         ]);
 
         $data = $request->all();
 
+
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('services', 'public');
+            $file = $request->file('photo');
+
+            // Delete old photo if it exists
+            if (!empty($service->photo) && Storage::disk('public')->exists($service->photo)) {
+                Storage::disk('public')->delete($service->photo);
+            }
+
+            $safeName = Str::slug($request->name);
+            $timestamp = now()->format('YmdHis');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = "{$safeName}-{$timestamp}.{$extension}";
+
+            $data['photo'] = Storage::disk('public')
+                ->putFileAs('services', $file, $filename);
         }
+
 
         $service->update($data);
 
@@ -100,8 +126,9 @@ class ServicesController extends Controller
      */
     public function destroy(Service $service)
     {
-        if ($service->photo && file_exists(storage_path('app/public/' . $service->photo))) {
-            unlink(storage_path('app/public/' . $service->photo));
+        // Delete photo if it exists
+        if (!empty($service->photo) && Storage::disk('public')->exists($service->photo)) {
+            Storage::disk('public')->delete($service->photo);
         }
 
         $service->delete();

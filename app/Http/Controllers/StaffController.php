@@ -40,14 +40,21 @@ class StaffController extends Controller
             'display_position' => 'nullable|integer|min:0',
         ]);
 
-        $data = $request->except('photo');
+        $data = $request->all();
 
-        // Handle photo upload
         if ($request->hasFile('photo')) {
-            $imageName = time() . '_' . Str::slug($request->name) . '.' . $request->photo->extension();
-            $request->photo->move(public_path('uploads/staff'), $imageName);
-            $data['photo'] = 'uploads/staff/' . $imageName;
+            $file = $request->file('photo');
+
+            $safeName = Str::slug($request->name); // sanitize input
+            $timestamp = now()->format('YmdHis');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = "{$safeName}-{$timestamp}.{$extension}";
+
+            $data['photo'] = Storage::disk('public')
+                ->putFileAs('staff', $file, $filename);
         }
+
 
         // The setNameAttribute in the model handles slug generation
         Staff::create($data);
@@ -86,16 +93,24 @@ class StaffController extends Controller
 
         $data = $request->except('photo');
 
-        // Handle photo update
-        if ($request->hasFile('photo')) {
-            // Delete old photo if exists
-            if ($staff->photo && file_exists(public_path($staff->photo))) {
-                unlink(public_path($staff->photo));
+         if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+
+            // Delete old photo if it exists
+            if (!empty($staff->photo) && Storage::disk('public')->exists($staff->photo)) {
+                Storage::disk('public')->delete($staff->photo);
             }
-            $imageName = time() . '_' . Str::slug($request->name) . '.' . $request->photo->extension();
-            $request->photo->move(public_path('uploads/staff'), $imageName);
-            $data['photo'] = 'uploads/staff/' . $imageName;
+
+            $safeName = Str::slug($request->name);
+            $timestamp = now()->format('YmdHis');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = "{$safeName}-{$timestamp}.{$extension}";
+
+            $data['photo'] = Storage::disk('public')
+                ->putFileAs('staff', $file, $filename);
         }
+
 
         // The setNameAttribute in the model handles slug regeneration if name changes
         $staff->update($data);
@@ -107,11 +122,10 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        // Delete photo if exists
-        if ($staff->photo && file_exists(public_path($staff->photo))) {
-            unlink(public_path($staff->photo));
+        // Delete photo if it exists
+        if (!empty($staff->photo) && Storage::disk('public')->exists($staff->photo)) {
+            Storage::disk('public')->delete($staff->photo);
         }
-
         $staff->delete();
 
         return redirect()->route('admin.staff.index')->with('success', 'Staff deleted successfully!');
