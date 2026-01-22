@@ -1,12 +1,17 @@
 <x-guest-layout>
-    <x-page-header image="assets/img/3.webp" title="Create Account" description="Create a new account to access our personalised services." />
+    <x-page-header image="assets/img/3.webp" title="Create Account"
+        description="Create a new account to access our personalised services." />
     <section class="-mt-32 pb-20 relative z-10 mx-4">
         <div class="max-w-lg w-full mx-auto">
 
-            <div class="bg-gray-100 rounded-lg p-8">
+            <div class="bg-white rounded-lg  overflow-hidden  p-8">
+
+                    @include('auth.google-button')
+
+
                 <form method="POST" action="{{ route('register') }}" class="space-y-6">
                     @csrf
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Please Enter your credentials</h2>
+                    <p class="text-xl text-center font-semibold text-gray-800 mb-4">Enter your credentials</p>
 
                     <!-- Name -->
                     <div>
@@ -45,14 +50,13 @@
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
-                    <!-- Submit -->
-                    <button type="submit"
-                        class="w-full bg-hw-green hover:bg-green-400 text-hw-blue font-semibold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-hw-green focus:ring-offset-2">
-                        <i data-lucide="user-plus" class="h-5 w-5 inline mr-2"></i>
-                        Register
-                    </button>
+                    @include('auth.cloudflare')
 
-                    @include('auth.google-button')
+                    <x-loading-button text="Register"
+                        class="w-full flex items-center justify-center space-x-2 bg-hw-green hover:bg-hw-blue text-white font-semibold py-3 rounded-lg
+                        transition
+                        " />
+
 
 
                     <!-- Login link -->

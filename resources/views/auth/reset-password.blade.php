@@ -9,7 +9,8 @@
     <section class="-mt-32 pb-20 relative z-10 mx-4">
         <div class="max-w-lg w-full mx-auto">
 
-            <div class="bg-gray-100 rounded-lg p-8 space-y-6">
+                        <div class="bg-white rounded-lg  overflow-hidden  p-8">
+
 
                 <form method="POST" action="{{ route('password.store') }}" class="space-y-6">
                     @csrf

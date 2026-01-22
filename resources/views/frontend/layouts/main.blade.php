@@ -26,6 +26,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
 
+         @guest
+        <link rel="preconnect" href="https://challenges.cloudflare.com">
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @endguest
+
 
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
@@ -35,7 +40,7 @@
 
 </head>
 
-<body class=" text-gray-900 bg-gray-50">
+<body class=" text-gray-900 bg-gray-100">
 
 
 
