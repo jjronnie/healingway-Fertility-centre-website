@@ -13,8 +13,8 @@
     <meta name="location" content="Plot 6A2-7B2 Luthuli 5th Close, Bugolobi, Kampala, Uganda">
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('favicon.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.png') }}">
+    <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon.png') }}" type="image/png">
 
     <!-- Google Fonts -->
 
@@ -48,9 +48,7 @@
 
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+   
 </body>
 
 </html>
