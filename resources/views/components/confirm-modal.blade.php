@@ -56,7 +56,7 @@
                     @csrf
                     @method($method)
 
-
+                    {{ $slot ?? '' }}
                     <button type="submit" :disabled="!acknowledged" class="btn-submit  btn">
                         <span class="btn-text"> {{ $buttonText }}</span>
                         <i data-lucide="loader" class="w-4 h-4 ml-2 animate-spin btn-spinner hidden"></i>

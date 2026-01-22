@@ -81,9 +81,10 @@
                 <a href="{{ route('admin.users.index') }}" class="btn-gray">
                     Cancel
                 </a>
-                <button type="submit" class="btn">
-                    Update User
-                </button>
+              
+
+            <x-loading-button text=" Update User" class="btn" />
+
             </div>
 
         </form>

@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-gray-50" x-data="adminDashboard()">
+<body class="bg-gray-100" x-data="adminDashboard()">
 
     @yield('content')
 

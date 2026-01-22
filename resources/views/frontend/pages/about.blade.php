@@ -3,8 +3,8 @@
     <x-page-header image="assets/img/3.webp" title="About Us"
         description="Uganda's premier fertility center dedicated to helping families realize their dreams of parenthood." />
 
-    <section class="-mt-32 pb-20 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  p-8 ">
+    <section class="-mt-32  relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  ">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <img src="{{ asset('assets/img/3.webp') }}" alt="IVF IMG" class="w-full h-auto rounded-3xl shadow-lg" />
             </div>
@@ -53,7 +53,7 @@
 
 
     <!-- Core Values Section -->
-    <section id="core-values" class="py-8 md:py-16 bg-gray-50 mx-2">
+    <section id="core-values" class="pt-4 bg-gray-50 mx-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section Title -->

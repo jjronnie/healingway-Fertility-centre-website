@@ -1,12 +1,12 @@
 <x-guest-layout>
-    <section class="min-h-screen flex items-center justify-center py-24 mt-[80px] px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
-            <div class="text-center">
-              
-                <h2 class="text-3xl font-bold text-hw-blue">Login</h2>
-            </div>
 
-            <div class="bg-white rounded-lg shadow-lg p-8">
+<x-page-header image="assets/img/3.webp" title="Login"
+    description="Please enter your credentials to access your account." />
+
+    <section class="-mt-32 pb-20 relative z-10 mx-4">
+        <div class="max-w-lg w-full mx-auto">
+
+            <div class="bg-gray-100 rounded-lg p-8">
                 
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />

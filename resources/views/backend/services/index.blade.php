@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-gray-900">Services</h2>
-                <a href="{{ route('services.create') }}" class="btn-success">
+                <a href="{{ route('admin.services.create') }}" class="btn-success">
                     Add New Service
                 </a>
             </div>
@@ -47,12 +47,12 @@
 
                                 </a>
 
-                                <a href="{{ route('services.edit', $service->slug) }}" class="btn">
+                                <a href="{{ route('admin.services.edit', $service->slug) }}" class="btn">
                                     <i data-lucide="edit" class="w-4 h-4 "></i>
 
                                 </a>
 
-                                <x-confirm-modal :action="route('services.destroy', $service)"
+                                <x-confirm-modal :action="route('admin.services.destroy', $service)"
                                     warning="Are you sure you want to delete this service? This action cannot be undone."
                                     triggerIcon="trash-2" />
 

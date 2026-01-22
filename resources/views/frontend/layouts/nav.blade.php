@@ -110,7 +110,7 @@
                     @endif
                 @endforeach
 
-                <a href="{{ route('book-appointment') }}"
+                <a href="{{ route('login') }}"
                     class="bg-hw-blue border border-white text-sm font-bold text-white px-5 py-2.5 rounded-lg hover:bg-white hover:text-hw-blue transition-all duration-300 shadow-md transform hover:-translate-y-0.5">
                     Book Appointment
                 </a>
@@ -190,7 +190,7 @@
             </div>
 
             <div class="p-6 border-t border-gray-100 bg-gray-50">
-                <a href="{{ route('book-appointment') }}"
+                <a href="{{ route('login') }}"
                     class="flex items-center justify-center w-full px-6 py-3 text-base font-bold text-white bg-hw-blue rounded-full shadow hover:bg-opacity-90 transition-all">
                     Book Appointment
                 </a>
