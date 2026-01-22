@@ -3,6 +3,8 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
+    use Illuminate\Support\Facades\Cache;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +20,15 @@ class Staff extends Model
         'slug',
          'display_position',
     ];
+
+
+
+protected static function booted()
+{
+    static::saved(fn () => Cache::forget('sitemap.xml'));
+    static::deleted(fn () => Cache::forget('sitemap.xml'));
+}
+
 
 
      public function setNameAttribute($value)

@@ -10,6 +10,20 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Cache;
+use App\Services\SitemapService;
+
+Route::get('/sitemap.xml', function () {
+    return Cache::remember('sitemap.xml', 3600, function () {
+        return response(
+            SitemapService::generate(),
+            200,
+            ['Content-Type' => 'application/xml']
+        );
+    });
+});
+
+
 
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');

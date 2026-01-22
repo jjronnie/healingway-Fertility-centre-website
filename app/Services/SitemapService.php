@@ -12,22 +12,17 @@ class SitemapService
     /**
      * Generate and save the sitemap
      */
-    public static function update(): void
-    {
-        $sitemap = Sitemap::create();
+   public static function generate(): string
+{
+    $sitemap = Sitemap::create();
 
-        // Add static pages
-        self::addStaticPages($sitemap);
+    self::addStaticPages($sitemap);
+    self::addServices($sitemap);
+    self::addStaff($sitemap);
 
-        // Add dynamic service pages
-        self::addServices($sitemap);
+    return $sitemap->render();
+}
 
-        // Add dynamic Staff pages
-        self::addStaff($sitemap);
-
-        // Write to public directory
-        $sitemap->writeToFile(public_path('sitemap.xml'));
-    }
 
     /**
      * Add static pages to sitemap

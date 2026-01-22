@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
+
 
 class Event extends Model
 {
@@ -21,9 +23,9 @@ class Event extends Model
     ];
 
     protected $casts = [
-    'event_date' => 'date',       
-    'event_time' => 'datetime:H:i', 
-];
+        'event_date' => 'date',
+        'event_time' => 'datetime:H:i',
+    ];
 
 
     public function creator()
@@ -36,6 +38,9 @@ class Event extends Model
         static::creating(function ($event) {
             $event->slug = self::generateUniqueSlug($event->title);
         });
+
+        static::saved(fn() => Cache::forget('sitemap.xml'));
+        static::deleted(fn() => Cache::forget('sitemap.xml'));
 
         static::updating(function ($event) {
             if ($event->isDirty('title')) {
@@ -56,8 +61,8 @@ class Event extends Model
 
         while (
             self::where('slug', $slug)
-            ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
-            ->exists()
+                ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+                ->exists()
         ) {
             $slug = $original . '-' . $count++;
         }
@@ -66,7 +71,7 @@ class Event extends Model
     }
 
 
-      public function getRouteKeyName()
+    public function getRouteKeyName()
     {
         return 'slug';
     }

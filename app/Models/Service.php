@@ -6,8 +6,9 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
+use Illuminate\Support\Facades\Cache;
 
-use App\Services\SitemapService;
+
 
 
 class Service extends Model
@@ -29,6 +30,8 @@ class Service extends Model
     ];
 
 
+
+
     protected static function booted()
     {
         static::saving(function ($service) {
@@ -37,17 +40,8 @@ class Service extends Model
             }
         });
 
-        static::created(function ($service) {
-            $service->syncSeo();
-            SitemapService::update();
-        });
-
-        static::updated(function ($service) {
-            $service->syncSeo();
-            SitemapService::update();
-        });
-
-        static::deleted(fn() => SitemapService::update());
+        static::saved(fn() => Cache::forget('sitemap.xml'));
+        static::deleted(fn() => Cache::forget('sitemap.xml'));
     }
 
 
@@ -63,7 +57,7 @@ class Service extends Model
                     : asset('assets/img/1.webp'),
                 'author' => 'HealingWay Fertility Centre',
                 'canonical_url' => route('service.show', $this->slug),
-                 'robots' => 'index, follow',
+                'robots' => 'index, follow',
             ]
         );
     }
@@ -80,8 +74,8 @@ class Service extends Model
 
         while (
             static::where('slug', $slug)
-            ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
-            ->exists()
+                ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+                ->exists()
         ) {
             $slug = $original . '-' . $count;
             $count++;
@@ -97,5 +91,5 @@ class Service extends Model
     }
 
 
-    
+
 }
