@@ -245,7 +245,7 @@
                         <div
                             class="bg-white p-2 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div class="aspect-[4/5] overflow-hidden ">
-                                <img src="{{ asset($staff->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
+                                <img src="{{ asset('storage/' . $staff->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
                                     alt="{{ $staff->name }}"
                                     class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
                             </div>
