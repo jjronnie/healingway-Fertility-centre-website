@@ -4,7 +4,7 @@
     <div class="max-w-4xl mx-auto  p-8">
         <div class="text-center mb-6">
             @if ($staff->photo)
-                <img src="{{ asset($staff->photo) }}" alt="{{ $staff->name }}" class="w-40 h-40 object-cover rounded-full mx-auto mb-4 shadow-lg">
+                <img src="{{ asset('storage/' . $staff->photo) }}" alt="{{ $staff->name }}" class="w-40 h-40 object-cover rounded-full mx-auto mb-4 shadow-lg">
             @else
                 <img src="https://placehold.co/160x160/CCCCCC/FFFFFF?text=No+Photo" alt="No Photo" class="w-40 h-40 object-cover rounded-full mx-auto mb-4 shadow-lg">
             @endif

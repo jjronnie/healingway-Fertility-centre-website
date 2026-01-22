@@ -15,7 +15,7 @@
         @endif
 
         <x-table :headers="['#', 'Photo', 'Name', 'Position', 'Display Order']" showActions="false">
-            @forelse ($staff as $staff)
+            @forelse ($staff as $person)
                 <x-table.row>
                     <x-table.cell>
                         {{ $loop->iteration }}
@@ -23,8 +23,8 @@
 
                     {{-- Photo --}}
                     <x-table.cell>
-                        @if ($staff->photo)
-                            <img src="{{ asset($staff->photo) }}" alt="{{ $staff->name }}"
+                        @if ($person->photo)
+                            <img src="{{ asset('storage/' . $person->photo) }}" alt="{{ $person->name }}"
                                 class="w-12 h-12 object-cover rounded-full">
                         @else
                             <img src="https://placehold.co/48x48/CCCCCC/FFFFFF?text=No+Photo" alt="No Photo"
@@ -34,32 +34,32 @@
 
                     {{-- Name --}}
                     <x-table.cell>
-                        {{ $staff->name }}
+                        {{ $person->name }}
                     </x-table.cell>
 
                     {{-- Position --}}
                     <x-table.cell>
-                        {{ $staff->position }}
+                        {{ $person->position }}
                     </x-table.cell>
 
                     {{-- Display Order --}}
                     <x-table.cell>
-                        {{ $staff->display_position }}
+                        {{ $person->display_position }}
                     </x-table.cell>
 
                     {{-- Actions --}}
                     <x-table.cell class="flex items-center justify-center space-x-2">
-                        <a href="{{ route('admin.staff.show', $staff) }}" class="btn">
+                        <a href="{{ route('admin.staff.show', $person) }}" class="btn">
                             <i data-lucide="eye" class="w-4 h-4 "></i>
 
                         </a>
 
-                        <a href="{{ route('admin.staff.edit', $staff) }}" class="btn">
+                        <a href="{{ route('admin.staff.edit', $person) }}" class="btn">
                             <i data-lucide="edit" class="w-4 h-4 "></i>
                         </a>
 
 
-                        <x-confirm-modal :action="route('admin.staff.destroy', $staff)"
+                        <x-confirm-modal :action="route('admin.staff.destroy', $person)"
                             warning="Are you sure you want to delete this staff? This action cannot be undone."
                             triggerIcon="trash-2" />
 
@@ -75,8 +75,6 @@
             @endforelse
         </x-table>
 
-        {{-- <div class="mt-6">
-            {{ $staff->links() }}
-        </div> --}}
+      
     </div>
 </x-app-layout>

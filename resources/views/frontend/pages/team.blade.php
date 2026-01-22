@@ -23,7 +23,7 @@
             <!-- staff Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-                @foreach ($staff as $staff)
+                @foreach ($staff as $person)
                     <!-- staff Card 1 -->
                     <a href="{{ route('staff.show', $staff->slug) }}">
 
@@ -31,16 +31,17 @@
                         <div
                             class="bg-white p-2 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div class="aspect-[4/5] overflow-hidden ">
-                                <img src="{{ asset($staff->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
-                                    alt="{{ $staff->name }}"
+                                <img src="{{ asset('storage/' . $person->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
+                                
+                                    alt="{{ $person->name }}"
                                     class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-6">
                                 <h3 class="text-lg font-bold text-gray-900 mb-2">
-                                    {{ $staff->name }}
+                                    {{ $person->name }}
                                 </h3>
                                 <p class="text-base text-gray-600">
-                                    {{ $staff->position }}
+                                    {{ $person->position }}
                                 </p>
                             </div>
                         </div>
