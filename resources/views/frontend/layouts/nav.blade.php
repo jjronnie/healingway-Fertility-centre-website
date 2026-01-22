@@ -72,7 +72,7 @@
                 @foreach ($menuItems as $item)
                     @if ($item['type'] === 'link')
                         <a href="{{ route($item['route']) }}"
-                            class="nav-link hover:text-hw-green transition-colors {{ request()->routeIs($item['route']) ? 'text-hw-green' : '' }}">
+                            class="nav-link hover:text-hw-green transition-colors {{ request()->routeIs($item['route']) ? 'text-hw-green text-lg border-b-2 border-hw-green' : '' }}">
                             {{ $item['label'] }}
                         </a>
                     @elseif($item['type'] === 'dropdown')
@@ -147,7 +147,7 @@
                 @foreach ($menuItems as $item)
                     @if ($item['type'] === 'link')
                         <a href="{{ route($item['route']) }}"
-                            class="block px-4 py-3 text-base font-medium rounded-lg transition-colors {{ request()->routeIs($item['route']) ? 'bg-indigo-50 text-hw-blue' : 'text-gray-700 hover:bg-gray-50 hover:text-hw-blue' }}">
+                            class="block px-4 py-3 text-base font-medium rounded-lg transition-colors {{ request()->routeIs($item['route']) ? 'bg-indigo-50 text-hw-blue border-b-2 border-hw-green text-lg' : 'text-gray-700 hover:bg-gray-50 hover:text-hw-blue' }}">
                             {{ $item['label'] }}
                         </a>
                     @elseif($item['type'] === 'dropdown')
