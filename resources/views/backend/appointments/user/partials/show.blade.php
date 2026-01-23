@@ -1,7 +1,8 @@
  <x-popup-modal title="Appointment Details">
 
      <x-slot name="trigger">
-         <i data-lucide="info" class="w-5 h-5 text-gray-500 hover:text-gray-700 hover:cursor-pointer"></i>
+
+         <i class="fa-solid fa-info w-5 h-5 border rounded-full  text-gray-500 hover:text-gray-700 hover:cursor-pointer"></i>
 
      </x-slot>
 

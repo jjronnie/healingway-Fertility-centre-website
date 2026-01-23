@@ -3,6 +3,8 @@
 @import "./custom.css";
 @import "./buttons.css";
 @import "./form.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 @tailwind base;
 @tailwind components;

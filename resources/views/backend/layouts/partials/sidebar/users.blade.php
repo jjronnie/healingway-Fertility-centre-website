@@ -52,29 +52,29 @@
 
 
 {{-- MOBILE SIDEBAR --}}
-<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200  z-50">
+<nav class="lg:hidden rounded-t-2xl fixed bottom-0 left-0 right-0 bg-hw-blue border-t border-gray-200  z-50">
     <div class="flex justify-around items-center h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 
         <a href="{{ route('user.appointments.index') }}"
             class="flex flex-col items-center justify-center w-full p-2 transition-colors duration-200
-   {{ request()->routeIs('member.dashboard') ? 'text-hw-blue' : 'text-gray-500 hover:text-blue-700' }}">
+   {{ request()->routeIs('member.dashboard') ? 'text-hw-green' : 'text-white hover:text-gray-400' }}">
             <i data-lucide="list-checks" class="w-5 h-5"></i>
             <span class="text-xs font-medium mt-1">Activity</span>
         </a>
 
-        
 
-         <a href="{{ route('dashboard') }}"
+
+        <a href="{{ route('dashboard') }}"
             class="flex flex-col items-center justify-center w-full p-2 transition-colors duration-200
-   {{ request()->routeIs('dashboard') ? 'bg-white' : 'bg-white ' }}">
+   {{ request()->routeIs('dashboard') ? 'text-white' : 'text-white ' }}">
 
             <img src="{{ asset('assets/img/logo.png') }}" class="w-12 h-12" alt="Home">
         </a>
 
-         <a href="{{ route('profile.edit') }}"
+        <a href="{{ route('profile.edit') }}"
             class="flex flex-col items-center justify-center w-full p-2 transition-colors duration-200
-   {{ request()->routeIs('profile.*') ? 'text-hw-blue' : 'text-gray-500 hover:text-blue-700' }}">
+   {{ request()->routeIs('profile.*') ? 'text-hw-green' : 'text-white hover:text-gray-400' }}">
             <i data-lucide="user-round" class="w-5 h-5"></i>
             <span class="text-xs font-medium mt-1">My Account</span>
         </a>
