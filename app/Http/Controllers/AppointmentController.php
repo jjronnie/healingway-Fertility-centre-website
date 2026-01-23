@@ -18,12 +18,28 @@ class AppointmentController extends Controller
     // List appointments for the logged-in user
     public function indexUser()
     {
-        $appointments = Auth::user()
-            ->appointments()
-            ->latest()
-            ->paginate(10);
+        $userId = auth()->id();
 
-        return view('backend.appointments.user.index', compact('appointments'));
+        $upcoming = Appointment::with('user')
+    ->where('user_id', $userId)
+    ->whereIn('status', ['pending', 'confirmed'])
+    ->orderBy('appointment_date')
+    ->get();
+
+$completed = Appointment::with('user')
+    ->where('user_id', $userId)
+    ->where('status', 'completed')
+    ->orderBy('appointment_date')
+    ->get();
+
+$cancelled = Appointment::with('user')
+    ->where('user_id', $userId)
+    ->where('status', 'cancelled')
+    ->orderBy('appointment_date')
+    ->get();
+
+
+        return view('backend.appointments.user.index', compact( 'upcoming', 'completed', 'cancelled'));
     }
 
     // Show create form

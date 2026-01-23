@@ -61,7 +61,7 @@ class SocialLoginController extends Controller
                     'password' => Hash::make(Str::random(32)),
                     $providerColumn => $providerId,
                     'signup_method' => $provider,
-                    'status' => 'inactive',
+                    'status' => 'active',
                     'email_verified_at' => now(),
                 ]);
 

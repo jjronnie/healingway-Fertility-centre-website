@@ -25,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'signup_method',
         'status',
         'google_id',
+        'email_verified_at',
     ];
 
     /**
@@ -48,5 +49,12 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Relationship with appointments
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);  
+
     }
 }
