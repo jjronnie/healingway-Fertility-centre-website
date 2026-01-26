@@ -36,7 +36,7 @@ class StaffController extends Controller
             'name' => 'required|string|max:255',
             'position' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|max:4096',
             'display_position' => 'nullable|integer|min:0',
         ]);
 
@@ -87,7 +87,7 @@ class StaffController extends Controller
             'name' => 'required|string|max:255',
             'position' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|max:4096',
             'display_position' => 'nullable|integer|min:0',
         ]);
 

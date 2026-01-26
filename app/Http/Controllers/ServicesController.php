@@ -38,7 +38,7 @@ class ServicesController extends Controller
             'desc' => 'nullable|string|max:500',
             'icon' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|max:4096',
             'is_featured' => ['boolean'],
         ]);
 
@@ -62,7 +62,7 @@ class ServicesController extends Controller
 
         Service::create($data);
 
-        return redirect()->route('services.index')->with('success', 'Service created successfully.');
+        return redirect()->route('admin.services.index')->with('success', 'Service created successfully.');
     }
 
     /**
@@ -90,7 +90,7 @@ class ServicesController extends Controller
             'desc' => 'nullable|string|max:500',
             'icon' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|max:4096',
             'is_featured' => ['boolean'],
         ]);
 
@@ -119,7 +119,7 @@ class ServicesController extends Controller
         $service->update($data);
 
 
-        return redirect()->route('services.index')->with('success', 'Service updated successfully.');
+        return redirect()->route('admin.services.index')->with('success', 'Service updated successfully.');
     }
     /**
      * Remove the specified resource from storage.

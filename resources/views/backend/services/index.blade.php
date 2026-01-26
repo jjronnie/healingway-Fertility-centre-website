@@ -24,8 +24,22 @@
                         </x-table.cell>
 
                         <x-table.cell>
-                            {{ $service->name }}
+                            <div class="flex items-center gap-3">
+                                @if ($service->photo)
+                                    <img src="{{ asset('storage/' . $service->photo) }}"
+                                        alt="{{ $service->name }}" class="w-12 h-12 object-cover rounded-md">
+                                @else
+                                    <div
+                                        class="w-12 h-12 bg-gray-200 flex items-center justify-center rounded-md text-gray-500">
+                                        <i data-lucide="image" class="w-6 h-6"></i>
+                                    </div>
+                                @endif
+                                <span class="font-medium text-gray-900">
+                                    {{ $service->name }}
+                                </span>
                         </x-table.cell>
+
+                       
 
 
                         <x-table.cell>

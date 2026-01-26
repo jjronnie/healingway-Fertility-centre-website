@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8">
+    <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-xl p-8">
         <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Edit staff: <span
                 class="text-blue-600">{{ $staff->name }}</span></h1>
 
@@ -22,7 +22,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
 
                 <div class="mb-4">
-                    <label for="name" class="label">Name:</label>
+                    <label for="name" class="label">Name: </label>
                     <input type="text" name="name" id="name" value="{{ old('name', $staff->name) }}"
                         class="input"
                         placeholder="staff's Full Name" required>

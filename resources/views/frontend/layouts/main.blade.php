@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
 
-         @guest
+    @guest
         <link rel="preconnect" href="https://challenges.cloudflare.com">
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     @endguest
@@ -45,15 +45,12 @@
 
 
 
-
-
-
     @yield('content')
 
 
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
-   
+
 </body>
 
 </html>

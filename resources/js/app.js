@@ -1,5 +1,6 @@
 import './bootstrap';
 import './custom.js';
+import { mountEditor } from './ckeditor';
 
 
 import Alpine from 'alpinejs';
@@ -15,5 +16,6 @@ Alpine.start();
 import { createIcons, icons } from 'lucide'
 
 document.addEventListener('DOMContentLoaded', () => {
-    createIcons({ icons })
+    createIcons({ icons }),
+    mountEditor()
 })

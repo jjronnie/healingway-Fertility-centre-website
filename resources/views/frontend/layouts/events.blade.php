@@ -40,7 +40,7 @@
                             <!-- Date -->
                             <div class="flex items-center">
                                 <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
-                                <span>{{ $event->event_date?->format('F d, Y') ?? '-' }}</span>
+                                <span>{{ $event->formatted_date ?? '' }}</span>
                             </div>
 
                             <!-- Time -->
@@ -60,14 +60,11 @@
                         </div>
 
                         <!-- Event Title -->
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-900 transition-colors">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-900 transition-colors">
                             {{ $event->title }}
                         </h3>
 
-                        <!-- Summary -->
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            {{ $event->summary }}
-                        </p>
+                       
 
                         <!-- Button -->
                         <a href="{{ route('events.show', $event) }}"

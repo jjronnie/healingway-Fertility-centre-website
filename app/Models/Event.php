@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
+use Carbon\Carbon;
+
 
 
 class Event extends Model
@@ -18,6 +20,8 @@ class Event extends Model
         'venue',
         'event_date',
         'event_time',
+        'end_date',
+        'end_time',
         'status',
         'created_by',
     ];
@@ -75,4 +79,18 @@ class Event extends Model
     {
         return 'slug';
     }
+
+  
+
+
+public function getFormattedDateAttribute(): string
+{
+    return Carbon::parse($this->event_date)->format('jS F Y');
+}
+
+public function getFormattedTimeAttribute(): string
+{
+    return Carbon::parse($this->event_time)->format('h:i A');
+}
+
 }

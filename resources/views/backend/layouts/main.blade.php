@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
 
+        
+
     <link rel="stylesheet" href="assets/css/main.css">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

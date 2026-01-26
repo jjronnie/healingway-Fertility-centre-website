@@ -40,12 +40,18 @@
                         </x-table.cell>
 
                         <x-table.cell>
-                            <span class="text-gray-600">
-                                Date: </span>{{ $event->event_date }}<br>
-                            <span class="text-gray-600">
-                                Time:</span> {{ $event->event_time }}
-
+                            <div class="space-y-1">
+                                <div>
+                                    <span class="text-gray-600">Date:</span>
+                                    <span class="font-medium">{{ $event->formatted_date }}</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">Time:</span>
+                                    <span class="font-medium">{{ $event->formatted_time }}</span>
+                                </div>
+                            </div>
                         </x-table.cell>
+
 
                         <x-table.cell>
                             <x-status-badge :status="$event->status" />

@@ -37,12 +37,27 @@
                     @enderror
                 </div>
 
+                @php
+                    $today = now()->toDateString();
+
+                    // Ensure the value is Y-m-d for the date input
+                    $eventDateValue = old(
+                        'event_date',
+                        optional($event->event_date)->format('Y-m-d') ?? $event->event_date,
+                    );
+
+                    // Ensure the value is H:i for the time input
+                    $eventTimeValue = old('event_time', \Carbon\Carbon::parse($event->event_time)->format('H:i'));
+
+                    // min date should be today, unless the existing event is already in the past, then allow showing it
+                    $minDate = $eventDateValue && $eventDateValue < $today ? $eventDateValue : $today;
+                @endphp
+
                 <!-- Event Date -->
                 <div>
                     <label for="event_date" class="label">Event Date</label>
-                    <input type="date" name="event_date" id="event_date"
-                        value="{{ old('event_date', $event->event_date) }}"
-                        class="input @error('event_date') border-red-500 @enderror">
+                    <input type="date" name="event_date" id="event_date" min="{{ $minDate }}"
+                        value="{{ $eventDateValue }}" class="input @error('event_date') border-red-500 @enderror">
                     @error('event_date')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -51,13 +66,47 @@
                 <!-- Event Time -->
                 <div>
                     <label for="event_time" class="label">Event Time</label>
-                    <input type="time" name="event_time" id="event_time"
-                        value="{{ old('event_time', $event->event_time) }}"
+                    <input type="time" name="event_time" id="event_time" value="{{ $eventTimeValue }}"
                         class="input @error('event_time') border-red-500 @enderror">
                     @error('event_time')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
+
+
+                @php
+                    $today = now()->toDateString();
+
+                    // Ensure the value is Y-m-d for the date input
+                    $endDateValue = old('end_date', optional($event->end_date)->format('Y-m-d') ?? $event->end_date);
+
+                    // Ensure the value is H:i for the time input
+                    $eventTimeValue = old('end_time', \Carbon\Carbon::parse($event->end_time)->format('H:i'));
+
+                    // min date should be today, unless the existing event is already in the past, then allow showing it
+                $minDate = $endDateValue && $endDateValue < $today ? $endDateValue : $today; @endphp <!-- Event Date -->
+                <div>
+                    <label for="end_date" class="label">Event End Date</label>
+                    <input type="date" name="end_date" id="end_date" min="{{ $minDate }}"
+                        value="{{ $endDateValue }}" class="input @error('end_date') border-red-500 @enderror">
+                    @error('end_date')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Event Time -->
+                <div>
+                    <label for="end_time" class="label">Event End Time</label>
+                    <input type="time" name="end_time" id="end_time" value="{{ $eventTimeValue }}"
+                        class="input @error('end_time') border-red-500 @enderror">
+                    @error('end_time')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+
+
 
                 <!-- Status -->
                 <div>
@@ -78,10 +127,10 @@
 
             <!-- Summary -->
             <div class="mt-4">
-                <label for="summary" class="block text-sm font-medium text-gray-700 mb-1">
+                <label for="summary" class="block text-sm label font-medium text-gray-700 mb-1">
                     Event Summary <x-required-mark /> </label>
                 <textarea name="summary" required id="summary" rows="3"
-                    class="w-full px-4 py-2 border @error('summary') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('summary', $event->summary) }}</textarea>
+                    class="w-full px-4 input py-2 border @error('summary') border-red-500 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('summary', $event->summary) }}</textarea>
                 @error('summary')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror

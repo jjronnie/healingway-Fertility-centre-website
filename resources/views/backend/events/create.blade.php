@@ -9,7 +9,7 @@
             </ul>
         </div>
     @endif
-    <div class="bg-white rounded p-6 m-6">
+    <div class="bg-white rounded p-8 m-6">
 
         <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -41,22 +41,44 @@
 
 
 
-                <!-- Event Date -->
+                <!-- Event Start Date -->
                 <div>
-                    <label for="event_date" class="label">Event Date</label>
-                    <input type="date" name="event_date" id="event_date" value="{{ old('event_date') }}"
-                        class="input @error('event_date') border-red-500 @enderror">
+                    <label for="event_date" class="label">Event Start Date <x-required-mark /></label>
+                    <input type="date" name="event_date" id="event_date" min="{{ now()->toDateString() }}"
+                        value="{{ old('event_date') }}" class="input @error('event_date') border-red-500 @enderror">
                     @error('event_date')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <!-- Event Time -->
+                <!-- Event Start Time -->
                 <div>
-                    <label for="event_time" class="label">Event Time</label>
+                    <label for="event_time" class="label">Event Start Time <x-required-mark /></label>
                     <input type="time" name="event_time" id="event_time" value="{{ old('event_time') }}"
                         class="input @error('event_time') border-red-500 @enderror">
                     @error('event_time')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+
+
+                <!-- Event End Date -->
+                <div>
+                    <label for="end_date" class="label">Event End Date <x-required-mark /></label>
+                    <input type="date" name="end_date" id="end_date" min="{{ now()->toDateString() }}"
+                        value="{{ old('end_date') }}" class="input @error('end_date') border-red-500 @enderror">
+                    @error('end_date')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Event End Time -->
+                <div>
+                    <label for="end_time" class="label">Event End Time <x-required-mark /></label>
+                    <input type="time" name="end_time" id="end_time" value="{{ old('end_time') }}"
+                        class="input @error('end_time') border-red-500 @enderror">
+                    @error('end_time')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
@@ -87,7 +109,7 @@
                 <label for="summary" class="block text-sm font-medium text-gray-700 mb-1 mt-4">
                     Event Summary <x-required-mark /> </label>
                 <textarea name="summary" required id="summary" rows="3"
-                    class="w-full px-4 py-2 border @error('summary') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('summary') }}</textarea>
+                    class="w-full input px-4 py-2 border @error('summary') border-red-500 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">{{ old('summary') }}</textarea>
                 @error('summary')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror

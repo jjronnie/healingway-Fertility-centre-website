@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="py-6">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm rounded-lg p-6">
                 <h2 class="text-2xl font-bold mb-6">Edit Service</h2>
 
@@ -20,6 +20,9 @@
                     @csrf
                     @method('PUT')
 
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+
+
                     {{-- Name --}}
                     <div>
                         <label for="name" class="label">Name</label>
@@ -30,29 +33,27 @@
                         @enderror
                     </div>
 
-                    <div>
-                        <input type="hidden" name="is_featured" value="0">
-                        <label class="inline-flex items-center gap-2">
-                            <input type="checkbox" name="is_featured" value="1"
-                                class="rounded border-gray-300 text-hw-blue focus:ring-hw-blue"
-                                {{ old('is_featured', $service->is_featured ?? false) ? 'checked' : '' }}>
-                            <span>Featured service</span>
-                        </label>
-                    </div>
-
-
-
-
-                    {{-- Icon --}}
+                     {{-- Icon --}}
                     <div>
                         <label for="icon" class="label">Icon (optional)</label>
                         <input type="text" name="icon" id="icon" value="{{ old('icon', $service->icon) }}"
                             placeholder="e.g. fas fa-heart or lucide:activity"
                             class="w-full input px-4 py-2 border @error('icon') border-red-500 @else  @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
-                        <small class="text-gray-500">Use a Lucide or FontAwesome class</small>
+                        <small class="text-gray-600">                                
+                                Use a Lucide class name. Find icons  
+                            <a class="underline font-medium" href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer"> here</a>
+                            </small>
                         @error('icon')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
+                    </div>
+
+                   
+
+
+
+
+                   
                     </div>
 
                     {{-- Short Description --}}
@@ -76,6 +77,16 @@
                         @error('body')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
+                    </div>
+
+                     <div>
+                        <input type="hidden" name="is_featured" value="0">
+                        <label class="inline-flex items-center gap-2">
+                            <input type="checkbox" name="is_featured" value="1"
+                                class="rounded border-gray-300 text-hw-blue focus:ring-hw-blue"
+                                {{ old('is_featured', $service->is_featured ?? false) ? 'checked' : '' }}>
+                            <span>Featured service</span>
+                        </label>
                     </div>
 
                     {{-- Featured Image --}}

@@ -118,3 +118,13 @@ body {
     
     
 }
+
+.prose table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.prose th,
+.prose td {
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem;
+}
