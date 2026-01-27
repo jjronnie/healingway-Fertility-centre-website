@@ -39,6 +39,6 @@ class PatientDetailController extends Controller
 
         return redirect()
             ->route('user.patient-details.edit')
-            ->with('success', 'Patient details updated successfully.');
+            ->with('success', 'Details updated successfully.');
     }
 }

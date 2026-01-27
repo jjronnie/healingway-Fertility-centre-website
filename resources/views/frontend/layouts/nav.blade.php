@@ -107,7 +107,7 @@
 
                 @auth
 
-                    <a href="{{ route('login') }}"
+                    <a href="{{ route('dashboard') }}"
                         class="bg-hw-blue border border-white text-sm font-bold text-white px-5 py-2.5 rounded-lg hover:bg-white hover:text-hw-blue transition-all duration-300 shadow-md transform hover:-translate-y-0.5">
                         My Account
                     </a>
@@ -115,30 +115,10 @@
 
 
                 @guest
-
-                    <div class="relative inline-block group">
-                        <!-- Main button -->
-                        <button type="button"
-                            class="bg-hw-blue border border-white text-sm font-bold text-white px-5 py-2.5 rounded-lg transition-all duration-300 shadow-md transform hover:-translate-y-0.5 hover:bg-white hover:text-hw-blue focus:outline-none">
-                            Book Appointment
-                        </button>
-
-                        <!-- Dropdown -->
-                        <div
-                            class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
-
-
-                            <a href="{{ route('register') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg">
-                                Create Account
-                            </a>
-
-                            <a href="{{ route('login') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg">
-                                Sign In
-                            </a>
-                        </div>
-                    </div>
+                    <a href="{{ route('book-appointment') }}"
+                        class="bg-hw-blue border border-white text-sm font-bold text-white px-5 py-2.5 rounded-lg hover:bg-white hover:text-hw-blue transition-all duration-300 shadow-md transform hover:-translate-y-0.5">
+                        Book Appointment
+                    </a>
                 @endguest
 
             </div>
@@ -218,27 +198,10 @@
             </div>
 
             <div class="p-6 border-t border-gray-100 bg-gray-50">
-                <div class="relative group">
-                    <!-- Main button -->
-                    <button type="button"
-                        class="flex items-center justify-center w-full px-6 py-3 text-base font-bold text-white bg-hw-blue rounded-full shadow transition-all hover:bg-opacity-90 focus:outline-none">
-                        Book Appointment
-                    </button>
-
-                    <!-- Dropdown -->
-                    <div
-                        class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
-                        <a href="{{ route('login') }}"
-                            class="block px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-t-xl">
-                            Login
-                        </a>
-
-                        <a href="{{ route('register') }}"
-                            class="block px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-b-xl">
-                            Register
-                        </a>
-                    </div>
-                </div>
+                <a href="{{ route('book-appointment') }}"
+                    class="flex items-center justify-center w-full px-6 py-3 text-base font-bold text-white bg-hw-blue rounded-full shadow transition-all hover:bg-opacity-90">
+                    Book Appointment
+                </a>
 
                 <div class="mt-4 text-center">
                     <p class="text-xs text-gray-400">

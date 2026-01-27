@@ -3,8 +3,8 @@
     <x-page-header title="Events" description="Stay informed about our educational seminars, workshops, and fertility awareness events designed to support your journey." />
 
     <!-- Upcoming Events Section -->
-    <section class="-mt-32 pb-12 md:pb-20 relative z-10">
-        <div class="max-w-full mx-4 px-4 sm:px-6 lg:px-8 p-8 bg-white rounded-2xl shadow-lg">
+    <section class="-mt-32 pb-12 md:pb-20 px-3 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 p-8 bg-white rounded-3xl shadow-lg">
             
             <!-- Upcoming Events Title -->
             <div class="mb-10">
@@ -77,7 +77,7 @@
     <!-- Past Events Section -->
     @if ($pastEvents->isNotEmpty())
         <section class="pb-12 md:pb-20 bg-gray-50">
-            <div class="max-w-full mx-4 px-4 sm:px-6 lg:px-8 p-8 bg-white rounded-2xl shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-8 bg-white rounded-3xl shadow-lg">
                 
                 <!-- Past Events Title -->
                 <div class="mb-10">

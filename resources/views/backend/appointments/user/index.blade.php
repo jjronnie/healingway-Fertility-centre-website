@@ -17,7 +17,7 @@
     </div>
 
 
-    <div x-data="{ tab: 'upcoming' }" class="mb-6  p-4 ">
+    <div x-data="{ tab: 'upcoming' }" class="mb-12  p-4 ">
     <nav class="-mb-px flex space-x-6" aria-label="Tabs">
         <button
             @click="tab = 'upcoming'"

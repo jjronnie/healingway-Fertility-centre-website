@@ -67,6 +67,7 @@ class SocialLoginController extends Controller
 
                 // ✅ Assign Spatie role ONCE
                 $user->assignRole('user');
+                
 
                
             }

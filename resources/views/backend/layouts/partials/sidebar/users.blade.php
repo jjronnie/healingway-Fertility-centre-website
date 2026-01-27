@@ -49,6 +49,24 @@
                 <span>Appointments</span>
             </a>
 
+            <a href="{{ route('user.patient-details.edit') }}"
+                class="sidebar-link {{ request()->routeIs('user.patient-details.edit') ? 'sidebar-link-active' : '' }}">
+                <i data-lucide="user-circle" class="w-4 h-4 "></i>
+                <span>Personal Details</span>
+            </a>
+
+            <a href="{{ route('profile.edit') }}"
+                class="sidebar-link {{ request()->routeIs('profile.*') ? 'sidebar-link-active' : '' }}">
+                <i data-lucide="settings" class="w-4 h-4 "></i>
+                <span>My Account</span>
+            </a>
+
+            <a href="{{ route('home') }}"
+                class="sidebar-link {{ request()->routeIs('home') ? 'sidebar-link-active' : '' }}">
+                <i data-lucide="home" class="w-4 h-4 "></i>
+                <span>Home</span>
+            </a>
+
         </nav>
 
 

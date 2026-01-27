@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Service;
 use App\Models\Staff;
+use App\Models\User;
+use App\Mail\AppointmentCreatedAdminMail;
+use App\Mail\AppointmentStatusUpdatedMail;
 use App\Http\Requests\StoreAppointmentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
@@ -58,7 +62,14 @@ class AppointmentController extends Controller
         $data = $request->validated();
         $data['user_id'] = Auth::id();
 
-        Appointment::create($data);
+        $appointment = Appointment::create($data);
+
+        $adminUsers = User::role('admin')->get();
+        foreach ($adminUsers as $adminUser) {
+            if (!empty($adminUser->email)) {
+                Mail::to($adminUser->email)->queue(new AppointmentCreatedAdminMail($appointment));
+            }
+        }
 
         return redirect()->route('user.appointments.index')->with('success', 'Appointment booked successfully.');
     }
@@ -163,6 +174,11 @@ class AppointmentController extends Controller
                     'status' => 'pending',
                 ]);
                 break;
+        }
+
+        $appointment->loadMissing('user');
+        if ($appointment->user && !empty($appointment->user->email)) {
+            Mail::to($appointment->user->email)->queue(new AppointmentStatusUpdatedMail($appointment));
         }
 
         return redirect()->route('admin.appointments.index')->with('success', 'Appointment status updated.');

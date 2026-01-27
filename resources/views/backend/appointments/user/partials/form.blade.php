@@ -19,7 +19,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div>
         <label for="service_id" class="block text-sm label font-medium text-gray-700">
-            Service
+            Service Needed
             <x-required-mark />
         </label>
         <select name="service_choice" id="service_id" x-model="serviceChoice" required
@@ -40,7 +40,7 @@
 
     <div x-cloak x-show="serviceChoice === 'other'" x-transition>
         <label for="custom_service" class="block text-sm label font-medium text-gray-700">
-            Enter Other Service
+            Enter Other Service/reason
             <x-required-mark />
         </label>
         <input type="text" name="custom_service" id="custom_service" x-model="customService"
@@ -56,7 +56,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div>
         <label for="staff_id" class="block text-sm label font-medium text-gray-700">
-            Staff Member (optional)
+           Person to see if any
         </label>
         <select name="staff_choice" id="staff_id" x-model="staffChoice"
             class="w-full input px-4 py-2 border @error('staff_id') border-red-500 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
@@ -81,7 +81,7 @@
         </label>
         <input type="text" name="custom_person_to_see" id="custom_person_to_see"
             x-model="customStaff" :required="staffChoice === 'other'"
-            placeholder="Type a staff member name"
+            placeholder="Enter other name"
             class="w-full input px-4 py-2 border @error('custom_person_to_see') border-red-500 @enderror rounded-lg focus:ring-2 focus:ring-hw-green focus:border-hw-green">
         @error('custom_person_to_see')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
