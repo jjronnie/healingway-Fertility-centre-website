@@ -1,4 +1,8 @@
 <x-guest-layout>
+
+  <x-page-header title="404" description="Page Not Found"/>
+
+
   <div class="min-h-screen flex flex-col justify-center items-center  px-4 sm:px-6 lg:px-8 font-sans">
     <div class="max-w-md w-full text-center  p-8 md:p-10 transform hover:scale-105 transition-transform duration-300 ease-in-out">
       <div class="mb-4">
