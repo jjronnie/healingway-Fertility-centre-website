@@ -56,14 +56,25 @@
                     <span>Appointments</span>
                 </a>
 
+                <a href="{{ route('admin.users.admins') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.users.admins') ? 'sidebar-link-active' : '' }}">
 
+                    <i data-lucide="shield" class="w-4 h-4 "></i>
+                    <span>Admins</span>
+                </a>
 
-
-                <a href="{{ route('admin.users.index') }}"
-                    class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'sidebar-link-active' : '' }}">
+                <a href="{{ route('admin.users.patients') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.users.patients') ? 'sidebar-link-active' : '' }}">
 
                     <i data-lucide="users" class="w-4 h-4 "></i>
-                    <span>Users</span>
+                    <span>Patients</span>
+                </a>
+
+                <a href="{{ route('admin.reports.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.reports.*') ? 'sidebar-link-active' : '' }}">
+
+                    <i data-lucide="bar-chart-2" class="w-4 h-4 "></i>
+                    <span>Reports</span>
                 </a>
 
                 <div class="flex items-center pt-4">

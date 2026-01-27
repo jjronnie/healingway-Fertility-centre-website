@@ -20,24 +20,25 @@ class AppointmentController extends Controller
     {
         $userId = auth()->id();
 
-        $upcoming = Appointment::with('user')
-    ->where('user_id', $userId)
-    ->whereIn('status', ['pending', 'confirmed'])
-    ->orderBy('appointment_date')
-    ->get();
+        $relations = ['user', 'service', 'staff', 'confirmedBy', 'completedBy', 'cancelledBy'];
 
-$completed = Appointment::with('user')
-    ->where('user_id', $userId)
-    ->where('status', 'completed')
-    ->orderBy('appointment_date')
-    ->get();
+        $upcoming = Appointment::with($relations)
+            ->where('user_id', $userId)
+            ->whereIn('status', ['pending', 'confirmed'])
+            ->orderBy('appointment_date')
+            ->get();
 
-$cancelled = Appointment::with('user')
-    ->where('user_id', $userId)
-    ->where('status', 'cancelled')
-    ->orderBy('appointment_date')
-    ->get();
+        $completed = Appointment::with($relations)
+            ->where('user_id', $userId)
+            ->where('status', 'completed')
+            ->orderBy('appointment_date')
+            ->get();
 
+        $cancelled = Appointment::with($relations)
+            ->where('user_id', $userId)
+            ->where('status', 'cancelled')
+            ->orderBy('appointment_date')
+            ->get();
 
         return view('backend.appointments.user.index', compact( 'upcoming', 'completed', 'cancelled'));
     }
@@ -65,6 +66,9 @@ $cancelled = Appointment::with('user')
     // Show edit form
     public function edit(Appointment $appointment)
     {
+        if ($appointment->user_id !== Auth::id()) {
+            abort(403);
+        }
 
         if ($appointment->status !== 'pending') {
             return redirect()->route('user.appointments.index')->with('error', 'Cannot edit confirmed or completed appointments.');
@@ -73,12 +77,15 @@ $cancelled = Appointment::with('user')
         $services = Service::all();
         $staff = Staff::all();
 
-        return view('appointments.edit', compact('appointment', 'services', 'staff'));
+        return view('backend.appointments.user.edit', compact('appointment', 'services', 'staff'));
     }
 
     // Update appointment
     public function update(StoreAppointmentRequest $request, Appointment $appointment)
     {
+        if ($appointment->user_id !== Auth::id()) {
+            abort(403);
+        }
 
         if ($appointment->status !== 'pending') {
             return redirect()->route('user.appointments.index')->with('error', 'Cannot edit confirmed or completed appointments.');

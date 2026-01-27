@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
 
         ]);
         $user->assignRole('user');
+        $user->patientDetail()->create([]);
 
         event(new Registered($user));
 

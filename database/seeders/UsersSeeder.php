@@ -28,19 +28,19 @@ class UsersSeeder extends Seeder
         $admin->assignRole('admin');
 
         // Regular users
-        $users = [];
-        for ($i = 1; $i <= 4; $i++) {
-            $user = User::firstOrCreate(
-                ['email' => "user{$i}@test.com"],
-                [
-                    'name' => "Test User {$i}",
-                    'password' => Hash::make('password'),
-                    'status' => 'active',
-                    'email_verified_at' => now(),
-                ]
-            );
-            $user->assignRole('user');
-            $users[] = $user;
-        }
+        // $users = [];
+        // for ($i = 1; $i <= 4; $i++) {
+        //     $user = User::firstOrCreate(
+        //         ['email' => "user{$i}@test.com"],
+        //         [
+        //             'name' => "Test User {$i}",
+        //             'password' => Hash::make('password'),
+        //             'status' => 'active',
+        //             'email_verified_at' => now(),
+        //         ]
+        //     );
+        //     $user->assignRole('user');
+        //     $users[] = $user;
+        // }
     }
 }

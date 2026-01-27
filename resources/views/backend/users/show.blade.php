@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-5xl mx-auto py-8 px-4">
 
-        <a href="{{ route('admin.users.index') }}" class="btn-gray mb-4">
+        <a href="{{ route($user->hasRole('admin') ? 'admin.users.admins' : 'admin.users.patients') }}" class="btn-gray mb-4">
             <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i>
 
             Back</a>
@@ -52,6 +52,88 @@
                 </div>
             </div>
         </div>
+
+        @if ($user->hasRole('user'))
+            <div class="bg-white shadow rounded-lg p-6 mt-6">
+                <h3 class="text-lg font-semibold mb-4">Patient Details</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-sm text-gray-500">Phone</p>
+                        <p class="font-medium">{{ $user->patientDetail?->phone ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Gender</p>
+                        <p class="font-medium capitalize">{{ $user->patientDetail?->gender ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Date of Birth</p>
+                        <p class="font-medium">
+                            {{ $user->patientDetail?->date_of_birth?->format('d M Y') ?? '—' }}
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Marital Status</p>
+                        <p class="font-medium">{{ $user->patientDetail?->marital_status ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Occupation</p>
+                        <p class="font-medium">{{ $user->patientDetail?->occupation ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Blood Group</p>
+                        <p class="font-medium">{{ $user->patientDetail?->blood_group ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Address</p>
+                        <p class="font-medium">{{ $user->patientDetail?->address ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">City</p>
+                        <p class="font-medium">{{ $user->patientDetail?->city ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Country</p>
+                        <p class="font-medium">{{ $user->patientDetail?->country ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Emergency Contact Name</p>
+                        <p class="font-medium">{{ $user->patientDetail?->emergency_contact_name ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Emergency Contact Phone</p>
+                        <p class="font-medium">{{ $user->patientDetail?->emergency_contact_phone ?? '—' }}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <p class="text-sm text-gray-500">Allergies</p>
+                        <p class="font-medium">{{ $user->patientDetail?->allergies ?? '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500">Medical History</p>
+                        <p class="font-medium">{{ $user->patientDetail?->medical_history ?? '—' }}</p>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-sm text-gray-500">Notes</p>
+                    <p class="font-medium">{{ $user->patientDetail?->notes ?? '—' }}</p>
+                </div>
+            </div>
+        @endif
 
         {{-- Roles --}}
         <div class="bg-white shadow rounded-lg p-6 mt-6">

@@ -20,9 +20,9 @@ class FrontendController extends Controller
                 // Event date is in the future OR today but time not passed
                 $query->where('event_date', '>', $now->toDateString())
                     ->orWhere(function ($q) use ($now) {
-                        $q->where('event_date', $now->toDateString())
-                            ->where('event_time', '>', $now->toTimeString());
-                    });
+                    $q->where('event_date', $now->toDateString())
+                        ->where('event_time', '>', $now->toTimeString());
+                });
             })
             ->orderBy('event_date')
             ->orderBy('event_time')
@@ -52,11 +52,28 @@ class FrontendController extends Controller
         return view('frontend.pages.services', compact('services'));
     }
 
-     public function events()
+
+    public function events()
     {
-        $events = Event::where('status', 'published')->orderBy('event_date')->get();
-        return view('frontend.pages.events', compact('events'));
+        $today = Carbon::today();
+
+        // Upcoming events, today and future
+        $upcomingEvents = Event::where('status', 'published')
+            ->whereDate('event_date', '>=', $today)
+            ->orderBy('event_date', 'asc')
+            ->orderBy('event_time', 'asc')
+            ->get();
+
+        // Past events, before today
+        $pastEvents = Event::where('status', 'published')
+            ->whereDate('event_date', '<', $today)
+            ->orderBy('event_date', 'desc')
+            ->orderBy('event_time', 'desc')
+            ->get();
+
+        return view('frontend.pages.events', compact('upcomingEvents', 'pastEvents'));
     }
+
 
     public function team()
     {
@@ -86,14 +103,16 @@ class FrontendController extends Controller
 
     public function showEvent($slug)
     {
-        $event = Event::where('slug', $slug)->firstOrFail();
+        $event = Event::where('slug', $slug)
+        ->where('status', 'published')
+        ->firstOrFail();
 
         return view('frontend.pages.show-event', compact('event'));
     }
 
 
 
-    public function  showStaff($slug)
+    public function showStaff($slug)
     {
         $staff = Staff::where('slug', $slug)->firstOrFail();
         return view('frontend.pages.show-staff', compact('staff'));

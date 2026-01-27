@@ -29,7 +29,7 @@ return new class extends Migration
                $table->date('end_date')->nullable();
             $table->time('end_time')->nullable();
 
-            $table->enum('status', ['draft', 'published', 'ended'])->default('draft');
+            $table->enum('status', ['draft', 'published', ])->default('draft');
 
             $table->foreignId('created_by')
                 ->constrained('users')

@@ -22,11 +22,9 @@ class StoreAppointmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'exists:users,id'],
-            'service_id' => ['nullable', 'exists:services,id'],
-            'custom_service' => ['nullable', 'string', 'max:255'],
+            'service_id' => ['nullable', 'exists:services,id', 'required_without:custom_service'],
+            'custom_service' => ['nullable', 'string', 'max:255', 'required_without:service_id'],
             'appointment_date' => ['required', 'date', 'after_or_equal:today'], // <-- prevents past dates
-            'status' => ['nullable', Rule::in(['pending', 'confirmed', 'cancelled', 'completed'])],
             'staff_id' => ['nullable', 'exists:staff,id'],
             'custom_person_to_see' => ['nullable', 'string', 'max:255'],
             'notes' => ['nullable', 'string'],

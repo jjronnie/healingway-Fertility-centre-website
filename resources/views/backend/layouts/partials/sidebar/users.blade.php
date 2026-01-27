@@ -19,10 +19,16 @@
                 <span class="text-xs text-center">Where healing starts</span>
             </div>
         </div>
+
+
         <button class="lg:hidden p-1 rounded-md hover:bg-blue-900 transition-colors" id="closeSidebar">
 
             <i data-lucide="x" class="w-4 h-4  "></i>
         </button>
+
+
+
+
     </div>
 
     <!-- Scrollable Navigation Area -->
@@ -35,6 +41,12 @@
                 class="sidebar-link {{ request()->routeIs('dashboard') ? 'sidebar-link-active' : '' }}">
                 <i data-lucide="layout-dashboard" class="w-4 h-4 "></i>
                 <span>Dashboard</span>
+            </a>
+
+            <a href="{{ route('user.appointments.index') }}"
+                class="sidebar-link {{ request()->routeIs('user.appointments.*') ? 'sidebar-link-active' : '' }}">
+                <i data-lucide="calendar-clock" class="w-4 h-4 "></i>
+                <span>Appointments</span>
             </a>
 
         </nav>
@@ -58,7 +70,7 @@
 
         <a href="{{ route('user.appointments.index') }}"
             class="flex flex-col items-center justify-center w-full p-2 transition-colors duration-200
-   {{ request()->routeIs('member.dashboard') ? 'text-hw-green' : 'text-white hover:text-gray-400' }}">
+   {{ request()->routeIs('user.appointments.*') ? 'text-hw-green' : 'text-white hover:text-gray-400' }}">
             <i data-lucide="list-checks" class="w-5 h-5"></i>
             <span class="text-xs font-medium mt-1">Activity</span>
         </a>

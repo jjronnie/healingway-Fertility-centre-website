@@ -13,7 +13,7 @@
 
 
     <!-- About Section -->
-    <section id="about" class="bg-gray-100 py-16 lg:py-24 overflow-hidden min-h-screen flex items-center">
+    <section id="about" class="bg-gray-100 py-8 md:py-16 lg:py-24 overflow-hidden min-h-screen flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid lg:grid-cols-[45%_55%] items-center">
 
@@ -53,11 +53,11 @@
 
 
     <!-- Core Values Section -->
-    <section id="core-values" class="pt-4 bg-gray-50 mx-2">
+    <section id="core-values" class="py-6 md:py-8 bg-gray-50 mx-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section Title -->
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-hw-blue mb-12 md:mb-16">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-hw-blue mb-6 md:mb-16">
                 Our Core Values
             </h2>
 
@@ -65,7 +65,7 @@
             <div class="space-y-0">
 
                 <!-- Value 1: Compassion -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-10 border-b border-gray-300">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-4 md:py-10 border-b border-gray-300">
                     <div class="md:col-span-4">
                         <h3 class="text-3xl md:text-4xl font-bold text-hw-blue">
                             Compassion
@@ -81,7 +81,7 @@
                 </div>
 
                 <!-- Value 2: Excellence -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-10 border-b border-gray-300">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-4 md:py-10 border-b border-gray-300">
                     <div class="md:col-span-4">
                         <h3 class="text-3xl md:text-4xl font-bold text-hw-blue">
                             Excellence
@@ -96,7 +96,7 @@
                 </div>
 
                 <!-- Value 3: Transparency -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-10 border-b border-gray-300">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-4 md:py-10 border-b border-gray-300">
                     <div class="md:col-span-4">
                         <h3 class="text-3xl md:text-4xl font-bold text-hw-blue">
                             Transparency
@@ -111,7 +111,7 @@
                 </div>
 
                 <!-- Value 4: Patient Empowerment -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-10 border-b border-gray-300">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-4 md:py-10 border-b border-gray-300">
                     <div class="md:col-span-4">
                         <h3 class="text-3xl md:text-4xl font-bold text-hw-blue">
                             Patient Empowerment
@@ -127,7 +127,7 @@
                 </div>
 
                 <!-- Value 5: Inclusivity -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-10 border-b border-gray-300">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-4 md:py-10 border-b border-gray-300">
                     <div class="md:col-span-4">
                         <h3 class="text-3xl md:text-4xl font-bold text-hw-blue">
                             Inclusivity
@@ -143,7 +143,7 @@
                 </div>
 
                 <!-- Value 6: Professionalism -->
-                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-10 border-b border-gray-300">
+                <div class="grid md:grid-cols-12 gap-6 md:gap-8 py-4 md:py-10 border-b border-gray-300">
                     <div class="md:col-span-4">
                         <h3 class="text-3xl md:text-4xl font-bold text-hw-blue">
                             Professionalism
@@ -166,7 +166,7 @@
 
 
 
-    <div class="text-center mt-12">
+    <div class="text-center mt-6 md:mt-12">
         <a href="{{ route('our-services') }}"
             class="bg-hw-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors inline-flex items-center">
             Explore Our Services

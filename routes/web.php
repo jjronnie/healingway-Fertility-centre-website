@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\PatientDetailController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Cache;
@@ -53,6 +55,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
         Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
         Route::put('/appointments/{appointment}', [AppointmentController::class, 'update'])->name('appointments.update');
+        Route::get('/patient-details', [PatientDetailController::class, 'edit'])->name('patient-details.edit');
+        Route::put('/patient-details', [PatientDetailController::class, 'update'])->name('patient-details.update');
     });
 
 
@@ -68,6 +72,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/appointments', [AppointmentController::class, 'indexAdmin'])->name('appointments.index');
         Route::put('/appointments/{appointment}/status', [AppointmentController::class, 'updateStatus'])->name('appointments.updateStatus');
 
+        // Reports
+        Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+
         // Services CRUD
         Route::prefix('services')->name('services.')->group(function () {
             Route::get('/', [ServicesController::class, 'index'])->name('index');
@@ -81,6 +88,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         // Staff, Users, Events
         Route::resource('staff', StaffController::class);
+        Route::get('/users/admins', [UserController::class, 'admins'])->name('users.admins');
+        Route::get('/users/patients', [UserController::class, 'patients'])->name('users.patients');
         Route::resource('users', UserController::class);
         Route::resource('events', EventController::class);
 

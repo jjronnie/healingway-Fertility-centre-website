@@ -15,13 +15,20 @@
 
 
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
         <!-- card -->
         <x-stat-card title="Total Admins" value="{{ $adminTotal }}" icon="shield" />
         <x-stat-card title="Total Clients" value="{{ $userTotal }}" icon="users" />
         <x-stat-card title="Total Services" value="{{ $totalServices }}" icon="heart" />
-        <x-stat-card title="Total Appointments" value="25" icon="calendar" />
+        <x-stat-card title="Total Appointments" value="{{ $appointmentTotal }}" icon="calendar" />
 
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <x-stat-card title="Pending" value="{{ $pendingAppointments }}" icon="clock" />
+        <x-stat-card title="Confirmed" value="{{ $confirmedAppointments }}" icon="calendar-check-2" />
+        <x-stat-card title="Completed" value="{{ $completedAppointments }}" icon="check-circle" />
+        <x-stat-card title="Cancelled" value="{{ $cancelledAppointments }}" icon="x-circle" />
     </div>
     <div class="p-6">
     <x-page-title title="Recent Activity" />
@@ -38,24 +45,4 @@
 </x-table> --}}
 
 </div>
-    <!-- Charts Section -->
-
-    <x-page-title title="Charts and Analytics" />
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-5 mb-8 text-center">
-
-        <div class="bg-white rounded-lg  p-6">
-            <h3 class="text-lg font-semibold mb-4">User by Signup Method</h3>
-            <div class="h-64">
-                {!! $signupMethodChart->container() !!}
-            </div>
-        </div>
-    </div>
-
-
-    {!! $signupMethodChart->script() !!}
-
-
-
-
 </x-app-layout>

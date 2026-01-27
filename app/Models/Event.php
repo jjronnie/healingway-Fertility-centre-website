@@ -93,4 +93,14 @@ public function getFormattedTimeAttribute(): string
     return Carbon::parse($this->event_time)->format('h:i A');
 }
 
+public function getFormattedEndDateAttribute(): string
+{
+    return Carbon::parse($this->end_date)->format('jS F Y');
+}
+
+public function getFormattedEndTimeAttribute(): string
+{
+    return Carbon::parse($this->end_time)->format('h:i A');
+}
+
 }

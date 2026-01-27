@@ -7,10 +7,10 @@
     <section class="-mt-32 pb-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
 
-             <div class="relative overflow-hidden  h-[500px] lg:h-[600px]">
-            <img src="{{ asset('assets/img/team.jpg') }}" alt="Fertility Care Team"
-                class="w-full h-full rounded-3xl object-cover">
-        </div>
+            <div class="relative overflow-hidden  h-[500px] lg:h-[600px]">
+                <img src="{{ asset('assets/img/team.jpg') }}" alt="Fertility Care Team"
+                    class="w-full h-full rounded-3xl object-cover">
+            </div>
 
         </div>
     </section>
@@ -25,23 +25,28 @@
 
                 @foreach ($staff as $person)
                     <!-- staff Card 1 -->
-                    <a href="{{ route('staff.show', $staff->slug) }}">
+                    <a href="{{ route('staff.show', $person->slug) }}">
 
 
                         <div
                             class="bg-white p-2 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div class="aspect-[4/5] overflow-hidden ">
-                                <img src="{{ asset('storage/' . $person->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
-                                
-                                    alt="{{ $person->name }}"
-                                    class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
+
+                                @if ($person->photo)
+                                    <img src="{{ asset('storage/' . $person->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
+                                        class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
+                                @else
+                                    <img src="https://placehold.co/400x320/CCCCCC/FFFFFF?text=No+Photo" alt="No Photo"
+                                        class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
+                                @endif
+                              
                             </div>
                             <div class="p-6">
                                 <h3 class="text-lg font-bold text-gray-900 mb-2">
                                     {{ $person->name }}
                                 </h3>
                                 <p class="text-base text-gray-600">
-                                    {{ $person->position }}
+                                    {{ $person->position ?? 'Position not specified' }}
                                 </p>
                             </div>
                         </div>

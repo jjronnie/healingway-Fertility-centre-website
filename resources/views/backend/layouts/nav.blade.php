@@ -1,9 +1,27 @@
 <header class="bg-white border-b border-gray-200 px-4 py-3 flex items-center sticky top-0 z-30" x-data="{ sidebarOpen: false, quickAccessOpen: false, notificationOpen: false }"
     @resize.window="if (window.innerWidth >= 1024) sidebarOpen = true">
 
-    <button class="lg:hidden p-2 rounded-md bg-gray-100 transition-colors fixed top-4 left-4 z-50" id="menuBtn">
+
+
+@role('admin')
+    <button
+        class="lg:hidden p-2 rounded-md bg-gray-100 transition-colors fixed top-4 left-4 z-50"
+        id="menuBtn"
+        aria-label="Open menu"
+    >
         <i data-lucide="menu" class="w-5 h-5 text-primary"></i>
     </button>
+@else
+    <a
+        href="{{ route('home') }}"
+        class="lg:hidden p-2 rounded-md bg-gray-100 transition-colors fixed top-4 left-4 z-50"
+        aria-label="Go to home"
+    >
+        <i data-lucide="home" class="w-5 h-5 text-primary"></i>
+    </a>
+@endrole
+
+    
 
 
 
