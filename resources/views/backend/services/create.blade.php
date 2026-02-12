@@ -92,9 +92,9 @@
 
                     {{-- Submit --}}
                     <div>
-                        <button type="submit" class="btn">
-                            Create Service
-                        </button>
+
+                        <x-loading-button text="Create Service" class="btn" />
+
                     </div>
                 </form>
             </div>

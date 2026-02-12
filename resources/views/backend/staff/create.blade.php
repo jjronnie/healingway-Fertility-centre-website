@@ -53,7 +53,7 @@
                         <textarea name="body" id="body" rows="6" class="input"
                             placeholder="Detailed information about the staff...">{{ old('body') }}</textarea>
                     </div>
-                    
+
                     <x-image-upload name="photo" label="Photo" />
 
 

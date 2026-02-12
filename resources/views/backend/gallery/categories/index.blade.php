@@ -70,13 +70,15 @@
                                         @method('PUT')
                                         <div>
                                             <label class="label">Category Name</label>
-                                            <input type="text" name="name" class="input" value="{{ $category->name }}"
-                                                required>
+                                            <input type="text" name="name" class="input"
+                                                value="{{ $category->name }}" required>
                                         </div>
 
                                         <div class="flex items-center justify-end gap-3">
-                                            <button type="button" class="btn-gray" @click="open = false">Cancel</button>
-                                            <button type="submit" class="btn">Save Changes</button>
+                                            <button type="button" class="btn-gray"
+                                                @click="open = false">Cancel</button>
+                                            <x-loading-button text="Save" class="btn" />
+
                                         </div>
                                     </form>
                                 </x-popup-modal>

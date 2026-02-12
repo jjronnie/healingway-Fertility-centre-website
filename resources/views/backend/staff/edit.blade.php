@@ -24,14 +24,12 @@
                 <div class="mb-4">
                     <label for="name" class="label">Name: </label>
                     <input type="text" name="name" id="name" value="{{ old('name', $staff->name) }}"
-                        class="input"
-                        placeholder="staff's Full Name" required>
+                        class="input" placeholder="staff's Full Name" required>
                 </div>
                 <div class="mb-4">
                     <label for="position" class="label">Position:</label>
                     <input type="text" name="position" id="position" value="{{ old('position', $staff->position) }}"
-                        class="input"
-                        placeholder="e.g., Head Fertility, Senior Physician">
+                        class="input" placeholder="e.g., Head Fertility, Senior Physician">
                 </div>
 
 
@@ -39,42 +37,38 @@
                     <label for="display_position" class="label">Display
                         Order:</label>
                     <input type="number" name="display_position" id="display_position"
-                        value="{{ old('display_position', $staff->display_position ?? 0) }}"
-                        class="input"
+                        value="{{ old('display_position', $staff->display_position ?? 0) }}" class="input"
                         placeholder="Enter a number to order staff (e.g., 0 for first)">
                     <p class="mt-1 text-sm text-gray-500">Lower numbers will appear first.</p>
                 </div>
             </div>
 
 
-                @php
-                    $staffPreview = $staff->getFirstMediaUrl('photo', 'webp')
-                        ?: ($staff->photo ? 'storage/' . $staff->photo : null);
-                @endphp
+            @php
+                $staffPreview =
+                    $staff->getFirstMediaUrl('photo', 'webp') ?: ($staff->photo ? 'storage/' . $staff->photo : null);
+            @endphp
 
-                <x-image-upload name="photo" label="Featured Image" :preview="$staffPreview" />
+            <x-image-upload name="photo" label="Featured Image" :preview="$staffPreview" />
 
-               
+
 
 
 
             <div class="mb-4">
                 <label for="body" class="label">Body (Information):</label>
-                <textarea name="body" id="body" rows="6"
-                    class="input p-4"
+                <textarea name="body" id="body" rows="6" class="input p-4"
                     placeholder="Detailed information about the staff...">{{ old('body', $staff->body) }}</textarea>
             </div>
 
 
-            <div class="flex items-center justify-between">
-                <button type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-200">
-                    Update staff
-                </button>
-                <a href="{{ route('admin.staff.index') }}"
-                    class="inline-block align-baseline font-bold text-sm text-gray-600 hover:text-gray-800">
+            
+
+            <div class="flex justify-start gap-3 pt-4 border-t">
+                <a href="{{ route('admin.staff.index') }}" class="btn-gray">
                     Cancel
                 </a>
+                <x-loading-button text="Update" class="btn" />
             </div>
         </form>
     </div>

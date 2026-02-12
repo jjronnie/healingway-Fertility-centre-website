@@ -60,7 +60,8 @@
                                 <x-popup-modal title="Gallery Image" buttonIcon="eye">
                                     <div class="space-y-4">
                                         <div class="border bg-gray-50">
-                                            <img src="{{ $webpUrl }}" alt="{{ $image->title ?? 'Gallery image' }}"
+                                            <img src="{{ $webpUrl }}"
+                                                alt="{{ $image->title ?? 'Gallery image' }}"
                                                 class="w-full max-h-[70vh] object-contain">
                                         </div>
 
@@ -79,13 +80,14 @@
                                         </div>
 
                                         <div class="pt-4 border-t">
-                                            <a href="{{ $webpUrl }}" class="btn" title="Download Image" download>
+                                            <a href="{{ $webpUrl }}" class="btn" title="Download Image"
+                                                download>
                                                 <i data-lucide="download" class="w-4 h-4 mr-1"></i>
                                                 Download
                                             </a>
                                             <x-confirm-modal :action="route('admin.gallery.images.destroy', $image)"
-                                                warning="Are you sure you want to delete this image?" triggerText="Delete"
-                                                triggerClass="btn-danger">
+                                                warning="Are you sure you want to delete this image?"
+                                                triggerText="Delete" triggerClass="btn-danger">
                                             </x-confirm-modal>
                                         </div>
                                     </div>
@@ -98,13 +100,14 @@
                                         </button>
                                     </x-slot:trigger>
 
-                                    <form action="{{ route('admin.gallery.images.update', $image) }}"
-                                        method="POST" enctype="multipart/form-data" class="space-y-4">
+                                    <form action="{{ route('admin.gallery.images.update', $image) }}" method="POST"
+                                        enctype="multipart/form-data" class="space-y-4">
                                         @csrf
                                         @method('PUT')
                                         <div class="grid grid-cols-1 sm:grid-cols-[120px,1fr] gap-4 items-start">
                                             <div class="border bg-gray-50 w-28 h-20 flex items-center justify-center">
-                                                <img src="{{ $thumbUrl }}" alt="{{ $image->title ?? 'Gallery image' }}"
+                                                <img src="{{ $thumbUrl }}"
+                                                    alt="{{ $image->title ?? 'Gallery image' }}"
                                                     class="max-h-full max-w-full object-contain">
                                             </div>
                                             <div>
@@ -119,8 +122,8 @@
 
                                         <div>
                                             <label class="label">Title</label>
-                                            <input type="text" name="title" class="input" value="{{ $image->title }}"
-                                                required>
+                                            <input type="text" name="title" class="input"
+                                                value="{{ $image->title }}" required>
                                         </div>
 
                                         <div>
@@ -135,7 +138,8 @@
                                             @else
                                                 <div class="grid grid-cols-2 gap-2">
                                                     @foreach ($categories as $category)
-                                                        <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+                                                        <label
+                                                            class="inline-flex items-center gap-2 text-sm text-gray-700">
                                                             <input type="checkbox" name="categories[]"
                                                                 value="{{ $category->id }}"
                                                                 class="rounded border-gray-300 text-hw-blue focus:ring-hw-blue"
@@ -148,15 +152,14 @@
                                         </div>
 
                                         <div class="flex items-center justify-end gap-3">
-                                            <button type="button" class="btn-gray" @click="open = false">Cancel</button>
+                                            <button type="button" class="btn-gray"
+                                                @click="open = false">Cancel</button>
                                             <x-loading-button text="Save Changes" class="btn" />
                                         </div>
                                     </form>
                                 </x-popup-modal>
 
-                                <x-confirm-modal :action="route('admin.gallery.images.destroy', $image)"
-                                    warning="Are you sure you want to delete this image?" triggerIcon="trash-2">
-                                </x-confirm-modal>
+
                             </div>
                         </x-table.cell>
                     </x-table.row>

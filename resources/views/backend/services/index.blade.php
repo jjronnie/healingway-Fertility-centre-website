@@ -26,8 +26,11 @@
                         <x-table.cell>
                             <div class="flex items-center gap-3">
                                 @php
-                                    $serviceImage = $service->getFirstMediaUrl('photo', 'webp')
-                                        ?: ($service->photo ? asset('storage/' . $service->photo) : null);
+                                    $serviceImage =
+                                        $service->getFirstMediaUrl('photo', 'webp') ?:
+                                        ($service->photo
+                                            ? asset('storage/' . $service->photo)
+                                            : null);
                                 @endphp
                                 @if ($serviceImage)
                                     <img src="{{ $serviceImage }}" alt="{{ $service->name }}"
@@ -43,7 +46,7 @@
                                 </span>
                         </x-table.cell>
 
-                       
+
 
 
                         <x-table.cell>

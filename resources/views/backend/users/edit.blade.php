@@ -34,7 +34,7 @@
                     <label class="label">Status</label>
                     <select name="status"
                         class="input mt-1 w-full border rounded px-3 py-2 focus:outline-none focus:ring">
-                        @foreach (['active',  'suspended'] as $status)
+                        @foreach (['active', 'suspended'] as $status)
                             <option value="{{ $status }}" @selected(old('status', $user->status) === $status)>
                                 {{ ucfirst($status) }}
                             </option>
@@ -45,39 +45,40 @@
                     @enderror
                 </div>
 
-            {{-- Role --}}
-            <div>
-                <label class="label">Role</label>
+                {{-- Role --}}
+                <div>
+                    <label class="label">Role</label>
 
-                <select name="role" class="w-full border rounded px-3 py-2 input focus:outline-none focus:ring" required>
+                    <select name="role" class="w-full border rounded px-3 py-2 input focus:outline-none focus:ring"
+                        required>
 
-                    @foreach ($roles as $role)
-                        <option value="{{ $role->name }}" @selected($user->roles->first()?->name === $role->name)>
-                            {{ ucfirst($role->name) }}
-                        </option>
-                    @endforeach
-                </select>
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->name }}" @selected($user->roles->first()?->name === $role->name)>
+                                {{ ucfirst($role->name) }}
+                            </option>
+                        @endforeach
+                    </select>
 
-                @error('role')
-                    <p class="text-red-600 text-sm">{{ $message }}</p>
-                @enderror
-            </div>
-            </div>
- @if ($user->hasRole('admin'))
-
-            {{-- Permissions --}}
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Direct Permissions</label>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    @foreach ($permissions as $permission)
-                        <label class="flex items-center gap-2 text-xs">
-                            <input type="checkbox" name="permissions[]" value="{{ $permission->name }}"
-                                @checked($user->hasDirectPermission($permission->name))>
-                            {{ucfirst( $permission->name )}}
-                        </label>
-                    @endforeach
+                    @error('role')
+                        <p class="text-red-600 text-sm">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
+            @if ($user->hasRole('admin'))
+
+                {{-- Permissions --}}
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Direct Permissions</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                        @foreach ($permissions as $permission)
+                            <label class="flex items-center gap-2 text-xs">
+                                <input type="checkbox" name="permissions[]" value="{{ $permission->name }}"
+                                    @checked($user->hasDirectPermission($permission->name))>
+                                {{ ucfirst($permission->name) }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
 
             @endif
 
@@ -99,7 +100,8 @@
 
                         <div>
                             <label class="label">Gender</label>
-                            <select name="patient_gender" class="input mt-1 w-full border rounded px-3 py-2 focus:outline-none focus:ring">
+                            <select name="patient_gender"
+                                class="input mt-1 w-full border rounded px-3 py-2 focus:outline-none focus:ring">
                                 <option value="">Select</option>
                                 @foreach (['female' => 'Female', 'male' => 'Male'] as $value => $label)
                                     <option value="{{ $value }}" @selected(old('patient_gender', $user->patientDetail?->gender) === $value)>
@@ -116,8 +118,7 @@
                             <label class="label">Date of Birth</label>
                             <input type="date" name="patient_date_of_birth"
                                 value="{{ old('patient_date_of_birth') ?? ($user->patientDetail?->date_of_birth?->format('Y-m-d') ?? '') }}"
-                                max="{{ date('Y-m-d') }}"
-                                class="input">
+                                max="{{ date('Y-m-d') }}" class="input">
                             @error('patient_date_of_birth')
                                 <p class="text-red-600 text-sm">{{ $message }}</p>
                             @enderror
@@ -125,7 +126,8 @@
 
                         <div>
                             <label class="label">Marital Status</label>
-                            <select name="patient_marital_status" class="input mt-1 w-full border rounded px-3 py-2 focus:outline-none focus:ring">
+                            <select name="patient_marital_status"
+                                class="input mt-1 w-full border rounded px-3 py-2 focus:outline-none focus:ring">
                                 <option value="">Select</option>
                                 @foreach (['single' => 'Single', 'married' => 'Married', 'divorced' => 'Divorced', 'widowed' => 'Widowed'] as $value => $label)
                                     <option value="{{ $value }}" @selected(old('patient_marital_status', $user->patientDetail?->marital_status) === $value)>
@@ -141,7 +143,8 @@
                         <div>
                             <label class="label">Occupation</label>
                             <input type="text" name="patient_occupation"
-                                value="{{ old('patient_occupation', $user->patientDetail?->occupation) }}" class="input">
+                                value="{{ old('patient_occupation', $user->patientDetail?->occupation) }}"
+                                class="input">
                             @error('patient_occupation')
                                 <p class="text-red-600 text-sm">{{ $message }}</p>
                             @enderror
@@ -149,7 +152,8 @@
 
                         <div>
                             <label class="label">Blood Group</label>
-                            <select name="patient_blood_group" class="input mt-1 w-full border rounded px-3 py-2 focus:outline-none focus:ring">
+                            <select name="patient_blood_group"
+                                class="input mt-1 w-full border rounded px-3 py-2 focus:outline-none focus:ring">
                                 <option value="">Select</option>
                                 @foreach (['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'] as $group)
                                     <option value="{{ $group }}" @selected(old('patient_blood_group', $user->patientDetail?->blood_group) === $group)>
@@ -192,7 +196,8 @@
                         <div>
                             <label class="label">Emergency Contact Name</label>
                             <input type="text" name="patient_emergency_contact_name"
-                                value="{{ old('patient_emergency_contact_name', $user->patientDetail?->emergency_contact_name) }}" class="input">
+                                value="{{ old('patient_emergency_contact_name', $user->patientDetail?->emergency_contact_name) }}"
+                                class="input">
                             @error('patient_emergency_contact_name')
                                 <p class="text-red-600 text-sm">{{ $message }}</p>
                             @enderror
@@ -201,7 +206,8 @@
                         <div>
                             <label class="label">Emergency Contact Phone</label>
                             <input type="text" name="patient_emergency_contact_phone"
-                                value="{{ old('patient_emergency_contact_phone', $user->patientDetail?->emergency_contact_phone) }}" class="input">
+                                value="{{ old('patient_emergency_contact_phone', $user->patientDetail?->emergency_contact_phone) }}"
+                                class="input">
                             @error('patient_emergency_contact_phone')
                                 <p class="text-red-600 text-sm">{{ $message }}</p>
                             @enderror
@@ -238,12 +244,13 @@
 
             {{-- Actions --}}
             <div class="flex justify-end gap-3">
-                <a href="{{ route($user->hasRole('admin') ? 'admin.users.admins' : 'admin.users.patients') }}" class="btn-gray">
+                <a href="{{ route($user->hasRole('admin') ? 'admin.users.admins' : 'admin.users.patients') }}"
+                    class="btn-gray">
                     Cancel
                 </a>
-              
 
-            <x-loading-button text=" Update User" class="btn" />
+
+                <x-loading-button text=" Update User" class="btn" />
 
             </div>
 
