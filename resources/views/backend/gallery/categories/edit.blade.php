@@ -20,7 +20,8 @@
 
                 <div class="flex items-center justify-end gap-3">
                     <a href="{{ route('admin.gallery.categories.index') }}" class="btn-gray">Cancel</a>
-                    <button type="submit" class="btn">Update Category</button>
+                    <x-loading-button text="Update Category" class="btn" />
+
                 </div>
             </form>
         </div>
