@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 
 
 
@@ -38,29 +36,17 @@ class ServicesController extends Controller
             'desc' => 'nullable|string|max:500',
             'icon' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:4096',
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
             'is_featured' => ['boolean'],
         ]);
 
-        $data = $request->all();
+        $data = $request->except('photo');
 
+        $service = Service::create($data);
 
         if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            $safeName = Str::slug($request->name); // sanitize input
-            $timestamp = now()->format('YmdHis');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = "{$safeName}-{$timestamp}.{$extension}";
-
-            $data['photo'] = Storage::disk('public')
-                ->putFileAs('services', $file, $filename);
+            $service->addMediaFromRequest('photo')->toMediaCollection('photo');
         }
-
-
-
-        Service::create($data);
 
         return redirect()->route('admin.services.index')->with('success', 'Service created successfully.');
     }
@@ -90,33 +76,17 @@ class ServicesController extends Controller
             'desc' => 'nullable|string|max:500',
             'icon' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:4096',
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
             'is_featured' => ['boolean'],
         ]);
 
-        $data = $request->all();
-
-
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            // Delete old photo if it exists
-            if (!empty($service->photo) && Storage::disk('public')->exists($service->photo)) {
-                Storage::disk('public')->delete($service->photo);
-            }
-
-            $safeName = Str::slug($request->name);
-            $timestamp = now()->format('YmdHis');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = "{$safeName}-{$timestamp}.{$extension}";
-
-            $data['photo'] = Storage::disk('public')
-                ->putFileAs('services', $file, $filename);
-        }
-
+        $data = $request->except('photo');
 
         $service->update($data);
+
+        if ($request->hasFile('photo')) {
+            $service->addMediaFromRequest('photo')->toMediaCollection('photo');
+        }
 
 
         return redirect()->route('admin.services.index')->with('success', 'Service updated successfully.');
@@ -126,11 +96,6 @@ class ServicesController extends Controller
      */
     public function destroy(Service $service)
     {
-        // Delete photo if it exists
-        if (!empty($service->photo) && Storage::disk('public')->exists($service->photo)) {
-            Storage::disk('public')->delete($service->photo);
-        }
-
         $service->delete();
         return redirect()->route('services.index')->with('success', 'Service deleted successfully');
     }

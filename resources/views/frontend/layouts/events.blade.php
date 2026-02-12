@@ -23,13 +23,12 @@
 
                     <!-- Featured Image -->
                     <div class="aspect-[16/10] overflow-hidden bg-gray-200">
-                        @if ($event->featured_image)
-                            <img src="{{ asset('storage/' . $event->featured_image) }}" alt="{{ $event->title }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        @else
-                            <img src="{{ asset('assets/img/event.webp') }}" alt=" Event Image"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        @endif
+                        @php
+                            $eventImage = $event->getFirstMediaUrl('photo', 'webp')
+                                ?: ($event->featured_image ? asset('storage/' . $event->featured_image) : asset('assets/img/event.webp'));
+                        @endphp
+                        <img src="{{ $eventImage }}" alt="{{ $event->title }}"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     </div>
 
                     <!-- Content -->

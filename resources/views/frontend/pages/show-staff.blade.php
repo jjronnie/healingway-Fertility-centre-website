@@ -10,19 +10,14 @@
 
                     <!-- Left Column: Photo -->
                     <div class="md:col-span-1 flex flex-col items-center">
-                        @if ($staff->photo)
-                            <img src="{{ asset('storage/' . $staff->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
-                                class="w-full max-w-sm h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue mb-6">
-                        @else
-                            <img src="https://placehold.co/400x320/CCCCCC/FFFFFF?text=No+Photo" alt="No Photo"
-                                class="w-full max-w-sm h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue mb-6">
-                        @endif
+                        @php
+                            $staffImage = $staff->getFirstMediaUrl('photo', 'webp')
+                                ?: ($staff->photo ? asset('storage/' . $staff->photo) : 'https://placehold.co/400x320/CCCCCC/FFFFFF?text=No+Photo');
+                        @endphp
+                        <img src="{{ $staffImage }}" alt="{{ $staff->name ?? 'No Photo' }}"
+                            class="w-full max-w-sm h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue mb-6">
 
-                        <!-- CTA Button -->
-                        <a href="{{ route('user.appointments.create') }}" class="btn w-full text-center">
-                            <i data-lucide="calendar-range" class="w-4 h-4 mr-2 inline"></i>
-                            Book Appointment
-                        </a>
+                        
                     </div>
 
                     <!-- Right Column: Staff Information -->

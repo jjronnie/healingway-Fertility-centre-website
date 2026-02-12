@@ -52,7 +52,7 @@
                 </button>
 
                 <!-- Action Form -->
-                <form method="POST" action="{{ $action }}">
+                <form method="POST" action="{{ $action }}" x-on:submit="showModal = false">
                     @csrf
                     @method($method)
 

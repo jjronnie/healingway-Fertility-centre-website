@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -35,7 +34,7 @@ class EventController extends Controller
             'title' => 'required|string|max:255',
             'summary' => 'required|string|max:255',
             'body' => 'required|string',
-            'featured_image' => 'nullable|image|max:4096',
+            'featured_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
             'venue' => 'nullable|string|max:255',
             'event_date' => 'nullable|date|after_or_equal:today',
             'event_time' => 'nullable',
@@ -45,15 +44,15 @@ class EventController extends Controller
             'status' => 'required|in:draft,published',
         ]);
 
-        if ($request->hasFile('featured_image')) {
-            $data['featured_image'] = $request
-                ->file('featured_image')
-                ->store('events', 'public');
-        }
+        unset($data['featured_image']);
 
         $data['created_by'] = Auth::id();
 
-        Event::create($data);
+        $event = Event::create($data);
+
+        if ($request->hasFile('featured_image')) {
+            $event->addMediaFromRequest('featured_image')->toMediaCollection('photo');
+        }
 
         return redirect()->route('admin.events.index')->with('success', 'Event created .');
 
@@ -84,7 +83,7 @@ class EventController extends Controller
             'title' => 'required|string|max:255',
             'summary' => 'required|string|max:255',
             'body' => 'required|string',
-            'featured_image' => 'nullable|image|max:4096',
+            'featured_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
             'venue' => 'nullable|string|max:255',
             'event_date' => 'nullable|date|after_or_equal:today',
             'event_time' => 'nullable',
@@ -93,17 +92,13 @@ class EventController extends Controller
             'status' => 'required|in:draft,published',
         ]);
 
-        if ($request->hasFile('featured_image')) {
-            if ($event->featured_image) {
-                Storage::disk('public')->delete($event->featured_image);
-            }
-
-            $data['featured_image'] = $request
-                ->file('featured_image')
-                ->store('events', 'public');
-        }
+        unset($data['featured_image']);
 
         $event->update($data);
+
+        if ($request->hasFile('featured_image')) {
+            $event->addMediaFromRequest('featured_image')->toMediaCollection('photo');
+        }
 
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully.');
 
@@ -114,10 +109,6 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        if ($event->featured_image) {
-            Storage::disk('public')->delete($event->featured_image);
-        }
-
         $event->delete();
 
         return redirect()->back()->with('success', 'Event deleted');

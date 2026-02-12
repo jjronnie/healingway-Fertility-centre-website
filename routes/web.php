@@ -10,6 +10,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PatientDetailController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GalleryCategoryController;
+use App\Http\Controllers\GalleryImageController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Cache;
@@ -39,6 +42,10 @@ Route::get('/staff', [FrontendController::class, 'team'])->name('our-team');
 Route::get('/staff/{slug}', [FrontendController::class, 'showStaff'])->name('staff.show');
 Route::get('/resources', [FrontendController::class, 'resources'])->name('resources');
 Route::get('/book-appointment', [FrontendController::class, 'appointment'])->name('book-appointment');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+Route::get('/gallery/category/{slug}', [GalleryController::class, 'category'])->name('gallery.category');
+Route::get('/gallery/load', [GalleryController::class, 'loadAll'])->name('gallery.load');
+Route::get('/gallery/category/{slug}/load', [GalleryController::class, 'loadCategory'])->name('gallery.category.load');
 
 
  Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -92,6 +99,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/users/patients', [UserController::class, 'patients'])->name('users.patients');
         Route::resource('users', UserController::class);
         Route::resource('events', EventController::class);
+
+        // Gallery
+        Route::prefix('gallery')->name('gallery.')->group(function () {
+            Route::prefix('categories')->name('categories.')->group(function () {
+                Route::get('/', [GalleryCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [GalleryCategoryController::class, 'create'])->name('create');
+                Route::post('/', [GalleryCategoryController::class, 'store'])->name('store');
+                Route::get('/{category}/edit', [GalleryCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{category}', [GalleryCategoryController::class, 'update'])->name('update');
+                Route::delete('/{category}', [GalleryCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+            Route::prefix('images')->name('images.')->group(function () {
+                Route::get('/', [GalleryImageController::class, 'index'])->name('index');
+                Route::get('/create', [GalleryImageController::class, 'create'])->name('create');
+                Route::post('/', [GalleryImageController::class, 'store'])->name('store');
+                Route::put('/{image}', [GalleryImageController::class, 'update'])->name('update');
+                Route::delete('/{image}', [GalleryImageController::class, 'destroy'])->name('destroy');
+            });
+        });
 
        
     });

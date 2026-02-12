@@ -9,7 +9,7 @@
         },
 
         {
-            img: '{{ asset('assets/img/3.webp') }}',
+            img: '{{ asset('assets/img/4.webp') }}',
             title: 'HealingWay<br> <span class=\'text-hw-green\'>Fertility Centre</span>',
             desc: 'East Africa\'s premier IVF & Fertility Centre. We combine advanced reproductive technology with compassionate care.'
         },

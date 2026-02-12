@@ -6,7 +6,7 @@
     <section class="-mt-32  relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  ">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <img src="{{ asset('assets/img/3.webp') }}" alt="IVF IMG" class="w-full h-auto rounded-3xl shadow-lg" />
+                <img src="{{ asset('assets/img/4.webp') }}" alt="IVF IMG" class="w-full h-auto rounded-3xl shadow-lg" />
             </div>
         </div>
     </section>

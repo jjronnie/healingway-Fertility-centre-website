@@ -62,13 +62,12 @@
 
                     <!-- Event Image Section -->
                     <div class="md:col-span-1">
-                        @if ($event->featured_image)
-                            <img src="{{ asset('storage/' . $event->featured_image) }}" alt="{{ $event->title }}"
-                                class="w-full h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue">
-                        @else
-                            <img src="{{ asset('assets/img/1.webp') }}" alt="No Event Image"
-                                class="w-full h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue">
-                        @endif
+                        @php
+                            $eventImage = $event->getFirstMediaUrl('photo', 'webp')
+                                ?: ($event->featured_image ? asset('storage/' . $event->featured_image) : asset('assets/img/1.webp'));
+                        @endphp
+                        <img src="{{ $eventImage }}" alt="{{ $event->title }}"
+                            class="w-full h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue">
                     </div>
 
                     <!-- Event Details Section -->

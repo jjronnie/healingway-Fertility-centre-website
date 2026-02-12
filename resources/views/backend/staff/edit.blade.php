@@ -47,8 +47,12 @@
             </div>
 
 
+                @php
+                    $staffPreview = $staff->getFirstMediaUrl('photo', 'webp')
+                        ?: ($staff->photo ? 'storage/' . $staff->photo : null);
+                @endphp
 
-                <x-image-upload name="photo" label="Featured Image" :preview="$staff->photo ? 'storage/' . $staff->photo : null" />
+                <x-image-upload name="photo" label="Featured Image" :preview="$staffPreview" />
 
                
 

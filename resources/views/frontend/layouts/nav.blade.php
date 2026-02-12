@@ -9,7 +9,7 @@
             'type' => 'link',
         ],
         [
-            'label' => 'About',
+            'label' => 'About Us',
             'route' => 'about-us',
             'type' => 'link',
         ],
@@ -27,13 +27,20 @@
             'type' => 'link',
         ],
 
+         [
+            'label' => 'Team',
+            'route' => 'our-team',
+            'type' => 'link',
+        ],
+
         [
             'label' => 'More',
             'id' => 'more',
             'type' => 'dropdown',
             'children' => [
-                ['label' => 'Team', 'route' => 'our-team'], 
-                ['label' => 'Events', 'route' => 'events.list']],
+                ['label' => 'Events', 'route' => 'events.list'],
+                ['label' => 'Gallery', 'route' => 'gallery.index'],
+            ],
         ],
     ];
 @endphp
@@ -90,7 +97,7 @@
                                     @if (isset($item['main_link']))
                                         <a href="{{ $item['main_link'] }}"
                                             class="block px-4 py-2 text-sm text-gray-800 hover:bg-hw-blue hover:text-white transition-colors border-b border-gray-100 font-semibold">
-                                            All {{ $item['label'] }}
+                                            {{ $item['main_label'] ?? ('All ' . $item['label']) }}
                                         </a>
                                     @endif
                                     @foreach ($item['children'] as $child)
@@ -181,7 +188,7 @@
                                     @if (isset($item['main_link']))
                                         <a href="{{ $item['main_link'] }}"
                                             class="block px-4 py-2 text-sm font-semibold text-hw-blue hover:text-hw-green">
-                                            All {{ $item['label'] }}
+                                            {{ $item['main_label'] ?? ('All ' . $item['label']) }}
                                         </a>
                                     @endif
                                     @foreach ($item['children'] as $child)

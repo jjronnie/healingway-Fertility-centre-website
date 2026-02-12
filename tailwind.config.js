@@ -24,7 +24,8 @@ export default {
                 'hw-gradient': 'linear-gradient(to right, #032C64, #c5d62e)',
             },
             fontFamily: {
-                sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+                sans: ['"Ubuntu Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                heading: ['"Ubuntu Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             },
         },
     },

@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-
 class StaffController extends Controller
 {
     /**
@@ -36,28 +33,18 @@ class StaffController extends Controller
             'name' => 'required|string|max:255',
             'position' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:4096',
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
             'display_position' => 'nullable|integer|min:0',
         ]);
 
-        $data = $request->all();
-
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            $safeName = Str::slug($request->name); // sanitize input
-            $timestamp = now()->format('YmdHis');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = "{$safeName}-{$timestamp}.{$extension}";
-
-            $data['photo'] = Storage::disk('public')
-                ->putFileAs('staff', $file, $filename);
-        }
-
+        $data = $request->except('photo');
 
         // The setNameAttribute in the model handles slug generation
-        Staff::create($data);
+        $staff = Staff::create($data);
+
+        if ($request->hasFile('photo')) {
+            $staff->addMediaFromRequest('photo')->toMediaCollection('photo');
+        }
 
         return redirect()->route('admin.staff.index')->with('success', 'Staff added successfully!');
     }
@@ -87,33 +74,19 @@ class StaffController extends Controller
             'name' => 'required|string|max:255',
             'position' => 'nullable|string|max:255',
             'body' => 'nullable|string',
-            'photo' => 'nullable|image|max:4096',
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
             'display_position' => 'nullable|integer|min:0',
         ]);
 
         $data = $request->except('photo');
 
-         if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            // Delete old photo if it exists
-            if (!empty($staff->photo) && Storage::disk('public')->exists($staff->photo)) {
-                Storage::disk('public')->delete($staff->photo);
-            }
-
-            $safeName = Str::slug($request->name);
-            $timestamp = now()->format('YmdHis');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = "{$safeName}-{$timestamp}.{$extension}";
-
-            $data['photo'] = Storage::disk('public')
-                ->putFileAs('staff', $file, $filename);
-        }
-
 
         // The setNameAttribute in the model handles slug regeneration if name changes
         $staff->update($data);
+
+        if ($request->hasFile('photo')) {
+            $staff->addMediaFromRequest('photo')->toMediaCollection('photo');
+        }
 
         return redirect()->route('admin.staff.index')->with('success', 'staff updated successfully!');
     }
@@ -122,10 +95,6 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        // Delete photo if it exists
-        if (!empty($staff->photo) && Storage::disk('public')->exists($staff->photo)) {
-            Storage::disk('public')->delete($staff->photo);
-        }
         $staff->delete();
 
         return redirect()->route('admin.staff.index')->with('success', 'Staff deleted successfully!');

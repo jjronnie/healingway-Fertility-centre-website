@@ -25,9 +25,13 @@
 
                         <x-table.cell>
                             <div class="flex items-center gap-3">
-                                @if ($event->featured_image)
-                                    <img src="{{ asset('storage/' . $event->featured_image) }}"
-                                        alt="{{ $event->title }}" class="w-12 h-12 object-cover rounded-md">
+                                @php
+                                    $eventImage = $event->getFirstMediaUrl('photo', 'webp')
+                                        ?: ($event->featured_image ? asset('storage/' . $event->featured_image) : null);
+                                @endphp
+                                @if ($eventImage)
+                                    <img src="{{ $eventImage }}" alt="{{ $event->title }}"
+                                        class="w-12 h-12 object-cover rounded-md">
                                 @else
                                     <div
                                         class="w-12 h-12 bg-gray-200 flex items-center justify-center rounded-md text-gray-500">

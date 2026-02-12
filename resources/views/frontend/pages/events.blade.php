@@ -20,13 +20,12 @@
                             
                             <!-- Event Image -->
                             <div class="h-56 overflow-hidden">
-                                @if ($event->featured_image)
-                                    <img src="{{ asset('storage/' . $event->featured_image) }}" alt="{{ $event->title }}"
-                                        class="w-full h-full object-cover" loading="lazy">
-                                @else
-                                    <img src="{{ asset('assets/img/1.webp') }}" alt="{{ $event->title }}"
-                                        class="w-full h-full object-cover" loading="lazy">
-                                @endif
+                                @php
+                                    $eventImage = $event->getFirstMediaUrl('photo', 'webp')
+                                        ?: ($event->featured_image ? asset('storage/' . $event->featured_image) : asset('assets/img/1.webp'));
+                                @endphp
+                                <img src="{{ $eventImage }}" alt="{{ $event->title }}"
+                                    class="w-full h-full object-cover" loading="lazy">
                             </div>
 
                             <!-- Event Content -->
@@ -93,13 +92,12 @@
                                 
                                 <!-- Event Image -->
                                 <div class="h-56 overflow-hidden">
-                                    @if ($event->featured_image)
-                                        <img src="{{ asset('storage/' . $event->featured_image) }}" alt="{{ $event->title }}"
-                                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" loading="lazy">
-                                    @else
-                                        <img src="{{ asset('assets/img/1.webp') }}" alt="{{ $event->title }}"
-                                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" loading="lazy">
-                                    @endif
+                                    @php
+                                        $eventImage = $event->getFirstMediaUrl('photo', 'webp')
+                                            ?: ($event->featured_image ? asset('storage/' . $event->featured_image) : asset('assets/img/1.webp'));
+                                    @endphp
+                                    <img src="{{ $eventImage }}" alt="{{ $event->title }}"
+                                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" loading="lazy">
                                 </div>
 
                                 <!-- Event Content -->

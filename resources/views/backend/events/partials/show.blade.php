@@ -67,14 +67,17 @@
         </div>
 
 
-           <!-- Featured Image -->
-            @if ($event->featured_image)
-                <div class="py-2 border-b">
-                    <h3 class="font-semibold text-lg text-gray-700">Featured Image</h3>
-                    <img src="{{ asset('storage/' . $event->featured_image) }}" alt="Featured Image"
-                        class="w-full max-w-sm rounded">
-                </div>
-            @endif
+        <!-- Featured Image -->
+        @php
+            $eventImage = $event->getFirstMediaUrl('photo', 'webp')
+                ?: ($event->featured_image ? asset('storage/' . $event->featured_image) : null);
+        @endphp
+        @if ($eventImage)
+            <div class="py-2 border-b">
+                <h3 class="font-semibold text-lg text-gray-700">Featured Image</h3>
+                <img src="{{ $eventImage }}" alt="Featured Image" class="w-full max-w-sm rounded">
+            </div>
+        @endif
 
 
     </div>

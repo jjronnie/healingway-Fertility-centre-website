@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
 
             <div class="relative overflow-hidden  h-[500px] lg:h-[600px]">
-                <img src="{{ asset('assets/img/team.jpg') }}" alt="Fertility Care Team"
+                <img src="{{ asset('assets/img/drs.webp') }}" alt="Fertility Care Team"
                     class="w-full h-full rounded-3xl object-cover">
             </div>
 
@@ -32,13 +32,12 @@
                             class="bg-white p-2 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div class="aspect-[4/5] overflow-hidden ">
 
-                                @if ($person->photo)
-                                    <img src="{{ asset('storage/' . $person->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
-                                        class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
-                                @else
-                                    <img src="https://placehold.co/400x320/CCCCCC/FFFFFF?text=No+Photo" alt="No Photo"
-                                        class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
-                                @endif
+                                @php
+                                    $staffImage = $person->getFirstMediaUrl('photo', 'webp')
+                                        ?: ($person->photo ? asset('storage/' . $person->photo) : 'https://placehold.co/400x320/CCCCCC/FFFFFF?text=No+Photo');
+                                @endphp
+                                <img src="{{ $staffImage }}" alt="{{ $person->name ?? 'No Photo' }}"
+                                    class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
                               
                             </div>
                             <div class="p-6">

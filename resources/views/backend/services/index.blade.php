@@ -25,9 +25,13 @@
 
                         <x-table.cell>
                             <div class="flex items-center gap-3">
-                                @if ($service->photo)
-                                    <img src="{{ asset('storage/' . $service->photo) }}"
-                                        alt="{{ $service->name }}" class="w-12 h-12 object-cover rounded-md">
+                                @php
+                                    $serviceImage = $service->getFirstMediaUrl('photo', 'webp')
+                                        ?: ($service->photo ? asset('storage/' . $service->photo) : null);
+                                @endphp
+                                @if ($serviceImage)
+                                    <img src="{{ $serviceImage }}" alt="{{ $service->name }}"
+                                        class="w-12 h-12 object-cover rounded-md">
                                 @else
                                     <div
                                         class="w-12 h-12 bg-gray-200 flex items-center justify-center rounded-md text-gray-500">

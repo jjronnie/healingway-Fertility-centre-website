@@ -18,13 +18,12 @@
 
                     <!-- Service Image Section -->
                     <div class="md:col-span-1">
-                        @if ($service->photo)
-                            <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->name }}"
-                                class="w-full h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue transform hover:scale-105 transition-transform duration-300">
-                        @else
-                            <img src="{{ asset('assets/img/1.webp') }}" alt="No Service Image"
-                                class="w-full h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue">
-                        @endif
+                        @php
+                            $serviceImage = $service->getFirstMediaUrl('photo', 'webp')
+                                ?: ($service->photo ? asset('storage/' . $service->photo) : asset('assets/img/1.webp'));
+                        @endphp
+                        <img src="{{ $serviceImage }}" alt="{{ $service->name }}"
+                            class="w-full h-80 object-cover rounded-xl shadow-lg border-4 border-hw-blue transform hover:scale-105 transition-transform duration-300">
                     </div>
 
                     <!-- Service Details Section -->

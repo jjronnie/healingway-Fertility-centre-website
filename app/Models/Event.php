@@ -2,15 +2,21 @@
 
 namespace App\Models;
 
+use App\Support\HasOptimizedWebpImages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
 
-class Event extends Model
+class Event extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+    use HasOptimizedWebpImages;
     protected $fillable = [
         'title',
         'slug',
@@ -30,6 +36,16 @@ class Event extends Model
         'event_date' => 'date',
         'event_time' => 'datetime:H:i',
     ];
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('photo')->singleFile();
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->registerOptimizedWebpConversions($media);
+    }
 
 
     public function creator()

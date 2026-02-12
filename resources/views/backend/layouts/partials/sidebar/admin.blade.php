@@ -111,6 +111,20 @@
                     <span>Events</span>
                 </a>
 
+                <a href="{{ route('admin.gallery.images.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.gallery.images.*') ? 'sidebar-link-active' : '' }}">
+
+                    <i data-lucide="image" class="w-4 h-4 "></i>
+                    <span>Gallery Images</span>
+                </a>
+
+                <a href="{{ route('admin.gallery.categories.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.gallery.categories.*') ? 'sidebar-link-active' : '' }}">
+
+                    <i data-lucide="layers" class="w-4 h-4 "></i>
+                    <span>Gallery Categories</span>
+                </a>
+
 
 
 

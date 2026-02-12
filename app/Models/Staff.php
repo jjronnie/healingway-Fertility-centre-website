@@ -1,43 +1,58 @@
 <?php
 
 namespace App\Models;
+
+use App\Support\HasOptimizedWebpImages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Str;
-    use Illuminate\Support\Facades\Cache;
-
-
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Staff extends Model
+class Staff extends Model implements HasMedia
 {
+    use HasFactory;
+    use InteractsWithMedia;
+    use HasOptimizedWebpImages;
 
-     use HasFactory;
-     protected $fillable = [
+    protected $fillable = [
         'name',
         'position',
         'body',
         'photo',
         'slug',
-         'display_position',
+        'display_position',
     ];
 
 
 
-protected static function booted()
-{
-    static::saved(fn () => Cache::forget('sitemap.xml'));
-    static::deleted(fn () => Cache::forget('sitemap.xml'));
-}
+    protected static function booted()
+    {
+        static::saved(fn () => Cache::forget('sitemap.xml'));
+        static::deleted(fn () => Cache::forget('sitemap.xml'));
+    }
 
 
 
-     public function setNameAttribute($value)
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('photo')->singleFile();
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->registerOptimizedWebpConversions($media);
+    }
+
+    public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
 
-     public static function boot()
+    public static function boot()
     {
         parent::boot();
 
@@ -53,7 +68,7 @@ protected static function booted()
     }
 
 
-     protected function generateUniqueSlug($name)
+    protected function generateUniqueSlug($name)
     {
         $slug = Str::slug($name);
         $originalSlug = $slug;

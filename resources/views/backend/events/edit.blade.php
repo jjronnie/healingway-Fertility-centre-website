@@ -148,7 +148,11 @@
 
             <!-- Featured Image -->
             <div class="mt-4">
-                <x-image-upload name="featured_image" label="Featured Image" :preview="$event->featured_image ? 'storage/' . $event->featured_image : null" />
+                @php
+                    $eventPreview = $event->getFirstMediaUrl('photo', 'webp')
+                        ?: ($event->featured_image ? 'storage/' . $event->featured_image : null);
+                @endphp
+                <x-image-upload name="featured_image" label="Featured Image" :preview="$eventPreview" />
             </div>
 
             <div class="mt-4">

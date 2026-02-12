@@ -23,8 +23,12 @@
 
                     {{-- Photo --}}
                     <x-table.cell>
-                        @if ($person->photo)
-                            <img src="{{ asset('storage/' . $person->photo) }}" alt="{{ $person->name }}"
+                        @php
+                            $staffImage = $person->getFirstMediaUrl('photo', 'webp')
+                                ?: ($person->photo ? asset('storage/' . $person->photo) : null);
+                        @endphp
+                        @if ($staffImage)
+                            <img src="{{ $staffImage }}" alt="{{ $person->name }}"
                                 class="w-12 h-12 object-cover rounded-full">
                         @else
                             <img src="https://placehold.co/48x48/CCCCCC/FFFFFF?text=No+Photo" alt="No Photo"

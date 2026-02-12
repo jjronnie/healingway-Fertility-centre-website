@@ -44,13 +44,12 @@
 
                             <!-- Image -->
                             <div class="px-6 pb-6">
-                                @if ($service->photo)
-                                    <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->name }}"
-                                        class="w-full h-56 object-cover rounded-2xl" loading="lazy">
-                                @else
-                                    <img src="{{ asset('assets/img/1.webp') }}" alt="{{ $service->name }}"
-                                        class="w-full h-56 object-cover rounded-2xl" loading="lazy">
-                                @endif
+                                @php
+                                    $serviceImage = $service->getFirstMediaUrl('photo', 'webp')
+                                        ?: ($service->photo ? asset('storage/' . $service->photo) : asset('assets/img/1.webp'));
+                                @endphp
+                                <img src="{{ $serviceImage }}" alt="{{ $service->name }}"
+                                    class="w-full h-56 object-cover rounded-2xl" loading="lazy">
 
 
                             </div>

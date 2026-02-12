@@ -17,10 +17,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon.png') }}" type="image/png">
 
     <!-- Google Fonts -->
-
-
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"

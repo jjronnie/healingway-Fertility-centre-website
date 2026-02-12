@@ -90,7 +90,11 @@
                     </div>
 
                     {{-- Featured Image --}}
-                    <x-image-upload name="photo" label="Featured Image" :preview="$service->photo ? 'storage/' . $service->photo : null" />
+                    @php
+                        $servicePreview = $service->getFirstMediaUrl('photo', 'webp')
+                            ?: ($service->photo ? 'storage/' . $service->photo : null);
+                    @endphp
+                    <x-image-upload name="photo" label="Featured Image" :preview="$servicePreview" />
 
 
                     {{-- Submit --}}

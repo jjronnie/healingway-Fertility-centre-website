@@ -2,18 +2,25 @@
 
 namespace App\Models;
 
+use App\Support\HasOptimizedWebpImages;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use Illuminate\Support\Facades\Cache;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
 
 
-class Service extends Model
+class Service extends Model implements HasMedia
 {
-    use HasFactory, HasSEO;
+    use HasFactory;
+    use HasSEO;
+    use InteractsWithMedia;
+    use HasOptimizedWebpImages;
 
     protected $fillable = [
         'name',
@@ -44,17 +51,28 @@ class Service extends Model
         static::deleted(fn() => Cache::forget('sitemap.xml'));
     }
 
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('photo')->singleFile();
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->registerOptimizedWebpConversions($media);
+    }
+
 
     protected function syncSeo(): void
     {
+        $imageUrl = $this->getFirstMediaUrl('photo', 'webp')
+            ?: ($this->photo ? asset('storage/' . $this->photo) : asset('assets/img/1.webp'));
+
         $this->seo()->updateOrCreate(
             [],
             [
                 'title' => $this->name,
                 'description' => $this->desc,
-                'image' => $this->photo
-                    ? asset('storage/' . $this->photo)
-                    : asset('assets/img/1.webp'),
+                'image' => $imageUrl,
                 'author' => 'HealingWay Fertility Centre',
                 'canonical_url' => route('service.show', $this->slug),
                 'robots' => 'index, follow',

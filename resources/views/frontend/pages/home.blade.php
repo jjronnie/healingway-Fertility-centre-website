@@ -73,13 +73,12 @@
 
                             {{-- Image Section --}}
                             <div class="{{ $imageRight ? 'order-2' : 'order-2 lg:order-1' }} hidden lg:block">
-                                @if ($service->photo)
-                                    <img src="{{ asset('storage/' . $service->photo) }}" alt="{{ $service->name }}"
-                                        class="w-full h-72 object-cover rounded-2xl" loading="lazy">
-                                @else
-                                    <img src="{{ asset('assets/img/1.webp') }}" alt="{{ $service->name }}"
-                                        class="w-full h-72 object-cover rounded-2xl" loading="lazy">
-                                @endif
+                                @php
+                                    $serviceImage = $service->getFirstMediaUrl('photo', 'webp')
+                                        ?: ($service->photo ? asset('storage/' . $service->photo) : asset('assets/img/1.webp'));
+                                @endphp
+                                <img src="{{ $serviceImage }}" alt="{{ $service->name }}"
+                                    class="w-full h-72 object-cover rounded-2xl" loading="lazy">
                             </div>
 
                         </div>
@@ -245,8 +244,11 @@
                         <div
                             class="bg-white p-2 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div class="aspect-[4/5] overflow-hidden ">
-                                <img src="{{ asset('storage/' . $person->photo ?: 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo') }}"
-                                    alt="{{ $person->name }}"
+                                @php
+                                    $staffImage = $person->getFirstMediaUrl('photo', 'webp')
+                                        ?: ($person->photo ? asset('storage/' . $person->photo) : 'https://placehold.co/400x400/CCCCCC/FFFFFF?text=No+Photo');
+                                @endphp
+                                <img src="{{ $staffImage }}" alt="{{ $person->name }}"
                                     class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-6">

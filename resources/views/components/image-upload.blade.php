@@ -2,15 +2,26 @@
     'name' => 'avatar',
     'label' => 'Image',
     'preview' => null,
-    'maxSize' => 3, // MB
+    'maxSize' => 10, // MB
 ])
+
+@php
+    use Illuminate\Support\Str;
+
+    $previewUrl = '';
+    if ($preview) {
+        $previewUrl = Str::startsWith($preview, ['http://', 'https://', '//'])
+            ? $preview
+            : asset($preview);
+    }
+@endphp
 
 <div class="flex flex-col space-y-2">
     <label class="label">{{ $label }}</label>
 
     <div
         x-data="{
-            imagePreview: '{{ $preview ? asset($preview) : '' }}',
+            imagePreview: '{{ $previewUrl }}',
             error: null,
 
             handleFile(event) {
