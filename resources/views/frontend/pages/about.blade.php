@@ -4,7 +4,7 @@
         description="Uganda's premier fertility center dedicated to helping families realize their dreams of parenthood." />
 
     <section class="-mt-32  relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  " style="height: 500px">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  " >
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <img src="{{ asset('assets/img/4.webp') }}" alt="IVF IMG" class="w-full h-auto rounded-3xl shadow-lg" />
             </div>
