@@ -117,7 +117,7 @@
                 </div>
 
                 <p class="text-xs text-gray-500">
-                    Conversions are queued. Make sure the database queue worker is running.
+                    Conversions are queued. Images will appear in the gallery shortly after upload completes. You can safely navigate away.
                 </p>
 
                 <div class="text-sm text-red-600" x-show="error" x-text="error" x-cloak></div>

@@ -15,7 +15,7 @@
 
 
         <div class="flex justify-between items-center border-b border-gray-300 pb-2">
-            <span class=" text-gray-600">Date & Time:</span>
+            <span class=" text-gray-600">Preferred appointment Date & Time:</span>
             <span class="text-black font-medium">{{ $appointment->appointment_date->format('d M, Y H:i') }}</span>
         </div>
 
@@ -56,6 +56,16 @@
             </div>
         @endif
 
+
+         {{-- Confirmed At --}}
+        @if ($appointment->created_at)
+             <div class="flex justify-between items-center border-b border-gray-300 pb-2">
+                <span class=" text-gray-600">Created At:</span>
+                <span class="text-black font-medium">
+                    {{ $appointment->created_at->format('d M, Y H:i') }}
+                </span>
+            </div>
+        @endif
 
 
 
