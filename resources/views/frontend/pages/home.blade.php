@@ -184,7 +184,7 @@
                             <!-- Stat 3 -->
                             <div>
                                 <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
-                                    85%
+                                    60%
                                 </div>
                                 <p class="text-gray-300 text-sm md:text-base leading-snug">
                                     Success rate with advanced fertility treatments

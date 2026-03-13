@@ -132,7 +132,7 @@
 
                     <div>
                         <div class="text-4xl font-extrabold text-hw-green">
-                            <span class="counter" data-target="85">0</span>%
+                            <span class="counter" data-target="60">0</span>%
                         </div>
                         <div class="text-xs text-gray-300 uppercase tracking-widest mt-1">
                             Success Rate
