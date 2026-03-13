@@ -7,7 +7,7 @@
     <section class="-mt-32 pb-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
 
-            <div class="relative overflow-hidden  h-[500px] lg:h-[600px]">
+            <div class="relative overflow-hidden  h-[500px] ">
                 <img src="{{ asset('assets/img/drs.webp') }}" alt="Fertility Care Team"
                     class="w-full h-full rounded-3xl object-cover">
             </div>
@@ -33,12 +33,15 @@
                             <div class="aspect-[4/5] overflow-hidden ">
 
                                 @php
-                                    $staffImage = $person->getFirstMediaUrl('photo', 'webp')
-                                        ?: ($person->photo ? asset('storage/' . $person->photo) : 'https://placehold.co/400x320/CCCCCC/FFFFFF?text=No+Photo');
+                                    $staffImage =
+                                        $person->getFirstMediaUrl('photo', 'webp') ?:
+                                        ($person->photo
+                                            ? asset('storage/' . $person->photo)
+                                            : 'https://placehold.co/400x320/CCCCCC/FFFFFF?text=No+Photo');
                                 @endphp
                                 <img src="{{ $staffImage }}" alt="{{ $person->name ?? 'No Photo' }}"
                                     class="w-full h-full rounded-2xl object-cover hover:scale-105 transition-transform duration-300">
-                              
+
                             </div>
                             <div class="p-6">
                                 <h3 class="text-lg font-bold text-gray-900 mb-2">
